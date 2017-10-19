@@ -22,6 +22,14 @@ public class DialogCheckInTent extends JDialog implements ActionListener{
 	
 	public DialogCheckInTent(JFrame paOccupy, Site d) {
 		unit = d;
+		nameTxt = new JTextField("");
+		OcculyedOnTxt = new JTextField("");
+		stayingTxt = new JTextField("");
+		siteNumberTxt = new JTextField("");
+		powerTxt = new JComboBox();
+		okButton = new JButton("Ok");
+		cancelButton = new JButton("Cancel");
+		closeStatus = false;
 	}
 	
 	@Override
