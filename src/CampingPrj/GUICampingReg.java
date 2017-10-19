@@ -9,8 +9,11 @@ public class GUICampingReg extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+		// This does not work now but it will be needed later i guess
+//		if (resvRVItem == comp) {
+//			RV t = new RV();
+//			DialogCheckInRv x = new DialogCheckInRv(this, t);
+
 	}
 
 }

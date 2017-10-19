@@ -15,8 +15,8 @@ public class SiteModel extends AbstractListModel{
 	// override these two methods from AbstractTableModel class
 
 	public Object getValuesAt(int row, int col) {
-		return col;
-		//...
+		
+		return null;
 	}
 	public String getColumnName(int col) {
 		return columnNames[col];
@@ -36,13 +36,11 @@ public class SiteModel extends AbstractListModel{
 
 	@Override
 	public int getSize() {
-		// TODO Auto-generated method stub
-		return 0;
+		return listSites.size();
 	}
 
 	@Override
 	public Object getElementAt(int index) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
