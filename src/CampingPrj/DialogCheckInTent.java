@@ -17,7 +17,7 @@ public class DialogCheckInTent extends JDialog implements ActionListener{
 	private JComboBox powerTxt;
 	private JButton okButton;
 	private JButton cancelButton;
-	private boolean closeStatue;
+	private boolean closeStatus;
 	private Site unit;
 	
 	public DialogCheckInTent(JFrame paOccupy, Site d) {
@@ -26,7 +26,6 @@ public class DialogCheckInTent extends JDialog implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 }
