@@ -4,21 +4,53 @@ import java.io.Serializable;
 import java.util.GregorianCalendar;
 
 public class Site implements Serializable{
-	private static final long serialVersionUID = 1L;
+	public static class SiteData {
+		/** The name of the person who is occupying the Site */
+		protected String nameReserving;
+		/** The date the Site was checked-in (occupied) */
+		protected GregorianCalendar checkIn;
+		/** is checking in  */
+		protected int daysStaying;
+		/** The Site number */
+		protected int siteNumber;
 
-	/** The name of the person who is occupying the Site */
-	protected String nameReserving;
+		private static final long serialVersionUID = 1L;
+		
+	
+		public String getNameReserving() {
+			return nameReserving;
+		}
 
-	/** The date the Site was checked-in (occupied) */
-	protected GregorianCalendar checkIn;
+		public void setNameReserving(String nameReserving) {
+			this.nameReserving = nameReserving;
+		}
 
-	/** The estimated number of days the person is reserving */
-	/** This is just an estimate when the camper is  */
-	/** is checking in  */
-	protected int daysStaying; 
+		public GregorianCalendar getCheckIn() {
+			return checkIn;
+		}
 
-	/** The Site number */
-	protected int siteNumber;  
+		public void setCheckIn(GregorianCalendar checkIn) {
+			this.checkIn = checkIn;
+		}
+
+		public int getDaysStaying() {
+			return daysStaying;
+		}
+
+		public void setDaysStaying(int daysStaying) {
+			this.daysStaying = daysStaying;
+		}
+
+		public int getSiteNumber() {
+			return siteNumber;
+		}
+
+		public void setSiteNumber(int siteNumber) {
+			this.siteNumber = siteNumber;
+		}
+	}
+
+
 
 	// add constructors
 	// add getter, setter methods
