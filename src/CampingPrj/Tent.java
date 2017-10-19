@@ -1,5 +1,5 @@
 package CampingPrj;
 
-public class Tent {
+public class Tent extends Site{
 
 }

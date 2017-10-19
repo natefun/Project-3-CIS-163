@@ -1,5 +1,7 @@
 package CampingPrj;
 
-public class DialogCheckInTent {
+import javax.swing.JDialog;
+
+public class DialogCheckInTent extends JDialog{
 
 }
