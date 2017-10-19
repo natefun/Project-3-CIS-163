@@ -2,7 +2,6 @@ package CampingPrj;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -25,7 +24,7 @@ public class DialogCheckInRv extends JDialog implements ActionListener{
 //		...
 	}
 	public void actionPerformed(ActionEvent e) {
-//		...
+		
 	}
 
 }
