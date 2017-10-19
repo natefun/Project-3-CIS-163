@@ -12,23 +12,23 @@ public class GUICampingReg extends JFrame implements ActionListener{
 	   // event listeners and other methods needed to build the GUI
 
 
-	public static void main(String[] args) {
-		JMenu File, checkingIn;
-		JMenuBar FileMenu;
-		JMenuItem OpenSerial,SaveSerial, OpenTxt,SaveTxt, Exit, TentIn, RVIn; 
-		
-		JFrame frame = new JFrame("Camping");
-		
-		File = new JMenu();
-		checkingIn= new JMenu();
-		FileMenu = new JMenuBar("File");
-		
-		OpenSerial= new JMenuItem("Open Serializable File");
-		SaveSerial= new JMenuItem("Save Serializable File");
-		OpenTxt= new JMenuItem("Open Text File");
-		SaveTxt= new JMenuItem("Save Text File");
-		Exit = new JMenuItem("Exit");
-	}
+//	public static void main(String[] args) {
+//		JMenu File, checkingIn;
+//		JMenuBar FileMenu;
+//		JMenuItem OpenSerial,SaveSerial, OpenTxt,SaveTxt, Exit, TentIn, RVIn; 
+//		
+//		JFrame frame = new JFrame("Camping");
+//		
+//		File = new JMenu();
+//		checkingIn= new JMenu();
+//		FileMenu = new JMenuBar();
+//		
+//		OpenSerial= new JMenuItem("Open Serializable File");
+//		SaveSerial= new JMenuItem("Save Serializable File");
+//		OpenTxt= new JMenuItem("Open Text File");
+//		SaveTxt= new JMenuItem("Save Text File");
+//		Exit = new JMenuItem("Exit");
+//	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// Finally, to invoke this dialog box from the GUICampingReg class, the following code may help. 
