@@ -7,6 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 
 public class GUICampingReg extends JFrame implements ActionListener{
+	   // declare GUI components (menu items, buttons, etc.) needed
+	   // constructor method that prepares the GUI
+	   // event listeners and other methods needed to build the GUI
+
 
 	public static void main(String[] args) {
 		JMenu File, checkingIn;
@@ -27,8 +31,13 @@ public class GUICampingReg extends JFrame implements ActionListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+		// Finally, to invoke this dialog box from the GUICampingReg class, the following code may help. 
+		Object comp = e.getSource();
+		Object resvRVItem;
+		if (resvRVItem == comp) {
+			RV t = new RV(0);
+			DialogCheckInRv x = new DialogCheckInRv(this, t);
+
 	}
 
 }

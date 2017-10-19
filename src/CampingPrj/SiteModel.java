@@ -14,18 +14,34 @@ public class SiteModel extends AbstractListModel{
 	// constructor method that initializes the arraylist
 	// override these two methods from AbstractTableModel class
 
+	/******************************************************************
+	 * Gets the value at a specific row and column
+	 * @param row
+	 * @param col
+	 *****************************************************************/
 	public Object getValuesAt(int row, int col) {
-		return col;
-		//...
+		
+		return null;
 	}
+	
+	/******************************************************************
+	 * Gets the name of the column
+	 * @param col Which column you want the name of
+	 *****************************************************************/
 	public String getColumnName(int col) {
 		return columnNames[col];
 	}
 
+	/******************************************************************
+	 * Returns how many columns there are.
+	 *****************************************************************/
 	public int getColumnCount() {
 		return columnNames.length;
 	}
 
+	/******************************************************************
+	 * Returns how many rows there are
+	 *****************************************************************/
 	public int getRowCount() {
 		return listSites.size();
 	}
@@ -34,15 +50,19 @@ public class SiteModel extends AbstractListModel{
 	// add methods to load/save accounts from/to a binary file
 	// add other methods as needed
 
+	/******************************************************************
+	 * Gets the total size of the ArrayList overrides AbstractListModel
+	 *****************************************************************/
 	@Override
 	public int getSize() {
-		// TODO Auto-generated method stub
-		return 0;
+		return listSites.size();
 	}
 
+	/******************************************************************
+	 * Gets the element and an index overrides AbstractListModel
+	 *****************************************************************/
 	@Override
 	public Object getElementAt(int index) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
