@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 
 public class DialogCheckInTent extends JDialog implements ActionListener{
 	private JTextField nameTxt;
-	private JTextField OcculyedOnTxt;
+	private JTextField OccupyedOnTxt;
 	private JTextField stayingTxt;
 	private JTextField siteNumberTxt;
 	private JComboBox powerTxt;
@@ -21,6 +21,14 @@ public class DialogCheckInTent extends JDialog implements ActionListener{
 	private Site unit;
 	
 	public DialogCheckInTent(JFrame paOccupy, Site d) {
+		nameTxt = new JTextField("John Smith");
+		OccupyedOnTxt = new JTextField("03/14/2015");
+		stayingTxt = new JTextField("7");
+		siteNumberTxt = new JTextField("1");
+		powerTxt = new JComboBox();	//Subject to change
+		okButton = new JButton("OK");
+		cancelButton = new JButton("Cancel");
+		closeStatus = false;
 		unit = d;
 	}
 	
