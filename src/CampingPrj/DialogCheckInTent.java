@@ -30,14 +30,6 @@ public class DialogCheckInTent extends JDialog implements ActionListener{
 		cancelButton = new JButton("Cancel");
 		closeStatus = false;
 		unit = d;
-		nameTxt = new JTextField("");
-		OccupyedOnTxt = new JTextField("");
-		stayingTxt = new JTextField("");
-		siteNumberTxt = new JTextField("");
-		powerTxt = new JComboBox();
-		okButton = new JButton("Ok");
-		cancelButton = new JButton("Cancel");
-		closeStatus = false;
 	}
 	
 	@Override
