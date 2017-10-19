@@ -33,11 +33,11 @@ public class GUICampingReg extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// Finally, to invoke this dialog box from the GUICampingReg class, the following code may help. 
 		Object comp = e.getSource();
-		Object resvRVItem;
+		Object resvRVItem = null;
 		if (resvRVItem == comp) {
 			RV t = new RV(0);
 			DialogCheckInRv x = new DialogCheckInRv(this, t);
-
+		}
 	}
 
 }
