@@ -19,9 +19,17 @@ public class DialogCheckInRv extends JDialog implements ActionListener{
 	private boolean closeStatus;
 	private Site unit;  	
 
+	
 	public DialogCheckInRv(JFrame paOccupy, Site d) {	
 		unit = d; 
-//		...
+		nameTxt = new JTextField("");
+		OccupyedOnTxt = new JTextField("");
+		stayingTxt = new JTextField("");
+		siteNumberTxt  = new JTextField("");
+		powerTxt = new JComboBox();
+		okButton = new JButton("Ok");
+		cancelButton = new JButton("Cancel");
+		closeStatus = false;
 	}
 	public void actionPerformed(ActionEvent e) {
 		
