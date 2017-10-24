@@ -60,7 +60,7 @@ public class DialogCheckInTent extends JDialog {
 		paOccupy = new JFrame("Reserve an Tent site");
 		paOccupy.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		paOccupy.getContentPane().add(createPanel());
-		paOccupy.setSize(300, 500);
+		paOccupy.setSize(300, 250);
 		paOccupy.setVisible(true);
 	}
 	
@@ -82,15 +82,68 @@ public class DialogCheckInTent extends JDialog {
 		return panel;
 	}
 	
+	private int checkDays(int numDays) {
+		if(numDays <= 365)
+			return numDays;
+		else
+			return 0;
+	}
+	
+	private int checkSiteNumber(int site) {
+		if(site >= 1 && site <= 5)
+			return site;
+		else
+			return 0;
+	}
+	
+	private int checkMonth(int month) {
+		if(month >= 1 && month <= 12)
+			return month;
+		else
+			return 1;
+	}
+	
+	private int checkYear(int year) {
+		if(year > 0 && year < Integer.MAX_VALUE)
+			return year;
+		else
+			return 0;
+	}
+	
+	private int checkDay(int month, int day, int year) {
+		int[] numDaysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+		if(isLeapYear(year))
+			numDaysInMonth[1] += 1;
+		if(day > 0 && day <= numDaysInMonth[month])
+			return day;
+		else
+			return 0;
+	}
+	
+	private boolean isLeapYear(int year) {
+		if(year % 4 == 0 && year % 100 != 0)
+			return true;
+		else if(year % 400 == 0)
+			return true;
+		else
+			return false;
+	}
+	
 	private class ButtonListener implements ActionListener
 	{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource() == okButton) {
-				
+				String name = nameTxt.getText();
+				int days = checkDays(Integer.parseInt(stayingTxt.getText()));
+				int site = checkSiteNumber(Integer.parseInt(siteNumberTxt.getText()));
+				String[] date = OccupyedOnTxt.getText().split("/");
+				int month = checkMonth(Integer.parseInt(date[0]));
+				int year = checkYear(Integer.parseInt(date[2]));
+				int day = checkDay(month, Integer.parseInt(date[1]), year);
+				//Site sd = new Site(name, days, site);
 			}
 			else if(e.getSource() == cancelButton) {
-				
 			}
 		}
 	}
