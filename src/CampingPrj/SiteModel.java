@@ -2,7 +2,6 @@ package CampingPrj;
 
 import java.util.ArrayList;
 
-import javax.swing.AbstractListModel;
 import javax.swing.table.AbstractTableModel;
 
 public class SiteModel extends AbstractTableModel{
@@ -11,7 +10,7 @@ public class SiteModel extends AbstractTableModel{
 
 	// constructor method that initializes the arraylist
 	public SiteModel() {
-		listSites = new ArrayList();
+		listSites = new ArrayList<Site>();
 		listSites.add(new Tent());
 	}
 	
@@ -39,10 +38,6 @@ public class SiteModel extends AbstractTableModel{
 		return listSites.size();
 	}
 
-	// add methods to add, delete, and update.
-	// add methods to load/save accounts from/to a binary file
-	// add other methods as needed
-
 	/******************************************************************
 	 * Gets the total size of the ArrayList overrides AbstractListModel
 	 *****************************************************************/
@@ -67,5 +62,41 @@ public class SiteModel extends AbstractTableModel{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+
+	// add methods to add, delete, and update.
+	// add methods to load/save accounts from/to a binary file
+	/******************************************************************
+	 * Saves database as serialized type
+	 * @param filename the filepath you want to save to
+	 *****************************************************************/
+	public void saveSerial(String filename) {
+		
+	}
+	
+	/******************************************************************
+	 * Loads database as serialized type
+	 * @param filename the filepath you want to save to
+	 *****************************************************************/
+	public void loadSerial(String filename) {
+		
+	}
+	
+	/******************************************************************
+	 * Saves database as txt type
+	 * @param filename the filepath you want to save to
+	 *****************************************************************/
+	public void saveTxt(String filename) {
+		
+	}
+	
+	/******************************************************************
+	 * Loads database as txt type
+	 * @param filename the filepath you want to save to
+	 *****************************************************************/
+	public void loadTxt(String filename) {
+		
+	}
+	// add other methods as needed
 
 }
