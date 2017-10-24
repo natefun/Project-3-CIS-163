@@ -16,6 +16,10 @@ public class Tent extends Site{
 	public void setNumOfTenters(int numOfTenters) {
 		this.numOfTenters = numOfTenters;
 	}
+	public char[] getPlayer() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 }

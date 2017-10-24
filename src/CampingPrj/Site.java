@@ -68,6 +68,16 @@ public class Site implements Serializable{
 		}
 	}
 
+	public Object getOccupyedOn() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public char[] getTitle() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 	// add constructors
