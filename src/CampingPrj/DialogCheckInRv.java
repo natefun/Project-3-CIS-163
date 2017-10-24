@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class DialogCheckInRv extends JDialog{
+public class DialogCheckInRv extends JDialog {
 	private JTextField nameTxt;
 	private JTextField OccupyedOnTxt;
 	private JTextField stayingTxt;
@@ -25,12 +25,12 @@ public class DialogCheckInRv extends JDialog{
 		
 		
 		//Add defaults later for display
-		nameTxt = new JTextField("");
-		OccupyedOnTxt = new JTextField("");
-		stayingTxt = new JTextField("");
-		siteNumberTxt  = new JTextField("");
+		nameTxt = new JTextField("Joe Dohn");
+		OccupyedOnTxt = new JTextField("10/07/2018");
+		stayingTxt = new JTextField("5");
+		siteNumberTxt  = new JTextField("3");
 		
-		//nameTxt.setColumns(4);
+	
 
 		NameLab = new JLabel("Name of reserver:");
 		SiteLab =  new JLabel("Requested Site Number:");
@@ -56,8 +56,9 @@ public class DialogCheckInRv extends JDialog{
 		
 		paOccupy = new JFrame("Reserve an Tent site");
 		paOccupy.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//paOccupy.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
 		paOccupy.getContentPane().add(createPanal());
-		paOccupy.setSize(300, 500);
+		paOccupy.setSize(300, 250);
 		paOccupy.setVisible(true);
 		
 	}
@@ -75,16 +76,20 @@ public class DialogCheckInRv extends JDialog{
 		panel.add(stayingTxt);
 		panel.add(PowerLab);
 		panel.add(powerTxt);
+		panel.add(okButton);
+		panel.add(cancelButton);
 		return panel;
 	}
 	private class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
 			if (e.getSource() == okButton) {
-
+				
 			}
 			if (e.getSource() == cancelButton) {
-
+				setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+				setVisible(false);
+				  
 			}
 		}
 	}
