@@ -27,6 +27,7 @@ public class DialogCheckInTent extends JDialog {
 	private boolean closeStatus;
 	private Site unit;
 	private JPanel panel;
+	private JFrame paOccupy;
 	
 	public DialogCheckInTent(JFrame paOccupy, Site d) {
 		name = new JLabel("Name:");
@@ -62,6 +63,8 @@ public class DialogCheckInTent extends JDialog {
 		paOccupy.getContentPane().add(createPanel());
 		paOccupy.setSize(300, 250);
 		paOccupy.setVisible(true);
+		
+		this.paOccupy= paOccupy;
 	}
 	
 	private JPanel createPanel() {
@@ -144,6 +147,7 @@ public class DialogCheckInTent extends JDialog {
 				//Site sd = new Site(name, days, site);
 			}
 			else if(e.getSource() == cancelButton) {
+				paOccupy.setVisible(false);
 			}
 		}
 	}
