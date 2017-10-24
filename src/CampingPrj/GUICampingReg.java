@@ -74,6 +74,27 @@ public class GUICampingReg extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource().equals(exit))
 			System.exit(0);
+<<<<<<< HEAD
+		
+		if(e.getSource().equals(openSerial))
+			System.exit(0);
+		
+		if(e.getSource().equals(saveSerial))
+			System.exit(0);
+		
+		if(e.getSource().equals(openTxt))
+			System.exit(0);
+		
+		if(e.getSource().equals(saveTxt))
+			System.exit(0);
+
+		if(e.getSource().equals(tentIn)) {
+			Tent t = new Tent();
+			DialogCheckInTent x = new DialogCheckInTent(this, t);
+		}
+
+		if(e.getSource().equals(RVIn)) {
+=======
 
 		if(e.getSource().equals(openSerial)) {
 			JFileChooser chooser = new JFileChooser();
@@ -121,6 +142,7 @@ public class GUICampingReg extends JFrame implements ActionListener{
 		Object comp = e.getSource();
 		Object resvRVItem = null;
 		if (resvRVItem == comp) {
+>>>>>>> 8f9df8c5a8af6a53674f442054cc04c3ef94734d
 			RV t = new RV(0);
 			DialogCheckInRv x = new DialogCheckInRv(this, t);
 		}
