@@ -3,8 +3,6 @@ package CampingPrj;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
 
 public class GUICampingReg extends JFrame implements ActionListener{
 	// declare GUI components (menu items, buttons, etc.) needed
@@ -13,6 +11,9 @@ public class GUICampingReg extends JFrame implements ActionListener{
 	JMenu file, checkingIn;
 	JMenuBar menuBar;
 	JMenuItem openSerial,saveSerial, openTxt,saveTxt, exit, tentIn, RVIn; 
+	
+	private JTable jListTable;
+	private SiteModel dList;
 
 	public GUICampingReg() {
 		menuBar = new JMenuBar();
@@ -53,7 +54,11 @@ public class GUICampingReg extends JFrame implements ActionListener{
 		RVIn.addActionListener(this);
 		
 		setJMenuBar(menuBar);
-//		add(menuBar);
+		
+		dList = new SiteModel();
+		jListTable = new JTable(dList);
+
+		add(jListTable);
 		
 		setVisible(true);
 		setSize(800, 600);

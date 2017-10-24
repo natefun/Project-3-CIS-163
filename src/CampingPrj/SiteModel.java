@@ -3,8 +3,9 @@ package CampingPrj;
 import java.util.ArrayList;
 
 import javax.swing.AbstractListModel;
+import javax.swing.table.AbstractTableModel;
 
-public class SiteModel extends AbstractListModel{
+public class SiteModel extends AbstractTableModel{
 
 
 
@@ -53,7 +54,6 @@ public class SiteModel extends AbstractListModel{
 	/******************************************************************
 	 * Gets the total size of the ArrayList overrides AbstractListModel
 	 *****************************************************************/
-	@Override
 	public int getSize() {
 		return listSites.size();
 	}
@@ -61,8 +61,13 @@ public class SiteModel extends AbstractListModel{
 	/******************************************************************
 	 * Gets the element and an index overrides AbstractListModel
 	 *****************************************************************/
-	@Override
 	public Object getElementAt(int index) {
+		return null;
+	}
+
+	@Override
+	public Object getValueAt(int rowIndex, int columnIndex) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
