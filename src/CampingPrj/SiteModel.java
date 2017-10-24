@@ -14,16 +14,6 @@ public class SiteModel extends AbstractTableModel{
 
 	// constructor method that initializes the arraylist
 	// override these two methods from AbstractTableModel class
-
-	/******************************************************************
-	 * Gets the value at a specific row and column
-	 * @param row
-	 * @param col
-	 *****************************************************************/
-	public Object getValuesAt(int row, int col) {
-		
-		return null;
-	}
 	
 	/******************************************************************
 	 * Gets the name of the column
@@ -65,6 +55,11 @@ public class SiteModel extends AbstractTableModel{
 		return null;
 	}
 
+	/******************************************************************
+	 * Gets the value at a specific row and column
+	 * @param row
+	 * @param col
+	 *****************************************************************/
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		// TODO Auto-generated method stub

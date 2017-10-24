@@ -16,17 +16,25 @@ public class Site implements Serializable{
 
 		private static final long serialVersionUID = 1L;
 		
-	
-		public void Site() {
+		public SiteData() {
 			nameReserving = "";
 			daysStaying = 0;
 			siteNumber = 0;
 			GregorianCalendar();
 			
 		}
+		
+		public SiteData(String name, int days, int siteNum) {
+			nameReserving = name;
+			daysStaying = days;
+			siteNumber = siteNum;
+			GregorianCalendar();
+		}
+		
 		private void GregorianCalendar() {
 			
 		}
+		
 		public String getNameReserving() {
 			return nameReserving;
 		}
