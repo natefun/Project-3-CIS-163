@@ -1,5 +1,10 @@
 package CampingPrj;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
@@ -13,9 +18,9 @@ public class SiteModel extends AbstractTableModel{
 		listSites = new ArrayList<Site>();
 		listSites.add(new Tent());
 	}
-	
+
 	// override these two methods from AbstractTableModel class
-	
+
 	/******************************************************************
 	 * Gets the name of the column
 	 * @param col Which column you want the name of
@@ -70,31 +75,58 @@ public class SiteModel extends AbstractTableModel{
 	 * @param filename the filepath you want to save to
 	 *****************************************************************/
 	public void saveSerial(String filename) {
-		
+
 	}
-	
+
 	/******************************************************************
 	 * Loads database as serialized type
 	 * @param filename the filepath you want to save to
 	 *****************************************************************/
 	public void loadSerial(String filename) {
-		
+
 	}
-	
+
 	/******************************************************************
 	 * Saves database as txt type
 	 * @param filename the filepath you want to save to
 	 *****************************************************************/
 	public void saveTxt(String filename) {
-		
+		try {
+			PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(filename)));
+			out.println(listSites.size());
+			for (int i = 0; i < listSites.size(); i++) {
+
+				// listSites is an ArrayList<Site>
+				 Site SiteUnit = listSites.get(i);   	
+
+				// Output the class name. 
+				out.println(SiteUnit.getClass().getName()); 
+
+				// Output the OccupyOn date to a file in a readable format.
+//				out.println(DateFormat.getDateInstance(DateFormat.SHORT).
+//						format(SiteUnit.getOccupyedOn().getTime()));
+
+				// Output the Title of the Site
+				out.println(SiteUnit.getTitle());
+
+				// See if the curOccupy SiteUnit is a Tent, if so output the player. 
+				if (SiteUnit instanceof Tent)
+					out.println(((Tent)SiteUnit).getPlayer());
+			}
+			out.close();
+
+		} catch (IOException ex) {
+			System.out.println ("IO Error!");
+		}
+
 	}
-	
+
 	/******************************************************************
 	 * Loads database as txt type
 	 * @param filename the filepath you want to save to
 	 *****************************************************************/
 	public void loadTxt(String filename) {
-		
+
 	}
 	// add other methods as needed
 
