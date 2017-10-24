@@ -6,13 +6,15 @@ import javax.swing.AbstractListModel;
 import javax.swing.table.AbstractTableModel;
 
 public class SiteModel extends AbstractTableModel{
-
-
-
 	private ArrayList<Site> listSites;
 	private String[] columnNames = { "Name Reserving", "Checked in", "Days Staying", "Site #", "Tent/RV info"};
 
 	// constructor method that initializes the arraylist
+	public SiteModel() {
+		listSites = new ArrayList();
+		listSites.add(new Tent());
+	}
+	
 	// override these two methods from AbstractTableModel class
 	
 	/******************************************************************
