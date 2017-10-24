@@ -62,7 +62,6 @@ public class SiteModel extends AbstractTableModel{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
 
 	// add methods to add, delete, and update.
 	// add methods to load/save accounts from/to a binary file

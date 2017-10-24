@@ -60,6 +60,7 @@ public class GUICampingReg extends JFrame implements ActionListener{
 		jListTable = new JTable(dList);
 
 		add(jListTable);
+		add(new JScrollPane(jListTable));
 
 		setVisible(true);
 		setSize(800, 600);
