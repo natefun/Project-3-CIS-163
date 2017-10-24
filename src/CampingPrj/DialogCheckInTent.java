@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+
+//test
 public class DialogCheckInTent extends JDialog {
 	private JLabel name;
 	private JLabel OccupyedOn;
