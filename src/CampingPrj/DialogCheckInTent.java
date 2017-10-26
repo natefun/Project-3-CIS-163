@@ -74,12 +74,12 @@ public class DialogCheckInTent extends JDialog {
 		panel.setLayout(new GridLayout(6, 2));
 		panel.add(name);
 		panel.add(nameTxt);
+		panel.add(siteNumber);
+		panel.add(siteNumberTxt);
 		panel.add(OccupyedOn);
 		panel.add(OccupyedOnTxt);
 		panel.add(staying);
 		panel.add(stayingTxt);
-		panel.add(siteNumber);
-		panel.add(siteNumberTxt);
 		panel.add(numOfGuests);
 		panel.add(numOfGuestsTxt);
 		panel.add(okButton);
