@@ -64,9 +64,9 @@ public class DialogCheckInRv extends JDialog {
 		
 		this.paOccupy = paOccupy;
 		
-		int SiteNum = Integer.parseInt(siteNumberTxt.getText());
-		int reserveDay = Integer.parseInt(OccupyedOnTxt.getText());
-		int daysStay = Integer.parseInt(stayingTxt.getText());
+//		int SiteNum = Integer.parseInt(siteNumberTxt.getText());
+//		int reserveDay = Integer.parseInt(OccupyedOnTxt.getText());
+//		int daysStay = Integer.parseInt(stayingTxt.getText());
 	}
 	
 	private JPanel createPanal() {
@@ -87,18 +87,18 @@ public class DialogCheckInRv extends JDialog {
 		return panel;
 	}
 	
-	private int checkDays(int reserveDay) {
-		if(reserveDay <= 365)
-			return reserveDay;
-		else
-			return 0;
-	}
+//	private int checkDays(int reserveDay) {
+//		if(reserveDay <= 365)
+//			return reserveDay;
+//		else
+//			return 0;
+//	}
 	
 	private class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
 			if (e.getSource() == okButton) {
-				checkDays(reserveDay);
+				//checkDays(reserveDay);
 			}
 			if (e.getSource() == cancelButton) {
 				paOccupy.setVisible(false);
