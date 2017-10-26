@@ -56,7 +56,6 @@ public class DialogCheckInRv extends JDialog {
 		cancelButton.addActionListener(listener);
 		powerTxt.addActionListener(listener);
 		
-		paOccupy = new JFrame("Reserve an Tent site");
 		paOccupy = new JFrame("Reserve a RV site");
 		paOccupy.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
 		paOccupy.getContentPane().add(createPanal());
