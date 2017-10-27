@@ -3,6 +3,10 @@ package CampingPrj;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.swing.*;
 
 public class DialogCheckInRv extends JDialog {
@@ -64,11 +68,18 @@ public class DialogCheckInRv extends JDialog {
 		setSize(300, 250);
 		setVisible(true);
 		
-		//this.paOccupy = paOccupy;
 		
-//		int SiteNum = Integer.parseInt(siteNumberTxt.getText());
-//		int reserveDay = Integer.parseInt(OccupyedOnTxt.getText());
-//		int daysStay = Integer.parseInt(stayingTxt.getText());
+
+
+		try 
+		{  
+			DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
+			Date startDate = df.parse(OccupyedOnTxt.getText());
+		}
+		catch (Exception e) {
+
+		}
+
 	}
 	
 	private void createPanal() {
@@ -88,6 +99,13 @@ public class DialogCheckInRv extends JDialog {
 		add(cancelButton);
 	}
 	
+	private int checkSiteNumber(int SiteNum) {
+		if(SiteNum >= 1 && SiteNum <= 5)
+			return SiteNum;
+		else
+			return 0;
+	}
+	
 //	private int checkDays(int reserveDay) {
 //		if(reserveDay <= 365)
 //			return reserveDay;
@@ -99,7 +117,10 @@ public class DialogCheckInRv extends JDialog {
 		public void actionPerformed(ActionEvent e) {
 
 			if (e.getSource() == okButton) {
-				//checkDays(reserveDay);
+				int SiteNum = Integer.parseInt(siteNumberTxt.getText());
+				int daysStay = Integer.parseInt(stayingTxt.getText());
+				
+				checkSiteNumber(SiteNum);
 			}
 			if (e.getSource() == cancelButton) {
 				dispose();
