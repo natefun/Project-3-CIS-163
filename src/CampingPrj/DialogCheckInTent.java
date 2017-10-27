@@ -146,6 +146,7 @@ public class DialogCheckInTent extends JDialog {
 				int month = checkMonth(Integer.parseInt(date[0]));
 				int year = checkYear(Integer.parseInt(date[2]));
 				int day = checkDay(month, Integer.parseInt(date[1]), year);
+				int numberOfGuests = Integer.parseInt(numOfGuestsTxt.getText());
 				//Site sd = new Site(name, days, site);
 			}
 			else if(e.getSource() == cancelButton) {
