@@ -22,6 +22,7 @@ public class DialogCheckInRv extends JDialog {
 
 	
 	public DialogCheckInRv(JFrame paOccupy, Site d) {	
+		super(paOccupy,true);
 		unit = d; 
 		
 		
@@ -56,35 +57,35 @@ public class DialogCheckInRv extends JDialog {
 		cancelButton.addActionListener(listener);
 		powerTxt.addActionListener(listener);
 		
-		paOccupy = new JFrame("Reserve a RV site");
-		paOccupy.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
-		paOccupy.getContentPane().add(createPanal());
-		paOccupy.setSize(300, 250);
-		paOccupy.setVisible(true);
+		setTitle("Reserve an RV site");
+		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+		createPanal();
+		getContentPane();
+		setSize(300, 250);
+		setVisible(true);
 		
-		this.paOccupy = paOccupy;
+		//this.paOccupy = paOccupy;
 		
 //		int SiteNum = Integer.parseInt(siteNumberTxt.getText());
 //		int reserveDay = Integer.parseInt(OccupyedOnTxt.getText());
 //		int daysStay = Integer.parseInt(stayingTxt.getText());
 	}
 	
-	private JPanel createPanal() {
-		panel = new JPanel();
-		panel.setLayout(new GridLayout(6, 2));
-		panel.add(NameLab);
-		panel.add(nameTxt);
-		panel.add(SiteLab);
-		panel.add(siteNumberTxt);
-		panel.add(DateLab);
-		panel.add(OccupyedOnTxt);
-		panel.add(DaysLab);
-		panel.add(stayingTxt);
-		panel.add(PowerLab);
-		panel.add(powerTxt);
-		panel.add(okButton);
-		panel.add(cancelButton);
-		return panel;
+	private void createPanal() {
+
+		setLayout(new GridLayout(6, 2));
+		add(NameLab);
+		add(nameTxt);
+		add(SiteLab);
+		add(siteNumberTxt);
+		add(DateLab);
+		add(OccupyedOnTxt);
+		add(DaysLab);
+		add(stayingTxt);
+		add(PowerLab);
+		add(powerTxt);
+		add(okButton);
+		add(cancelButton);
 	}
 	
 //	private int checkDays(int reserveDay) {
@@ -101,7 +102,7 @@ public class DialogCheckInRv extends JDialog {
 				//checkDays(reserveDay);
 			}
 			if (e.getSource() == cancelButton) {
-				paOccupy.setVisible(false);
+				dispose();
 				
 			}
 		}

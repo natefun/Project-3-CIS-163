@@ -60,31 +60,32 @@ public class DialogCheckInTent extends JDialog {
 		okButton.addActionListener(listener);
 		cancelButton.addActionListener(listener);
 		
-		paOccupy = new JFrame("Reserve an Tent site");
-		paOccupy.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		paOccupy.getContentPane().add(createPanel());
-		paOccupy.setSize(300, 250);
-		paOccupy.setVisible(true);
+		setTitle("Reserve an Tent site");
+		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+		getContentPane();
+		createPanel();
+		setSize(300, 250);
+		setVisible(true);
 		
-		this.paOccupy= paOccupy;
+		
 	}
 	
-	private JPanel createPanel() {
-		panel = new JPanel();
-		panel.setLayout(new GridLayout(6, 2));
-		panel.add(name);
-		panel.add(nameTxt);
-		panel.add(siteNumber);
-		panel.add(siteNumberTxt);
-		panel.add(OccupyedOn);
-		panel.add(OccupyedOnTxt);
-		panel.add(staying);
-		panel.add(stayingTxt);
-		panel.add(numOfGuests);
-		panel.add(numOfGuestsTxt);
-		panel.add(okButton);
-		panel.add(cancelButton);
-		return panel;
+	private void createPanel() {
+		
+		setLayout(new GridLayout(6, 2));
+		add(name);
+		add(nameTxt);
+		add(siteNumber);
+		add(siteNumberTxt);
+		add(OccupyedOn);
+		add(OccupyedOnTxt);
+		add(staying);
+		add(stayingTxt);
+		add(numOfGuests);
+		add(numOfGuestsTxt);
+		add(okButton);
+		add(cancelButton);
+		
 	}
 	
 	private int checkDays(int numDays) {
@@ -157,7 +158,7 @@ public class DialogCheckInTent extends JDialog {
 				//Site sd = new Site(name, days, site);
 			}
 			else if(e.getSource() == cancelButton) {
-				paOccupy.setVisible(false);
+				dispose();
 			}
 		}
 	}
