@@ -61,7 +61,7 @@ public class DialogCheckInTent extends JDialog {
 		cancelButton.addActionListener(listener);
 		
 		paOccupy = new JFrame("Reserve an Tent site");
-		paOccupy.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		paOccupy.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		paOccupy.getContentPane().add(createPanel());
 		paOccupy.setSize(300, 250);
 		paOccupy.setVisible(true);

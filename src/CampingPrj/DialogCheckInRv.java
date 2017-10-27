@@ -42,7 +42,7 @@ public class DialogCheckInRv extends JDialog {
 		
 		ButtonListener listener = new ButtonListener();
 
-//		powerTxt = new JComboBox();
+
 		okButton = new JButton("Ok");
 		cancelButton = new JButton("Cancel");
 		closeStatus = false;
@@ -56,13 +56,17 @@ public class DialogCheckInRv extends JDialog {
 		cancelButton.addActionListener(listener);
 		powerTxt.addActionListener(listener);
 		
-		paOccupy = new JFrame("Reserve an Tent site");
+		paOccupy = new JFrame("Reserve a RV site");
 		paOccupy.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
 		paOccupy.getContentPane().add(createPanal());
 		paOccupy.setSize(300, 250);
 		paOccupy.setVisible(true);
 		
 		this.paOccupy = paOccupy;
+		
+//		int SiteNum = Integer.parseInt(siteNumberTxt.getText());
+//		int reserveDay = Integer.parseInt(OccupyedOnTxt.getText());
+//		int daysStay = Integer.parseInt(stayingTxt.getText());
 	}
 	
 	private JPanel createPanal() {
@@ -82,14 +86,23 @@ public class DialogCheckInRv extends JDialog {
 		panel.add(cancelButton);
 		return panel;
 	}
+	
+//	private int checkDays(int reserveDay) {
+//		if(reserveDay <= 365)
+//			return reserveDay;
+//		else
+//			return 0;
+//	}
+	
 	private class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
 			if (e.getSource() == okButton) {
-				
+				//checkDays(reserveDay);
 			}
 			if (e.getSource() == cancelButton) {
 				paOccupy.setVisible(false);
+				
 			}
 		}
 	}
