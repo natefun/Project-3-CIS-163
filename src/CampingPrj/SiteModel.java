@@ -69,7 +69,20 @@ public class SiteModel extends AbstractTableModel{
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		//This is not working yet
-		return listSites.get(rowIndex);
+		switch(columnIndex) {
+		case 0:
+			return listSites.get(rowIndex).getNameReserving();
+		case 1:
+			return listSites.get(rowIndex).getCheckIn();
+		case 2:
+			return listSites.get(rowIndex).getDaysStaying();
+		case 3:
+			return listSites.get(rowIndex).getSiteNumber();
+		case 4:
+			return "Tent/RV Info";
+		default:
+			return "";
+		}
 	}
 
 	/******************************************************************
@@ -81,7 +94,7 @@ public class SiteModel extends AbstractTableModel{
 		listSites.add(site);
 		fireTableRowsInserted(0, listSites.size());
 	}
-	
+
 	/******************************************************************
 	 * Deletes a row from the jTable
 	 * @param rowIndex the index of the row you want to delete
@@ -89,7 +102,7 @@ public class SiteModel extends AbstractTableModel{
 	public void delete(int rowIndex) {
 		listSites.remove(rowIndex);
 	}
-	
+
 	/******************************************************************
 	 * Updates the jTable display
 	 *****************************************************************/
@@ -97,7 +110,7 @@ public class SiteModel extends AbstractTableModel{
 		//No idea if this works
 		fireTableRowsInserted(0, listSites.size());
 	}
-	
+
 	/******************************************************************
 	 * Saves database as serialized type
 	 * @param filename the filepath you want to save to
@@ -130,9 +143,9 @@ public class SiteModel extends AbstractTableModel{
 				listSites.add(readCase.get(i));
 				System.out.println(readCase.get(i));
 			}
-			
+
 			fireTableRowsInserted(1, readCase.size());
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

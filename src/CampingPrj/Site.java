@@ -65,6 +65,11 @@ public class Site implements Serializable{
 	public void setSiteNumber(int siteNumber) {
 		this.siteNumber = siteNumber;
 	}
+	
+	public int getCost() {
+		//This method is meant to be overridden by tent and rv
+		return 0;
+	}
 
 	public Object getOccupyedOn() {
 		// TODO Auto-generated method stub
