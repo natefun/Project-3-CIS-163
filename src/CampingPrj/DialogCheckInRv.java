@@ -120,6 +120,7 @@ public class DialogCheckInRv extends JDialog {
 				
 				checkSiteNumber(SiteNum);
 				//SiteNum = super.siteNumber;
+				
 			}
 			if (e.getSource() == cancelButton) {
 				dispose();
