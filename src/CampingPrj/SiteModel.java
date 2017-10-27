@@ -79,6 +79,7 @@ public class SiteModel extends AbstractTableModel{
 	public void add(Site site) {
 		//this method may need to change at some point
 		listSites.add(site);
+		fireTableRowsInserted(0, listSites.size());
 	}
 	
 	/******************************************************************
