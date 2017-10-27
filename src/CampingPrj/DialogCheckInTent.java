@@ -28,8 +28,6 @@ public class DialogCheckInTent extends JDialog {
 	private JButton cancelButton;
 	private boolean closeStatus;
 	private Site unit;
-	private JPanel panel;
-	private JFrame paOccupy;
 	
 	public DialogCheckInTent(JFrame paOccupy, Site d) {
 		name = new JLabel("Name:");

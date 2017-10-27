@@ -20,8 +20,6 @@ public class DialogCheckInRv extends JDialog {
 	private JLabel NameLab, SiteLab, DateLab, DaysLab, PowerLab;
 	private boolean closeStatus;
 	private Site unit;  	
-	private JPanel panel;
-	private JFrame paOccupy;
 	
 
 	
@@ -63,7 +61,7 @@ public class DialogCheckInRv extends JDialog {
 		
 		setTitle("Reserve an RV site");
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
-		createPanal();
+		createPanel();
 		getContentPane();
 		setSize(300, 250);
 		setVisible(true);
@@ -82,7 +80,7 @@ public class DialogCheckInRv extends JDialog {
 
 	}
 	
-	private void createPanal() {
+	private void createPanel() {
 
 		setLayout(new GridLayout(6, 2));
 		add(NameLab);
@@ -121,6 +119,7 @@ public class DialogCheckInRv extends JDialog {
 				int daysStay = Integer.parseInt(stayingTxt.getText());
 				
 				checkSiteNumber(SiteNum);
+				SiteNum = super.siteNumber;
 			}
 			if (e.getSource() == cancelButton) {
 				dispose();

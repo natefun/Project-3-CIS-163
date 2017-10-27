@@ -42,6 +42,10 @@ public class RV extends Site{
 		else
 			return 0;
 	}
+	
+	public RV (int p, int SiteNumber) {
+		super(SiteNum);
+	}
 
 	@Override
 	public int getCost() {
