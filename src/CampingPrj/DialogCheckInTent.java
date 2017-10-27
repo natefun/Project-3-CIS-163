@@ -29,7 +29,7 @@ public class DialogCheckInTent extends JDialog {
 	private boolean closeStatus;
 	private Site unit;
 	
-	public DialogCheckInTent(JFrame paOccupy, Site d) {
+	public DialogCheckInTent(JFrame paOccupy, Tent d) {
 		name = new JLabel("Name:");
 		OccupyedOn = new JLabel("Occupyed on Date:");
 		staying = new JLabel("Days planning on staying:");
