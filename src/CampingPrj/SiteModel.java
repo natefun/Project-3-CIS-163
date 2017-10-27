@@ -20,7 +20,7 @@ public class SiteModel extends AbstractTableModel{
 	// constructor method that initializes the arraylist
 	public SiteModel() {
 		listSites = new ArrayList<Site>();
-		listSites.add(new Tent());
+		listSites.add(new Tent(3, "Nate Johnson", 5, 2));
 	}
 
 	// override these two methods from AbstractTableModel class
@@ -78,8 +78,11 @@ public class SiteModel extends AbstractTableModel{
 			return listSites.get(rowIndex).getDaysStaying();
 		case 3://returns site number
 			return listSites.get(rowIndex).getSiteNumber();
-		case 4://dont know what tent/rv info is
-			return "Tent/RV Info";
+		case 4:
+			if(listSites.get(rowIndex) instanceof Tent) //gets number of tenters
+				return ((Tent) listSites.get(rowIndex)).getNumOfTenters()+ " Tenters";
+			else
+				return ((RV) listSites.get(rowIndex)).getPower() + " amps";
 		default://shouldnt ever run this but it has to be here
 			return "";
 		}
