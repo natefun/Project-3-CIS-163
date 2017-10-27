@@ -122,7 +122,7 @@ public class SiteModel extends AbstractTableModel{
 			} 
 		}
 	}
-	}
+
 
 	/******************************************************************
 	 * Saves database as txt type
