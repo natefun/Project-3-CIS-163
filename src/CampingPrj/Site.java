@@ -68,16 +68,19 @@ public class Site implements Serializable{
 	
 	public int getCost() {
 		//This method is meant to be overridden by tent and rv
+		//Dont call this crap
 		return 0;
 	}
 
 	public Object getOccupyedOn() {
 		// TODO Auto-generated method stub
+		//These were generated since saveTXT uses them
 		return null;
 	}
 
 	public char[] getTitle() {
 		// TODO Auto-generated method stub
+		//These were generated since saveTXT uses them
 		return null;
 	}
 
