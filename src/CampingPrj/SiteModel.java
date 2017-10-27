@@ -68,12 +68,28 @@ public class SiteModel extends AbstractTableModel{
 	 *****************************************************************/
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		// TODO Auto-generated method stub
-		return null;
+		//This is not working yet
+		return listSites.get(rowIndex);
 	}
 
 	// add methods to add, delete, and update.
-	// add methods to load/save accounts from/to a binary file
+	
+	public void add() {
+		
+	}
+	
+	/******************************************************************
+	 * Deletes a row from the jTable
+	 * @param rowIndex the index of the row you want to delete
+	 *****************************************************************/
+	public void delete(int rowIndex) {
+		listSites.remove(rowIndex);
+	}
+	
+	public void update() {
+		
+	}
+	
 	/******************************************************************
 	 * Saves database as serialized type
 	 * @param filename the filepath you want to save to
