@@ -3,7 +3,7 @@ package CampingPrj;
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 
-public class Site implements Serializable{
+public abstract class Site implements Serializable{
 	/** The name of the person who is occupying the Site */
 	protected String nameReserving;
 	/** The date the Site was checked-in (occupied) */
@@ -66,11 +66,7 @@ public class Site implements Serializable{
 		this.siteNumber = siteNumber;
 	}
 	
-	public int getCost() {
-		//This method is meant to be overridden by tent and rv
-		//Dont call this crap
-		return 0;
-	}
+	public abstract int getCost();
 
 	public Object getOccupyedOn() {
 		// TODO Auto-generated method stub
