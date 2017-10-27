@@ -125,6 +125,13 @@ public class DialogCheckInTent extends JDialog {
 			return 0;
 	}
 	
+	private int checkGuests(int guests) {
+		if(guests > 0)
+			return guests;
+		else
+			return 1;
+	}
+	
 	private boolean isLeapYear(int year) {
 		if(year % 4 == 0 && year % 100 != 0)
 			return true;
@@ -146,7 +153,7 @@ public class DialogCheckInTent extends JDialog {
 				int month = checkMonth(Integer.parseInt(date[0]));
 				int year = checkYear(Integer.parseInt(date[2]));
 				int day = checkDay(month, Integer.parseInt(date[1]), year);
-				int numberOfGuests = Integer.parseInt(numOfGuestsTxt.getText());
+				int numberOfGuests = checkGuests(Integer.parseInt(numOfGuestsTxt.getText()));
 				//Site sd = new Site(name, days, site);
 			}
 			else if(e.getSource() == cancelButton) {
