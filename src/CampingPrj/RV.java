@@ -43,13 +43,13 @@ public class RV extends Site{
 			return 0;
 	}
 	
-	public RV (int p, int SiteNumber) {
-		super(SiteNum);
-	}
+//	public RV (int p, int SiteNumber) {
+//		super(SiteNum);
+//	}
 
 	@Override
 	public int getCost() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 30 * daysStaying;
 	}
 }

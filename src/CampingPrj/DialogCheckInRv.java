@@ -119,7 +119,7 @@ public class DialogCheckInRv extends JDialog {
 				int daysStay = Integer.parseInt(stayingTxt.getText());
 				
 				checkSiteNumber(SiteNum);
-				SiteNum = super.siteNumber;
+				//SiteNum = super.siteNumber;
 			}
 			if (e.getSource() == cancelButton) {
 				dispose();
