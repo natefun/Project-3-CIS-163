@@ -7,6 +7,11 @@ public class Tent extends Site{
 	public Tent() {
 		numOfTenters = 0;
 	}
+	
+	public Tent(int numTenters, String nameReserving, int daysStaying, int siteNum) {
+		super(nameReserving, daysStaying, siteNum);
+		numOfTenters = numTenters;
+	}
 	// add constructor
 	// add getter, setter methods
 	public int getNumOfTenters() {
