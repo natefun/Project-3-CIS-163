@@ -28,7 +28,7 @@ public class Tent extends Site{
 	@Override
 	public int getCost() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 3 * numOfTenters * super.daysStaying;
 	}
 
 
