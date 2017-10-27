@@ -72,10 +72,13 @@ public class SiteModel extends AbstractTableModel{
 		return listSites.get(rowIndex);
 	}
 
-	// add methods to add, delete, and update.
-	
-	public void add() {
-		
+	/******************************************************************
+	 * Adds a new site to the arrayList
+	 * @param site the site that you want to add
+	 *****************************************************************/
+	public void add(Site site) {
+		//this method may need to change at some point
+		listSites.add(site);
 	}
 	
 	/******************************************************************
