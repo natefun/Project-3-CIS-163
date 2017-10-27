@@ -89,8 +89,12 @@ public class SiteModel extends AbstractTableModel{
 		listSites.remove(rowIndex);
 	}
 	
+	/******************************************************************
+	 * Updates the jTable display
+	 *****************************************************************/
 	public void update() {
-		
+		//No idea if this works
+		fireTableRowsInserted(0, listSites.size());
 	}
 	
 	/******************************************************************
