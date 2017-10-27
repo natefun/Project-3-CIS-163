@@ -1,8 +1,12 @@
 package CampingPrj;
 
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -54,7 +58,7 @@ public class SiteModel extends AbstractTableModel{
 	 * Gets the element and an index overrides AbstractListModel
 	 *****************************************************************/
 	public Object getElementAt(int index) {
-		return null;
+		return listSites.get(index);
 	}
 
 	/******************************************************************
@@ -75,7 +79,16 @@ public class SiteModel extends AbstractTableModel{
 	 * @param filename the filepath you want to save to
 	 *****************************************************************/
 	public void saveSerial(String filename) {
-
+		try{
+			FileOutputStream fos= new FileOutputStream(filename);
+			ObjectOutputStream oos= new ObjectOutputStream(fos);
+			oos.writeObject(listSites);
+			oos.close();
+			fos.close();
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+			System.out.println("Problems happened");
+		}
 	}
 
 	/******************************************************************
@@ -83,7 +96,32 @@ public class SiteModel extends AbstractTableModel{
 	 * @param filename the filepath you want to save to
 	 *****************************************************************/
 	public void loadSerial(String filename) {
-
+		ObjectInputStream objectinputstream = null;
+		try {
+			FileInputStream streamIn = new FileInputStream(filename);
+			objectinputstream = new ObjectInputStream(streamIn);
+			ArrayList<Site> readCase = (ArrayList<Site>) objectinputstream.readObject();
+			listSites = new ArrayList<Site>();
+			for(int i = 0; i < readCase.size()-1; i++) {
+				listSites.add(readCase.get(i));
+				System.out.println(readCase.get(i));
+			}
+			
+			fireTableRowsInserted(1, readCase.size());
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(objectinputstream != null){
+				try {
+					objectinputstream .close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} 
+		}
+	}
 	}
 
 	/******************************************************************
@@ -97,14 +135,14 @@ public class SiteModel extends AbstractTableModel{
 			for (int i = 0; i < listSites.size(); i++) {
 
 				// listSites is an ArrayList<Site>
-				 Site SiteUnit = listSites.get(i);   	
+				Site SiteUnit = listSites.get(i);   	
 
 				// Output the class name. 
 				out.println(SiteUnit.getClass().getName()); 
 
 				// Output the OccupyOn date to a file in a readable format.
-//				out.println(DateFormat.getDateInstance(DateFormat.SHORT).
-//						format(SiteUnit.getOccupyedOn().getTime()));
+				//				out.println(DateFormat.getDateInstance(DateFormat.SHORT).
+				//						format(SiteUnit.getOccupyedOn().getTime()));
 
 				// Output the Title of the Site
 				out.println(SiteUnit.getTitle());
