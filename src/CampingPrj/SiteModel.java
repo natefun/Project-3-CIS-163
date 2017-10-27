@@ -70,17 +70,17 @@ public class SiteModel extends AbstractTableModel{
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		//This is not working yet
 		switch(columnIndex) {
-		case 0:
+		case 0://returns name
 			return listSites.get(rowIndex).getNameReserving();
-		case 1:
+		case 1://returns check in date
 			return listSites.get(rowIndex).getCheckIn();
-		case 2:
+		case 2://returns days staying
 			return listSites.get(rowIndex).getDaysStaying();
-		case 3:
+		case 3://returns site number
 			return listSites.get(rowIndex).getSiteNumber();
-		case 4:
+		case 4://dont know what tent/rv info is
 			return "Tent/RV Info";
-		default:
+		default://shouldnt ever run this but it has to be here
 			return "";
 		}
 	}
@@ -119,6 +119,7 @@ public class SiteModel extends AbstractTableModel{
 		try{
 			FileOutputStream fos= new FileOutputStream(filename);
 			ObjectOutputStream oos= new ObjectOutputStream(fos);
+			//writes out the entire arraylist
 			oos.writeObject(listSites);
 			oos.close();
 			fos.close();
@@ -138,12 +139,14 @@ public class SiteModel extends AbstractTableModel{
 			FileInputStream streamIn = new FileInputStream(filename);
 			objectinputstream = new ObjectInputStream(streamIn);
 			ArrayList<Site> readCase = (ArrayList<Site>) objectinputstream.readObject();
+			//creates new arraylist
 			listSites = new ArrayList<Site>();
+			//reads in arraylist
 			for(int i = 0; i < readCase.size()-1; i++) {
 				listSites.add(readCase.get(i));
 				System.out.println(readCase.get(i));
 			}
-
+			//updates table
 			fireTableRowsInserted(1, readCase.size());
 
 		} catch (Exception e) {
