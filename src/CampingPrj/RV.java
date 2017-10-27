@@ -42,4 +42,10 @@ public class RV extends Site{
 		else
 			return 0;
 	}
+
+	@Override
+	public int getCost() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

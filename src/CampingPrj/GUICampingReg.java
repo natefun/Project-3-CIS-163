@@ -9,9 +9,9 @@ public class GUICampingReg extends JFrame implements ActionListener{
 	// declare GUI components (menu items, buttons, etc.) needed
 	// constructor method that prepares the GUI
 	// event listeners and other methods needed to build the GUI
-	JMenu file, checkingIn;
+	JMenu file, checkingIn, edit;
 	JMenuBar menuBar;
-	JMenuItem openSerial,saveSerial, openTxt,saveTxt, exit, tentIn, RVIn; 
+	JMenuItem openSerial,saveSerial, openTxt,saveTxt, exit, tentIn, RVIn, undo; 
 
 	private JTable jListTable;
 	private SiteModel dList;
@@ -20,6 +20,7 @@ public class GUICampingReg extends JFrame implements ActionListener{
 		menuBar = new JMenuBar();
 
 		file = new JMenu("File");
+		edit = new JMenu("Edit");
 		checkingIn= new JMenu("Checking In");
 
 		openSerial= new JMenuItem("Open Serializable File");
@@ -27,11 +28,14 @@ public class GUICampingReg extends JFrame implements ActionListener{
 		openTxt= new JMenuItem("Open Text File");
 		saveTxt= new JMenuItem("Save Text File");
 		exit = new JMenuItem("Exit");
+		
+		undo = new JMenuItem("Undo");
 
 		tentIn = new JMenuItem("Check-In Tent Site");
 		RVIn = new JMenuItem("Check-In RV Site");
 
 		menuBar.add(file);
+		menuBar.add(edit);
 		menuBar.add(checkingIn);
 
 		file.add(openSerial);
@@ -42,6 +46,8 @@ public class GUICampingReg extends JFrame implements ActionListener{
 		file.addSeparator();
 		file.add(exit);
 
+		edit.add(undo);
+		
 		checkingIn.add(tentIn);
 		checkingIn.add(RVIn);
 
@@ -50,6 +56,8 @@ public class GUICampingReg extends JFrame implements ActionListener{
 		openTxt.addActionListener(this);
 		saveTxt.addActionListener(this);
 		exit.addActionListener(this);
+		
+		undo.addActionListener(this);
 
 		tentIn.addActionListener(this);
 		RVIn.addActionListener(this);
@@ -110,7 +118,11 @@ public class GUICampingReg extends JFrame implements ActionListener{
 				dList.saveTxt(filename);
 			}
 		}
-
+		
+		if(e.getSource().equals(undo)) {
+			//Nothing
+		}
+			
 		if(e.getSource().equals(tentIn)) {
 			Tent t = new Tent();
 			DialogCheckInTent x = new DialogCheckInTent(this, t);

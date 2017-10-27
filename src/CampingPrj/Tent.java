@@ -20,6 +20,11 @@ public class Tent extends Site{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public int getCost() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 
 }
