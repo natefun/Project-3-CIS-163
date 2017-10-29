@@ -3,12 +3,11 @@ package CampingPrj;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.util.GregorianCalendar;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 
@@ -27,7 +26,7 @@ public class DialogCheckInTent extends JDialog {
 	private JButton okButton;
 	private JButton cancelButton;
 	private boolean closeStatus;
-	private Site unit;
+	private Tent unit;
 	
 	public DialogCheckInTent(JFrame paOccupy, Tent d) {
 		name = new JLabel("Name:");
@@ -64,8 +63,6 @@ public class DialogCheckInTent extends JDialog {
 		createPanel();
 		setSize(300, 250);
 		setVisible(true);
-		
-		
 	}
 	
 	private void createPanel() {
@@ -153,7 +150,12 @@ public class DialogCheckInTent extends JDialog {
 				int year = checkYear(Integer.parseInt(date[2]));
 				int day = checkDay(month, Integer.parseInt(date[1]), year);
 				int numberOfGuests = checkGuests(Integer.parseInt(numOfGuestsTxt.getText()));
-				//Site sd = new Site(name, days, site);
+				GregorianCalendar checkInDate = new GregorianCalendar(year, month, day);
+				unit.setNameReserving(name);
+				unit.setDaysStaying(days);
+				unit.setSiteNumber(site);
+				unit.setCheckIn(checkInDate);
+				unit.setNumOfTenters(numberOfGuests);
 			}
 			else if(e.getSource() == cancelButton) {
 				dispose();
