@@ -65,6 +65,9 @@ public class DialogCheckInTent extends JDialog {
 		setVisible(true);
 	}
 	
+	/**
+	 * Create and add items to the dialog box
+	 */
 	private void createPanel() {
 		
 		setLayout(new GridLayout(6, 2));
@@ -83,6 +86,11 @@ public class DialogCheckInTent extends JDialog {
 		
 	}
 	
+	/**
+	 * Error check the number of days staying
+	 * @param numDays
+	 * @return
+	 */
 	private int checkDays(int numDays) {
 		if(numDays > 0)
 			return numDays;
@@ -90,6 +98,11 @@ public class DialogCheckInTent extends JDialog {
 			return 1;
 	}
 	
+	/**
+	 * Error check the site number
+	 * @param site
+	 * @return
+	 */
 	private int checkSiteNumber(int site) {
 		if(site >= 1 && site <= 5)
 			return site;
@@ -97,6 +110,11 @@ public class DialogCheckInTent extends JDialog {
 			return 0;
 	}
 	
+	/**
+	 * Error check the provided month
+	 * @param month
+	 * @return
+	 */
 	private int checkMonth(int month) {
 		if(month >= 1 && month <= 12)
 			return month;
@@ -104,6 +122,11 @@ public class DialogCheckInTent extends JDialog {
 			return 0;
 	}
 	
+	/**
+	 * Error check the provided year
+	 * @param year
+	 * @return
+	 */
 	private int checkYear(int year) {
 		if(year > 0 && year < 2037)
 			return year;
@@ -111,6 +134,13 @@ public class DialogCheckInTent extends JDialog {
 			return 0;
 	}
 	
+	/**
+	 * Error check the provided day
+	 * @param month
+	 * @param day
+	 * @param year
+	 * @return
+	 */
 	private int checkDay(int month, int day, int year) {
 		int[] numDaysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 		if(isLeapYear(year))
@@ -121,13 +151,23 @@ public class DialogCheckInTent extends JDialog {
 			return 0;
 	}
 	
+	/**
+	 * Error check the number of guests
+	 * @param guests
+	 * @return
+	 */
 	private int checkGuests(int guests) {
 		if(guests > 0)
 			return guests;
 		else
 			return 1;
 	}
-	
+
+	/**
+	 * Determine if the provided year is a leap year
+	 * @param year
+	 * @return
+	 */
 	private boolean isLeapYear(int year) {
 		if(year % 4 == 0 && year % 100 != 0)
 			return true;
@@ -142,6 +182,7 @@ public class DialogCheckInTent extends JDialog {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource() == okButton) {
+				/** Get data from dialog box */
 				String name = nameTxt.getText();
 				int days = checkDays(Integer.parseInt(stayingTxt.getText()));
 				int site = checkSiteNumber(Integer.parseInt(siteNumberTxt.getText()));
@@ -150,7 +191,14 @@ public class DialogCheckInTent extends JDialog {
 				int year = checkYear(Integer.parseInt(date[2]));
 				int day = checkDay(month, Integer.parseInt(date[1]), year);
 				int numberOfGuests = checkGuests(Integer.parseInt(numOfGuestsTxt.getText()));
+				
+				/**
+				 * Create GregorianCalendar and initialize to provided
+				 * date to sent to tent class
+				 */
 				GregorianCalendar checkInDate = new GregorianCalendar(year, month, day);
+				
+				/** Sent data to tent class */
 				unit.setNameReserving(name);
 				unit.setDaysStaying(days);
 				unit.setSiteNumber(site);
