@@ -129,6 +129,8 @@ public class GUICampingReg extends JFrame implements ActionListener{
 		if(e.getSource().equals(delete)) {
 			if(jListTable.getSelectedRow() != -1)
 				dList.delete(jListTable.getSelectedRow());
+			else
+				dList.getColumnCount();
 		}
 			
 		if(e.getSource().equals(tentIn)) {
