@@ -204,6 +204,9 @@ public class DialogCheckInTent extends JDialog {
 				unit.setSiteNumber(site);
 				unit.setCheckIn(checkInDate);
 				unit.setNumOfTenters(numberOfGuests);
+				
+				/** Dispose of the dialog box */
+				dispose();
 			}
 			else if(e.getSource() == cancelButton) {
 				dispose();
