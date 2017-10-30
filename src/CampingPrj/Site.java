@@ -1,6 +1,7 @@
 package CampingPrj;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public abstract class Site implements Serializable{
@@ -14,6 +15,7 @@ public abstract class Site implements Serializable{
 	protected int siteNumber;
 
 	private static final long serialVersionUID = 1L;
+	private static final String String = null;
 
 	public Site() {
 		nameReserving = "";
@@ -49,6 +51,11 @@ public abstract class Site implements Serializable{
 	public void setCheckIn(GregorianCalendar checkIn) {
 		this.checkIn = checkIn;
 	}
+	
+//	public Date getCheckIn() {
+//		Date str = checkIn.getTime();
+//		return str;
+//	}
 
 	public int getDaysStaying() {
 		return daysStaying;
