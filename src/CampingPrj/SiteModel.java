@@ -104,6 +104,7 @@ public class SiteModel extends AbstractTableModel{
 	 *****************************************************************/
 	public void delete(int rowIndex) {
 		listSites.remove(rowIndex);
+		fireTableRowsInserted(0, listSites.size());
 	}
 
 	/******************************************************************
