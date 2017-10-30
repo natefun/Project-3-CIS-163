@@ -54,6 +54,8 @@ public class DialogCheckInRv extends JDialog {
 		String[] options = { "30", "40", "50"};
 		powerTxt = new JComboBox(options);
 		
+
+
 		
 		
 		okButton.addActionListener(listener);
@@ -161,16 +163,15 @@ public class DialogCheckInRv extends JDialog {
 				checkSiteNumber(SiteNum);
 				checkDays(daysStay);
 				
-				//int power = (int) powerTxt.getItemAt(powerTxt.getSelectedIndex());
+				int power = Integer.parseInt((String)powerTxt.getSelectedItem());
+
 				
 				unit.setNameReserving(name);
 				unit.setDaysStaying(daysStay);
 				unit.setSiteNumber(SiteNum);
 				unit.setCheckIn(checkInDate);
-				//((RV) unit).setPower(power);
+				((RV) unit).setPower(power);
 				
-				
-				//SiteNum = super.siteNumber;
 				dispose();
 			}
 			if (e.getSource() == cancelButton) {
