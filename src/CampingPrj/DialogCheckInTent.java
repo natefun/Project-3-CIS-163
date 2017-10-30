@@ -101,11 +101,11 @@ public class DialogCheckInTent extends JDialog {
 		if(month >= 1 && month <= 12)
 			return month;
 		else
-			return 1;
+			return 0;
 	}
 	
 	private int checkYear(int year) {
-		if(year > 0 && year < Integer.MAX_VALUE)
+		if(year > 0 && year < 2037)
 			return year;
 		else
 			return 0;

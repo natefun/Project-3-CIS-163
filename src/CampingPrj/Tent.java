@@ -1,6 +1,12 @@
 package CampingPrj;
 
-public class Tent extends Site{
+/**********************************************************************
+ * Holds data concerning a tent site
+ * @author Denver DeBoer
+ * @version 1.0
+ *********************************************************************/
+
+public class Tent extends Site {
 	/** Represents the number of tenters on this site */
 	private int numOfTenters;
 
