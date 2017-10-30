@@ -23,11 +23,11 @@ public abstract class Site implements Serializable{
 
 	}
 
-	public Site(String name, int days, int siteNum) {
+	public Site(String name, int days, int siteNum, GregorianCalendar date) {
 		nameReserving = name;
 		daysStaying = days;
 		siteNumber = siteNum;
-		GregorianCalendar();
+		checkIn = date;
 	}
 
 	private void GregorianCalendar() {

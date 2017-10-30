@@ -10,6 +10,7 @@ import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 import javax.swing.table.AbstractTableModel;
 
@@ -19,8 +20,9 @@ public class SiteModel extends AbstractTableModel{
 
 	// constructor method that initializes the arraylist
 	public SiteModel() {
+		GregorianCalendar testDate = new GregorianCalendar(10, 30, 2017);
 		listSites = new ArrayList<Site>();
-		listSites.add(new Tent(3, "Nate Johnson", 5, 2));
+		listSites.add(new Tent(3, "Nate Johnson", 5, 2, testDate));
 	}
 
 	// override these two methods from AbstractTableModel class

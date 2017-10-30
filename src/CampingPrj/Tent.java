@@ -1,5 +1,7 @@
 package CampingPrj;
 
+import java.util.GregorianCalendar;
+
 /**********************************************************************
  * Holds data concerning a tent site
  * @author Denver DeBoer
@@ -28,8 +30,8 @@ public class Tent extends Site {
 	 * @param daysStaying holds the number of days staying
 	 * @param siteNum holds the site number
 	 *****************************************************************/
-	public Tent(int numTenters, String nameReserving, int daysStaying, int siteNum) {
-		super(nameReserving, daysStaying, siteNum);
+	public Tent(int numTenters, String nameReserving, int daysStaying, int siteNum, GregorianCalendar date) {
+		super(nameReserving, daysStaying, siteNum, date);
 		numOfTenters = numTenters;
 	}
 
