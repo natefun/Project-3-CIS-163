@@ -84,10 +84,10 @@ public class DialogCheckInTent extends JDialog {
 	}
 	
 	private int checkDays(int numDays) {
-		if(numDays <= 365)
+		if(numDays > 0)
 			return numDays;
 		else
-			return 0;
+			return 1;
 	}
 	
 	private int checkSiteNumber(int site) {
