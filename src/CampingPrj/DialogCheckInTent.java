@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 
@@ -207,6 +208,9 @@ public class DialogCheckInTent extends JDialog {
 				
 				/** Dispose of the dialog box */
 				dispose();
+				
+				//Component frame = null;
+				JOptionPane.showMessageDialog(null, "The cost is $" + unit.getCost(), "Price", JOptionPane.WARNING_MESSAGE);
 			}
 			else if(e.getSource() == cancelButton) {
 				dispose();
