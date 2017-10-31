@@ -1,6 +1,9 @@
 package CampingPrj;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -52,9 +55,18 @@ public abstract class Site implements Serializable{
 		this.checkIn = checkIn;
 	}
 	
-//	public Date getCheckIn() {
-//		Date str = checkIn.getTime();
-//		return str;
+//	public String getCheckIn() {
+//		
+//		this.checkIn = check
+//		String dateStr = checkIn;
+//		DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+//		try {
+//			Date checkIn = (Date)formatter.parse(dateStr);
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return dateStr;  
 //	}
 
 	public int getDaysStaying() {

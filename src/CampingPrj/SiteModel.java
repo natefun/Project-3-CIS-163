@@ -67,6 +67,7 @@ public class SiteModel extends AbstractTableModel{
 	 * Gets the value at a specific row and column
 	 * @param row
 	 * @param col
+	 * @return 
 	 *****************************************************************/
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
@@ -86,7 +87,8 @@ public class SiteModel extends AbstractTableModel{
 			else
 				return ((RV) listSites.get(rowIndex)).getPower() + " amps";
 		default://shouldnt ever run this but it has to be here
-			return "";
+			return "0";
+			
 		}
 	}
 
