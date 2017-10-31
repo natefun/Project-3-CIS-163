@@ -1,5 +1,6 @@
 package CampingPrj;
 
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -173,6 +174,9 @@ public class DialogCheckInRv extends JDialog {
 				((RV) unit).setPower(power);
 
 				dispose();
+				
+				Component frame = null;
+				JOptionPane.showMessageDialog(frame, "The cost is $" + daysStay * 30 , "Price", JOptionPane.WARNING_MESSAGE);
 			}
 			if (e.getSource() == cancelButton) {
 				dispose();

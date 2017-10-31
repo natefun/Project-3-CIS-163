@@ -86,8 +86,8 @@ public class SiteModel extends AbstractTableModel{
 				return ((Tent) listSites.get(rowIndex)).getNumOfTenters()+ " Tenters";
 			else
 				return ((RV) listSites.get(rowIndex)).getPower() + " amps";
-		default://shouldnt ever run this but it has to be here
-			return "0";
+		default://Shouldn't ever run this but it has to be here
+			return "";
 			
 		}
 	}
