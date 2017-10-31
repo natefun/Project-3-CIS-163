@@ -14,7 +14,7 @@ import java.util.GregorianCalendar;
 
 import javax.swing.table.AbstractTableModel;
 
-public class SiteModel extends AbstractTableModel{
+public class SiteModel extends AbstractTableModel implements Changeable{
 	private ArrayList<Site> listSites;
 	private String[] columnNames = { "Name Reserving", "Checked in", "Days Staying", "Site #", "Tent/RV info"};
 
@@ -150,7 +150,7 @@ public class SiteModel extends AbstractTableModel{
 			//creates new arraylist
 			listSites = new ArrayList<Site>();
 			//reads in arraylist
-			for(int i = 0; i < readCase.size()-1; i++) {
+			for(int i = 0; i < readCase.size(); i++) {
 				listSites.add(readCase.get(i));
 				System.out.println(readCase.get(i));
 			}
@@ -215,5 +215,17 @@ public class SiteModel extends AbstractTableModel{
 
 	}
 	// add other methods as needed
+
+	@Override
+	public void undo() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void redo() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
