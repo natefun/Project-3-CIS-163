@@ -30,6 +30,8 @@ public class DialogCheckInTent extends JDialog {
 	private Tent unit;
 	
 	public DialogCheckInTent(JFrame paOccupy, Tent d) {
+		super(paOccupy, true);
+		
 		name = new JLabel("Name:");
 		OccupyedOn = new JLabel("Occupyed on Date:");
 		staying = new JLabel("Days planning on staying:");
