@@ -180,7 +180,6 @@ public class DialogCheckInRv extends JDialog {
 			}
 			if (e.getSource() == cancelButton) {
 				dispose();
-
 			}
 		}
 	}
