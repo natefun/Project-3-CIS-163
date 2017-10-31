@@ -57,7 +57,7 @@ public class DialogCheckInTent extends JDialog {
 		okButton.addActionListener(listener);
 		cancelButton.addActionListener(listener);
 		
-		setTitle("Reserve an Tent site");
+		setTitle("Reserve an Tent site:");
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		getContentPane();
 		createPanel();
