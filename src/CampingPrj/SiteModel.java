@@ -16,7 +16,7 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
-public class SiteModel extends AbstractTableModel implements Changeable{
+public class SiteModel extends AbstractTableModel{
 	private ArrayList<Site> listSites;
 	private ArrayList<ArrayList> undoList;
 	private String[] columnNames = { "Name Reserving", "Checked in", "Days Staying", "Site #", "Tent/RV info"};
@@ -258,9 +258,7 @@ public class SiteModel extends AbstractTableModel implements Changeable{
 	}
 	// add other methods as needed
 
-	@Override
 	public void undo() {
-		// TODO Auto-generated method stub
 		if(undoIndex != undoList.size() + 1 || undoIndex < 0) {
 			listSites = undoList.get(undoList.size()-undoIndex);
 			undoIndex++;
@@ -269,9 +267,7 @@ public class SiteModel extends AbstractTableModel implements Changeable{
 
 	}
 
-	@Override
 	public void redo() {
-		// TODO Auto-generated method stub
 		if(undoIndex > 2 && undoIndex <= undoList.size()+1) {
 			//listSites = undoList.get(undoList.size()+undoIndex);
 			listSites = undoList.get(undoIndex-2);
