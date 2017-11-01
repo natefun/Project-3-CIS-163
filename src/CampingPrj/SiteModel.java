@@ -1,6 +1,7 @@
 package CampingPrj;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
@@ -11,7 +12,7 @@ import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
-
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
@@ -19,6 +20,7 @@ public class SiteModel extends AbstractTableModel implements Changeable{
 	private ArrayList<Site> listSites;
 	private ArrayList<ArrayList> undoList;
 	private String[] columnNames = { "Name Reserving", "Checked in", "Days Staying", "Site #", "Tent/RV info"};
+	private Site unit;
 	int undoIndex = 2;
 
 	// constructor method that initializes the arraylist
@@ -196,10 +198,16 @@ public class SiteModel extends AbstractTableModel implements Changeable{
 				out.print("\t");
 				out.print(s.getSiteNumber());
 				out.print("\t");
-				if(s instanceof Tent)
-					out.println(((Tent) s).getNumOfTenters());
-				else
-					out.println(((RV) s).getPower());
+				if(s instanceof Tent) {
+					out.print(((Tent) s).getNumOfTenters());
+					out.print("\t");
+					out.println(0);
+				}
+				else {
+					out.print(((RV) s).getPower());
+					out.print("\t");
+					out.println(1);
+				}
 			}
 			out.close();
 			JOptionPane.showMessageDialog(null, "File saved", "Saved", JOptionPane.ERROR_MESSAGE);
@@ -214,7 +222,33 @@ public class SiteModel extends AbstractTableModel implements Changeable{
 	 * @param filename the filepath you want to save to
 	 *****************************************************************/
 	public void loadTxt(String filename) {
-
+		try {
+			Scanner reader = new Scanner(new File(filename));
+			String[] fileLine = reader.nextLine().split("\t");
+			String name = fileLine[0];
+			String[] date = fileLine[1].split("/");
+			int month = Integer.parseInt(date[0]);
+			int day = Integer.parseInt(date[1]);
+			int year = Integer.parseInt(date[2]);
+			GregorianCalendar calendar = new GregorianCalendar(year, month, day);
+			int daysStaying = Integer.parseInt(fileLine[2]);
+			int siteNumber = Integer.parseInt(fileLine[3]);
+			int other = Integer.parseInt(fileLine[4]);
+			int flag = Integer.parseInt(fileLine[5]);
+			if(flag == 0)
+				unit = new Tent(other, name, daysStaying, siteNumber, calendar);
+			else if(flag == 1) {
+				unit.setNameReserving(name);
+				unit.setDaysStaying(daysStaying);
+				unit.setSiteNumber(siteNumber);
+				unit.setCheckIn(calendar);
+				((RV) unit).setPower(other);
+			}
+			JOptionPane.showMessageDialog(null, "File loaded", "Loaded", JOptionPane.ERROR_MESSAGE);	
+		}
+		catch(Exception error) {
+			System.out.println("IO Error");
+		}
 	}
 	// add other methods as needed
 
@@ -226,6 +260,7 @@ public class SiteModel extends AbstractTableModel implements Changeable{
 			undoIndex++;
 			fireTableRowsInserted(0, listSites.size());
 		}
+
 	}
 
 	@Override
