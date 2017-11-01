@@ -72,7 +72,9 @@ public class DialogCheckInRv extends JDialog {
 
 
 
-
+		//Date date = Calender.getInstance().GetTime
+		
+		
 		//		try 
 		//		{  
 		//			DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
