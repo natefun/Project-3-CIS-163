@@ -100,7 +100,7 @@ public class GUICampingReg extends JFrame implements ActionListener{
 
 		if(e.getSource().equals(saveSerial)) {
 			JFileChooser chooser = new JFileChooser();
-			int status = chooser.showOpenDialog(null);
+			int status = chooser.showSaveDialog(null);
 			if (status == JFileChooser.APPROVE_OPTION) {
 				String filename = chooser.getSelectedFile().getAbsolutePath();
 				dList.saveSerial(filename);
@@ -118,7 +118,7 @@ public class GUICampingReg extends JFrame implements ActionListener{
 
 		if(e.getSource().equals(saveTxt)) {
 			JFileChooser chooser = new JFileChooser();
-			int status = chooser.showOpenDialog(null);
+			int status = chooser.showSaveDialog(null);
 			if (status == JFileChooser.APPROVE_OPTION) {
 				String filename = chooser.getSelectedFile().getAbsolutePath();
 				dList.saveTxt(filename);
