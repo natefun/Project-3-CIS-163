@@ -73,8 +73,8 @@ public class DialogCheckInRv extends JDialog {
 
 
 		//Date date = Calender.getInstance().GetTime
-		
-		
+
+
 		//		try 
 		//		{  
 		//			DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
@@ -156,18 +156,28 @@ public class DialogCheckInRv extends JDialog {
 			if (e.getSource() == okButton) {
 				String name = nameTxt.getText();
 				String[] date = OccupyedOnTxt.getText().split("/");
-				
+
 				int SiteNum = 0;
 				int daysStay = 0;
-				
+
 				try {
-				SiteNum = Integer.parseInt(siteNumberTxt.getText());
-				daysStay = Integer.parseInt(stayingTxt.getText());
+					SiteNum = Integer.parseInt(siteNumberTxt.getText());
+
 				}
 				catch (NumberFormatException p) {
 					JOptionPane.showMessageDialog(null, "Please only type in numbers", null, JOptionPane.WARNING_MESSAGE);
 				}
-				
+
+				try {
+
+					daysStay = Integer.parseInt(stayingTxt.getText());
+
+				}
+				catch (NumberFormatException p) {
+					JOptionPane.showMessageDialog(null, "Please only type in numbers", null, JOptionPane.WARNING_MESSAGE);
+				}
+
+
 				int month = checkMonth(Integer.parseInt(date[0])-1);
 				int year = checkYear(Integer.parseInt(date[2]));
 				int day = checkDay(month, Integer.parseInt(date[1]), year);
@@ -184,7 +194,7 @@ public class DialogCheckInRv extends JDialog {
 				unit.setSiteNumber(SiteNum);
 				unit.setCheckIn(checkInDate);
 				((RV) unit).setPower(power);
-				
+
 				if (checkDays(daysStay) == 0) {
 					JOptionPane.showMessageDialog(null, "Please stay for at least one day", null, JOptionPane.WARNING_MESSAGE);
 					unit.setDaysStaying(0);
