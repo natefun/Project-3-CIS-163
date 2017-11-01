@@ -209,17 +209,17 @@ public class DialogCheckInTent extends JDialog {
 				unit.setNumOfTenters(numberOfGuests);
 
 				/** Dispose of the dialog box */
-				if (days == 0) {
+				if (checkDays(days) == 0) {
 					JOptionPane.showMessageDialog(null, "Please stay for at least one day", null, JOptionPane.WARNING_MESSAGE);
 					unit.setDaysStaying(0);
 				}
 
-				if (site <= 0 || site >=6) {
+				if (checkSiteNumber(site) <= 0 || checkSiteNumber(site) >=6) {
 					JOptionPane.showMessageDialog(null, "Please stay at sites 1 - 5", null, JOptionPane.WARNING_MESSAGE);
 					unit.setDaysStaying(0);
 				}
 
-				if (days != 0 && site > 0 && site <=6) {
+				if (checkDays(days) != 0 && checkSiteNumber(site) > 0 && checkSiteNumber(site) <=6) {
 					JOptionPane.showMessageDialog(null, "The cost is $" + unit.getCost(), "Price", JOptionPane.WARNING_MESSAGE);				
 					dispose();
 				}

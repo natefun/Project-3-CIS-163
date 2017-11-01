@@ -180,12 +180,12 @@ public class DialogCheckInRv extends JDialog {
 					unit.setDaysStaying(0);
 				}
 
-				if (SiteNum <= 0 || SiteNum >=6) {
+				if (checkSiteNumber(SiteNum) <= 0 || checkSiteNumber(SiteNum) >=6) {
 					JOptionPane.showMessageDialog(null, "Please stay at sites 1 - 5", null, JOptionPane.WARNING_MESSAGE);
 					unit.setDaysStaying(0);
 				}
 
-				if (daysStay != 0 && SiteNum > 0 && SiteNum <=6) {
+				if (checkDays(daysStay) != 0 && checkSiteNumber(SiteNum) > 0 && checkSiteNumber(SiteNum) <=6) {
 					Component frame = null;
 					JOptionPane.showMessageDialog(frame, "The cost is $" + daysStay * 30 , "Price", JOptionPane.WARNING_MESSAGE);
 					dispose();
