@@ -12,6 +12,7 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 public class SiteModel extends AbstractTableModel implements Changeable{
@@ -180,28 +181,22 @@ public class SiteModel extends AbstractTableModel implements Changeable{
 	public void saveTxt(String filename) {
 		try {
 			PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(filename)));
-			out.println(listSites.size());
-			for (int i = 0; i < listSites.size(); i++) {
-
-				// listSites is an ArrayList<Site>
-				Site SiteUnit = listSites.get(i);   	
-
-				// Output the class name. 
-				out.println(SiteUnit.getClass().getName()); 
-
-				// Output the OccupyOn date to a file in a readable format.
-				//				out.println(DateFormat.getDateInstance(DateFormat.SHORT).
-				//						format(SiteUnit.getOccupyedOn().getTime()));
-
-				// Output the Title of the Site
-				out.println(SiteUnit.getTitle());
-
-				// See if the curOccupy SiteUnit is a Tent, if so output the player. 
-				if (SiteUnit instanceof Tent)
-					out.println(((Tent)SiteUnit).getPlayer());
+			for(Site s : listSites) {
+				out.print(s.getNameReserving());
+				out.print("\t");
+				out.print(DateFormat.getDateInstance(DateFormat.SHORT).format(s.getCheckIn().getTime()));
+				out.print("\t");
+				out.print(s.getDaysStaying());
+				out.print("\t");
+				out.print(s.getSiteNumber());
+				out.print("\t");
+				if(s instanceof Tent)
+					out.println(((Tent) s).getNumOfTenters());
+				else
+					out.println(((RV) s).getPower());
 			}
 			out.close();
-
+			JOptionPane.showMessageDialog(null, "File saved", "Saved", JOptionPane.ERROR_MESSAGE);
 		} catch (IOException ex) {
 			System.out.println ("IO Error!");
 		}
