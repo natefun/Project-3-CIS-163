@@ -111,7 +111,7 @@ public class DialogCheckInRv extends JDialog {
 	}
 
 	private int checkDays(int daysStay) {
-		if(daysStay <= 365)
+		if(daysStay > 0)
 			return daysStay;
 		else
 			return 0;
@@ -175,7 +175,7 @@ public class DialogCheckInRv extends JDialog {
 				unit.setCheckIn(checkInDate);
 				((RV) unit).setPower(power);
 				
-				if (daysStay == 0) {
+				if (checkDays(daysStay) == 0) {
 					JOptionPane.showMessageDialog(null, "Please stay for at least one day", null, JOptionPane.WARNING_MESSAGE);
 					unit.setDaysStaying(0);
 				}
