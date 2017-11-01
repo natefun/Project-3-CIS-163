@@ -158,7 +158,7 @@ public class DialogCheckInRv extends JDialog {
 				int SiteNum = Integer.parseInt(siteNumberTxt.getText());
 				int daysStay = Integer.parseInt(stayingTxt.getText());
 				String[] date = OccupyedOnTxt.getText().split("/");
-				int month = checkMonth(Integer.parseInt(date[0]));
+				int month = checkMonth(Integer.parseInt(date[0])-1);
 				int year = checkYear(Integer.parseInt(date[2]));
 				int day = checkDay(month, Integer.parseInt(date[1]), year);
 				GregorianCalendar checkInDate = new GregorianCalendar(year, month, day);

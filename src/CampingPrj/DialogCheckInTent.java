@@ -190,7 +190,7 @@ public class DialogCheckInTent extends JDialog {
 				int days = checkDays(Integer.parseInt(stayingTxt.getText()));
 				int site = checkSiteNumber(Integer.parseInt(siteNumberTxt.getText()));
 				String[] date = OccupyedOnTxt.getText().split("/");
-				int month = checkMonth(Integer.parseInt(date[0]));
+				int month = checkMonth(Integer.parseInt(date[0]) -1);
 				int year = checkYear(Integer.parseInt(date[2]));
 				int day = checkDay(month, Integer.parseInt(date[1]), year);
 				int numberOfGuests = checkGuests(Integer.parseInt(numOfGuestsTxt.getText()));
