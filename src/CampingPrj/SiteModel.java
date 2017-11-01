@@ -19,6 +19,8 @@ import javax.swing.table.AbstractTableModel;
 public class SiteModel extends AbstractTableModel{
 	private ArrayList<Site> listSites;
 	private ArrayList<ArrayList> undoList;
+	private ArrayList<ArrayList> DateList;
+	private ArrayList<Boolean> BooList;
 	private String[] columnNames = { "Name Reserving", "Checked in", "Days Staying", "Site #", "Tent/RV info"};
 	private Site unit;
 	int undoIndex = 2;
