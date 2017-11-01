@@ -135,7 +135,7 @@ public class DialogCheckInRv extends JDialog {
 		int[] numDaysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 		if(isLeapYear(year))
 			numDaysInMonth[1] += 1;
-		if(day > 0 && day <= numDaysInMonth[month])
+		if(day > 0 && day <= numDaysInMonth[month - 1])
 			return day;
 		else
 			return 0;
@@ -174,11 +174,22 @@ public class DialogCheckInRv extends JDialog {
 				unit.setSiteNumber(SiteNum);
 				unit.setCheckIn(checkInDate);
 				((RV) unit).setPower(power);
-
-				dispose();
 				
-				Component frame = null;
-				JOptionPane.showMessageDialog(frame, "The cost is $" + daysStay * 30 , "Price", JOptionPane.WARNING_MESSAGE);
+				if (daysStay == 0) {
+					JOptionPane.showMessageDialog(null, "Please stay for at least one day", null, JOptionPane.WARNING_MESSAGE);
+					unit.setDaysStaying(0);
+				}
+
+				if (SiteNum <= 0 || SiteNum >=6) {
+					JOptionPane.showMessageDialog(null, "Please stay at sites 1 - 5", null, JOptionPane.WARNING_MESSAGE);
+					unit.setDaysStaying(0);
+				}
+
+				if (daysStay != 0 && SiteNum > 0 && SiteNum <=6) {
+					Component frame = null;
+					JOptionPane.showMessageDialog(frame, "The cost is $" + daysStay * 30 , "Price", JOptionPane.WARNING_MESSAGE);
+					dispose();
+				}
 			}
 			if (e.getSource() == cancelButton) {
 				dispose();
