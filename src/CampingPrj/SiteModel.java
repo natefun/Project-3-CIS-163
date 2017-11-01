@@ -226,25 +226,29 @@ public class SiteModel extends AbstractTableModel implements Changeable{
 			//Add loop to run through file lines
 			//Last line of loop: add(unit)
 			Scanner reader = new Scanner(new File(filename));
-			String[] fileLine = reader.nextLine().split("\t");
-			String name = fileLine[0];
-			String[] date = fileLine[1].split("/");
-			int month = Integer.parseInt(date[0]);
-			int day = Integer.parseInt(date[1]);
-			int year = Integer.parseInt(date[2]);
-			GregorianCalendar calendar = new GregorianCalendar(year, month, day);
-			int daysStaying = Integer.parseInt(fileLine[2]);
-			int siteNumber = Integer.parseInt(fileLine[3]);
-			int other = Integer.parseInt(fileLine[4]);
-			int flag = Integer.parseInt(fileLine[5]);
-			if(flag == 0)
-				unit = new Tent(other, name, daysStaying, siteNumber, calendar);
-			else if(flag == 1) {
-				unit.setNameReserving(name);
-				unit.setDaysStaying(daysStaying);
-				unit.setSiteNumber(siteNumber);
-				unit.setCheckIn(calendar);
-				((RV) unit).setPower(other);
+			while(reader.hasNextLine()) {
+				String[] fileLine = reader.nextLine().split("\t");
+				String name = fileLine[0];
+				String[] date = fileLine[1].split("/");
+				int month = Integer.parseInt(date[0]);
+				int day = Integer.parseInt(date[1]);
+				int year = Integer.parseInt(date[2]);
+				GregorianCalendar calendar = new GregorianCalendar(year, month, day);
+				int daysStaying = Integer.parseInt(fileLine[2]);
+				int siteNumber = Integer.parseInt(fileLine[3]);
+				int other = Integer.parseInt(fileLine[4]);
+				int flag = Integer.parseInt(fileLine[5]);
+				if(flag == 0)
+					unit = new Tent(other, name, daysStaying, siteNumber, calendar);
+				else if(flag == 1) {
+					unit.setNameReserving(name);
+					unit.setDaysStaying(daysStaying);
+					unit.setSiteNumber(siteNumber);
+					unit.setCheckIn(calendar);
+					((RV) unit).setPower(other);
+				}
+				add(unit);
+				update();
 			}
 			JOptionPane.showMessageDialog(null, "File loaded", "Loaded", JOptionPane.ERROR_MESSAGE);	
 		}
@@ -274,10 +278,10 @@ public class SiteModel extends AbstractTableModel implements Changeable{
 			undoIndex++;
 			fireTableRowsInserted(0, listSites.size());
 		}
-		
-//		if(undoIndex >= undoList.size()+1) {
-//			undoIndex = 2;
-//		}
+
+		//		if(undoIndex >= undoList.size()+1) {
+		//			undoIndex = 2;
+		//		}
 	}
 
 }
