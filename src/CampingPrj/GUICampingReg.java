@@ -11,7 +11,7 @@ public class GUICampingReg extends JFrame implements ActionListener{
 	// event listeners and other methods needed to build the GUI
 	JMenu file, checkingIn, edit;
 	JMenuBar menuBar;
-	JMenuItem openSerial,saveSerial, openTxt,saveTxt, exit, tentIn, RVIn, undo, delete; 
+	JMenuItem openSerial,saveSerial, openTxt,saveTxt, exit, tentIn, RVIn, undo, delete, redo; 
 
 	private JTable jListTable;
 	private SiteModel dList;
@@ -31,6 +31,7 @@ public class GUICampingReg extends JFrame implements ActionListener{
 		
 		undo = new JMenuItem("Undo");
 		delete = new JMenuItem("Delete");
+		redo = new JMenuItem("Redo");
 
 		tentIn = new JMenuItem("Check-In Tent Site");
 		RVIn = new JMenuItem("Check-In RV Site");
@@ -48,6 +49,7 @@ public class GUICampingReg extends JFrame implements ActionListener{
 		file.add(exit);
 
 		edit.add(undo);
+		edit.add(redo);
 		edit.add(delete);
 		
 		checkingIn.add(tentIn);
@@ -61,6 +63,7 @@ public class GUICampingReg extends JFrame implements ActionListener{
 		
 		undo.addActionListener(this);
 		delete.addActionListener(this);
+		redo.addActionListener(this);
 
 		tentIn.addActionListener(this);
 		RVIn.addActionListener(this);
@@ -124,6 +127,10 @@ public class GUICampingReg extends JFrame implements ActionListener{
 		
 		if(e.getSource().equals(undo)) {
 			dList.undo();
+		}
+		
+		if(e.getSource().equals(redo)) {
+			dList.redo();
 		}
 		
 		if(e.getSource().equals(delete)) {
