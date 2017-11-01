@@ -1,5 +1,6 @@
 package CampingPrj;
 
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -85,8 +86,7 @@ public class DialogCheckInTent extends JDialog {
 		add(numOfGuests);
 		add(numOfGuestsTxt);
 		add(okButton);
-		add(cancelButton);
-		
+		add(cancelButton);	
 	}
 	
 	/**
@@ -190,7 +190,7 @@ public class DialogCheckInTent extends JDialog {
 				int days = checkDays(Integer.parseInt(stayingTxt.getText()));
 				int site = checkSiteNumber(Integer.parseInt(siteNumberTxt.getText()));
 				String[] date = OccupyedOnTxt.getText().split("/");
-				int month = checkMonth(Integer.parseInt(date[0]) -1);
+				int month = checkMonth(Integer.parseInt(date[0])-1);
 				int year = checkYear(Integer.parseInt(date[2]));
 				int day = checkDay(month, Integer.parseInt(date[1]), year);
 				int numberOfGuests = checkGuests(Integer.parseInt(numOfGuestsTxt.getText()));
@@ -200,19 +200,31 @@ public class DialogCheckInTent extends JDialog {
 				 * date to sent to tent class
 				 */
 				GregorianCalendar checkInDate = new GregorianCalendar(year, month, day);
-				
+
 				/** Sent data to tent class */
 				unit.setNameReserving(name);
 				unit.setDaysStaying(days);
 				unit.setSiteNumber(site);
 				unit.setCheckIn(checkInDate);
 				unit.setNumOfTenters(numberOfGuests);
-				
+
 				/** Dispose of the dialog box */
-				dispose();
-				
-				//Component frame = null;
-				JOptionPane.showMessageDialog(null, "The cost is $" + unit.getCost(), "Price", JOptionPane.WARNING_MESSAGE);
+				if (days == 0) {
+					JOptionPane.showMessageDialog(null, "Please stay for at least one day", null, JOptionPane.WARNING_MESSAGE);
+					unit.setDaysStaying(0);
+				}
+
+				if (site <= 0 || site >=6) {
+					JOptionPane.showMessageDialog(null, "Please stay at sites 1 - 5", null, JOptionPane.WARNING_MESSAGE);
+					unit.setDaysStaying(0);
+				}
+
+				if (days != 0 && site > 0 && site <=6) {
+					JOptionPane.showMessageDialog(null, "The cost is $" + unit.getCost(), "Price", JOptionPane.WARNING_MESSAGE);				
+					dispose();
+				}
+
+
 			}
 			else if(e.getSource() == cancelButton) {
 				dispose();
