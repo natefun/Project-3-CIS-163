@@ -155,9 +155,19 @@ public class DialogCheckInRv extends JDialog {
 
 			if (e.getSource() == okButton) {
 				String name = nameTxt.getText();
-				int SiteNum = Integer.parseInt(siteNumberTxt.getText());
-				int daysStay = Integer.parseInt(stayingTxt.getText());
 				String[] date = OccupyedOnTxt.getText().split("/");
+				
+				int SiteNum = 0;
+				int daysStay = 0;
+				
+				try {
+				SiteNum = Integer.parseInt(siteNumberTxt.getText());
+				daysStay = Integer.parseInt(stayingTxt.getText());
+				}
+				catch (NumberFormatException p) {
+					JOptionPane.showMessageDialog(null, "Please only type in numbers", null, JOptionPane.WARNING_MESSAGE);
+				}
+				
 				int month = checkMonth(Integer.parseInt(date[0])-1);
 				int year = checkYear(Integer.parseInt(date[2]));
 				int day = checkDay(month, Integer.parseInt(date[1]), year);

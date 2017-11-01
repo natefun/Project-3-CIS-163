@@ -187,13 +187,23 @@ public class DialogCheckInTent extends JDialog {
 			if(e.getSource() == okButton) {
 				/** Get data from dialog box */
 				String name = nameTxt.getText();
-				int days = checkDays(Integer.parseInt(stayingTxt.getText()));
-				int site = checkSiteNumber(Integer.parseInt(siteNumberTxt.getText()));
 				String[] date = OccupyedOnTxt.getText().split("/");
+				int days = 0;
+				int site  = 0;
+				int numberOfGuests = 0;
+				
+				try {
+				days = checkDays(Integer.parseInt(stayingTxt.getText()));
+				site = checkSiteNumber(Integer.parseInt(siteNumberTxt.getText()));
+				numberOfGuests = checkGuests(Integer.parseInt(numOfGuestsTxt.getText()));
+				}
+				catch (NumberFormatException p) {
+					JOptionPane.showMessageDialog(null, "Please only type in numbers", null, JOptionPane.WARNING_MESSAGE);
+				}
 				int month = checkMonth(Integer.parseInt(date[0])-1);
 				int year = checkYear(Integer.parseInt(date[2]));
 				int day = checkDay(month, Integer.parseInt(date[1]), year);
-				int numberOfGuests = checkGuests(Integer.parseInt(numOfGuestsTxt.getText()));
+				
 				
 				/**
 				 * Create GregorianCalendar and initialize to provided
