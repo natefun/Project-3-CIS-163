@@ -223,6 +223,8 @@ public class SiteModel extends AbstractTableModel implements Changeable{
 	 *****************************************************************/
 	public void loadTxt(String filename) {
 		try {
+			//Add loop to run through file lines
+			//Last line of loop: add(unit)
 			Scanner reader = new Scanner(new File(filename));
 			String[] fileLine = reader.nextLine().split("\t");
 			String name = fileLine[0];
