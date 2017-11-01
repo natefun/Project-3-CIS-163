@@ -17,12 +17,16 @@ import javax.swing.table.AbstractTableModel;
 
 public class SiteModel extends AbstractTableModel implements Changeable{
 	private ArrayList<Site> listSites;
+	private ArrayList<ArrayList> undoList;
 	private String[] columnNames = { "Name Reserving", "Checked in", "Days Staying", "Site #", "Tent/RV info"};
+	int undoIndex = 2;
 
 	// constructor method that initializes the arraylist
 	public SiteModel() {
 		GregorianCalendar testDate = new GregorianCalendar(10, 30, 2017);
 		listSites = new ArrayList<Site>();
+		undoList = new ArrayList<ArrayList>();
+		undoList.add((ArrayList<ArrayList>)listSites.clone());
 		//listSites.add(new Tent(3, "Nate Johnson", 5, 2, testDate));
 	}
 
@@ -90,7 +94,7 @@ public class SiteModel extends AbstractTableModel implements Changeable{
 				return ((RV) listSites.get(rowIndex)).getPower() + " amps";
 		default://Shouldn't ever run this but it has to be here
 			return "";
-			
+
 		}
 	}
 
@@ -102,6 +106,7 @@ public class SiteModel extends AbstractTableModel implements Changeable{
 		//this method may need to change at some point
 		listSites.add(site);
 		fireTableRowsInserted(0, listSites.size());
+		undoList.add((ArrayList<ArrayList>)listSites.clone());
 	}
 
 	/******************************************************************
@@ -111,6 +116,7 @@ public class SiteModel extends AbstractTableModel implements Changeable{
 	public void delete(int rowIndex) {
 		listSites.remove(rowIndex);
 		fireTableRowsInserted(0, listSites.size());
+		undoList.add((ArrayList<ArrayList>)listSites.clone());
 	}
 
 	/******************************************************************
@@ -215,13 +221,18 @@ public class SiteModel extends AbstractTableModel implements Changeable{
 	@Override
 	public void undo() {
 		// TODO Auto-generated method stub
-		
+		if(undoIndex != undoList.size() + 1) {
+			listSites = undoList.get(undoList.size()-undoIndex);
+			undoIndex++;
+			fireTableRowsInserted(0, listSites.size());
+		}
 	}
 
 	@Override
 	public void redo() {
 		// TODO Auto-generated method stub
-		
+		listSites = undoList.get(undoList.size()+1);
+		fireTableRowsInserted(0, listSites.size());
 	}
 
 }
