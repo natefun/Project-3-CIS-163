@@ -268,12 +268,16 @@ public class SiteModel extends AbstractTableModel implements Changeable{
 	@Override
 	public void redo() {
 		// TODO Auto-generated method stub
-		if(undoIndex > 2) {
+		if(undoIndex > 2 && undoIndex <= undoList.size()+1) {
 			//listSites = undoList.get(undoList.size()+undoIndex);
 			listSites = undoList.get(undoIndex-2);
 			undoIndex++;
 			fireTableRowsInserted(0, listSites.size());
 		}
+		
+//		if(undoIndex >= undoList.size()+1) {
+//			undoIndex = 2;
+//		}
 	}
 
 }
