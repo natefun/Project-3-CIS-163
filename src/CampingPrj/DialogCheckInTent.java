@@ -187,13 +187,23 @@ public class DialogCheckInTent extends JDialog {
 			if(e.getSource() == okButton) {
 				/** Get data from dialog box */
 				String name = nameTxt.getText();
-				int days = checkDays(Integer.parseInt(stayingTxt.getText()));
-				int site = checkSiteNumber(Integer.parseInt(siteNumberTxt.getText()));
 				String[] date = OccupyedOnTxt.getText().split("/");
+				int days = 0;
+				int site  = 0;
+				int numberOfGuests = 0;
+				
+				try {
+				days = checkDays(Integer.parseInt(stayingTxt.getText()));
+				site = checkSiteNumber(Integer.parseInt(siteNumberTxt.getText()));
+				numberOfGuests = checkGuests(Integer.parseInt(numOfGuestsTxt.getText()));
+				}
+				catch (NumberFormatException p) {
+					JOptionPane.showMessageDialog(null, "Please only type in numbers", null, JOptionPane.WARNING_MESSAGE);
+				}
 				int month = checkMonth(Integer.parseInt(date[0])-1);
 				int year = checkYear(Integer.parseInt(date[2]));
 				int day = checkDay(month, Integer.parseInt(date[1]), year);
-				int numberOfGuests = checkGuests(Integer.parseInt(numOfGuestsTxt.getText()));
+				
 				
 				/**
 				 * Create GregorianCalendar and initialize to provided
@@ -209,17 +219,17 @@ public class DialogCheckInTent extends JDialog {
 				unit.setNumOfTenters(numberOfGuests);
 
 				/** Dispose of the dialog box */
-				if (days == 0) {
+				if (checkDays(days) == 0) {
 					JOptionPane.showMessageDialog(null, "Please stay for at least one day", null, JOptionPane.WARNING_MESSAGE);
 					unit.setDaysStaying(0);
 				}
 
-				if (site <= 0 || site >=6) {
+				if (checkSiteNumber(site) <= 0 || checkSiteNumber(site) >=6) {
 					JOptionPane.showMessageDialog(null, "Please stay at sites 1 - 5", null, JOptionPane.WARNING_MESSAGE);
 					unit.setDaysStaying(0);
 				}
 
-				if (days != 0 && site > 0 && site <=6) {
+				if (checkDays(days) != 0 && checkSiteNumber(site) > 0 && checkSiteNumber(site) <=6) {
 					JOptionPane.showMessageDialog(null, "The cost is $" + unit.getCost(), "Price", JOptionPane.WARNING_MESSAGE);				
 					dispose();
 				}
