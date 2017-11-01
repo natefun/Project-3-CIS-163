@@ -123,7 +123,7 @@ public class GUICampingReg extends JFrame implements ActionListener{
 		}
 		
 		if(e.getSource().equals(undo)) {
-			//Nothing
+			dList.undo();
 		}
 		
 		if(e.getSource().equals(delete)) {

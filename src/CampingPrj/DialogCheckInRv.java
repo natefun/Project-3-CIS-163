@@ -111,7 +111,7 @@ public class DialogCheckInRv extends JDialog {
 	}
 
 	private int checkDays(int daysStay) {
-		if(daysStay <= 365)
+		if(daysStay > 0)
 			return daysStay;
 		else
 			return 0;
@@ -155,9 +155,19 @@ public class DialogCheckInRv extends JDialog {
 
 			if (e.getSource() == okButton) {
 				String name = nameTxt.getText();
-				int SiteNum = Integer.parseInt(siteNumberTxt.getText());
-				int daysStay = Integer.parseInt(stayingTxt.getText());
 				String[] date = OccupyedOnTxt.getText().split("/");
+				
+				int SiteNum = 0;
+				int daysStay = 0;
+				
+				try {
+				SiteNum = Integer.parseInt(siteNumberTxt.getText());
+				daysStay = Integer.parseInt(stayingTxt.getText());
+				}
+				catch (NumberFormatException p) {
+					JOptionPane.showMessageDialog(null, "Please only type in numbers", null, JOptionPane.WARNING_MESSAGE);
+				}
+				
 				int month = checkMonth(Integer.parseInt(date[0])-1);
 				int year = checkYear(Integer.parseInt(date[2]));
 				int day = checkDay(month, Integer.parseInt(date[1]), year);
@@ -175,17 +185,17 @@ public class DialogCheckInRv extends JDialog {
 				unit.setCheckIn(checkInDate);
 				((RV) unit).setPower(power);
 				
-				if (daysStay == 0) {
+				if (checkDays(daysStay) == 0) {
 					JOptionPane.showMessageDialog(null, "Please stay for at least one day", null, JOptionPane.WARNING_MESSAGE);
 					unit.setDaysStaying(0);
 				}
 
-				if (SiteNum <= 0 || SiteNum >=6) {
+				if (checkSiteNumber(SiteNum) <= 0 || checkSiteNumber(SiteNum) >=6) {
 					JOptionPane.showMessageDialog(null, "Please stay at sites 1 - 5", null, JOptionPane.WARNING_MESSAGE);
 					unit.setDaysStaying(0);
 				}
 
-				if (daysStay != 0 && SiteNum > 0 && SiteNum <=6) {
+				if (checkDays(daysStay) != 0 && checkSiteNumber(SiteNum) > 0 && checkSiteNumber(SiteNum) <=6) {
 					Component frame = null;
 					JOptionPane.showMessageDialog(frame, "The cost is $" + daysStay * 30 , "Price", JOptionPane.WARNING_MESSAGE);
 					dispose();
