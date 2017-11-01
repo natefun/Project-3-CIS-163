@@ -22,7 +22,7 @@ public class SiteModel extends AbstractTableModel implements Changeable{
 	public SiteModel() {
 		GregorianCalendar testDate = new GregorianCalendar(10, 30, 2017);
 		listSites = new ArrayList<Site>();
-		listSites.add(new Tent(3, "Nate Johnson", 5, 2, testDate));
+		//listSites.add(new Tent(3, "Nate Johnson", 5, 2, testDate));
 	}
 
 	// override these two methods from AbstractTableModel class
