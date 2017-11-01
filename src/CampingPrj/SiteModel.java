@@ -22,7 +22,7 @@ public class SiteModel extends AbstractTableModel implements Changeable{
 	public SiteModel() {
 		GregorianCalendar testDate = new GregorianCalendar(10, 30, 2017);
 		listSites = new ArrayList<Site>();
-		listSites.add(new Tent(3, "Nate Johnson", 5, 2, testDate));
+		//listSites.add(new Tent(3, "Nate Johnson", 5, 2, testDate));
 	}
 
 	// override these two methods from AbstractTableModel class
@@ -76,7 +76,7 @@ public class SiteModel extends AbstractTableModel implements Changeable{
 		case 0://returns name
 			return listSites.get(rowIndex).getNameReserving();
 		case 1://returns check in date
-			return listSites.get(rowIndex).getCheckIn();
+			return listSites.get(rowIndex).getCheckIn().getTime();
 		case 2://returns days staying
 			return listSites.get(rowIndex).getDaysStaying();
 		case 3://returns site number
