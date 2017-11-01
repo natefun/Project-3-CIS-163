@@ -76,7 +76,8 @@ public class SiteModel extends AbstractTableModel implements Changeable{
 		case 0://returns name
 			return listSites.get(rowIndex).getNameReserving();
 		case 1://returns check in date
-			return listSites.get(rowIndex).getCheckIn().getTime();
+			return DateFormat.getDateInstance(DateFormat.SHORT).format(listSites.get(rowIndex).getCheckIn().getTime());
+			//return listSites.get(rowIndex).getCheckIn().getTime();
 		case 2://returns days staying
 			return listSites.get(rowIndex).getDaysStaying();
 		case 3://returns site number
