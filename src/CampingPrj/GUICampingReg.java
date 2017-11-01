@@ -28,7 +28,7 @@ public class GUICampingReg extends JFrame implements ActionListener{
 		openTxt= new JMenuItem("Open Text File");
 		saveTxt= new JMenuItem("Save Text File");
 		exit = new JMenuItem("Exit");
-		
+
 		undo = new JMenuItem("Undo");
 		delete = new JMenuItem("Delete");
 		redo = new JMenuItem("Redo");
@@ -51,7 +51,7 @@ public class GUICampingReg extends JFrame implements ActionListener{
 		edit.add(undo);
 		edit.add(redo);
 		edit.add(delete);
-		
+
 		checkingIn.add(tentIn);
 		checkingIn.add(RVIn);
 
@@ -60,7 +60,7 @@ public class GUICampingReg extends JFrame implements ActionListener{
 		openTxt.addActionListener(this);
 		saveTxt.addActionListener(this);
 		exit.addActionListener(this);
-		
+
 		undo.addActionListener(this);
 		delete.addActionListener(this);
 		redo.addActionListener(this);
@@ -124,29 +124,29 @@ public class GUICampingReg extends JFrame implements ActionListener{
 				dList.saveTxt(filename);
 			}
 		}
-		
+
 		if(e.getSource().equals(undo)) {
 			dList.undo();
 		}
-		
+
 		if(e.getSource().equals(redo)) {
 			dList.redo();
 		}
-		
+
 		if(e.getSource().equals(delete)) {
 			if(jListTable.getSelectedRow() != -1)
 				dList.delete(jListTable.getSelectedRow());
 			else
 				dList.getColumnCount();
 		}
-			
+
 		if(e.getSource().equals(tentIn)) {
 			Tent t = new Tent();
 			DialogCheckInTent x = new DialogCheckInTent(this, t);
 			if(t.daysStaying != 0)
 				dList.add(t);
 		}
-			
+
 
 		if(e.getSource().equals(RVIn)) {
 			RV r = new RV(0);
@@ -156,12 +156,12 @@ public class GUICampingReg extends JFrame implements ActionListener{
 		}
 
 		// Finally, to invoke this dialog box from the GUICampingReg class, the following code may help. 
-//		Object comp = e.getSource();
-//		Object resvRVItem = null;
-//		if (resvRVItem == comp) {
-//			RV t = new RV(0);
-//			DialogCheckInRv x = new DialogCheckInRv(this, t);
-//		}
+		//		Object comp = e.getSource();
+		//		Object resvRVItem = null;
+		//		if (resvRVItem == comp) {
+		//			RV t = new RV(0);
+		//			DialogCheckInRv x = new DialogCheckInRv(this, t);
+		//		}
 	}
 
 }

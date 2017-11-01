@@ -29,30 +29,30 @@ public class DialogCheckInTent extends JDialog {
 	private JButton cancelButton;
 	private boolean closeStatus;
 	private Tent unit;
-	
+
 	public DialogCheckInTent(JFrame paOccupy, Tent d) {
 		super(paOccupy, true);
-		
+
 		name = new JLabel("Name:");
 		OccupyedOn = new JLabel("Occupyed on Date:");
 		staying = new JLabel("Days planning on staying:");
 		siteNumber = new JLabel("Requested site number:");
 		numOfGuests = new JLabel("Number of tenters:");
-		
+
 		nameTxt = new JTextField("John Smith");
 		OccupyedOnTxt = new JTextField("03/14/2015");
 		stayingTxt = new JTextField("7");
 		siteNumberTxt = new JTextField("1");
 		numOfGuestsTxt = new JTextField("1");
-		
+
 		okButton = new JButton("OK");
 		cancelButton = new JButton("Cancel");
-		
+
 		closeStatus = false;
 		unit = d;
-		
+
 		ButtonListener listener = new ButtonListener();
-		
+
 		nameTxt.addActionListener(listener);
 		OccupyedOnTxt.addActionListener(listener);
 		stayingTxt.addActionListener(listener);
@@ -60,7 +60,7 @@ public class DialogCheckInTent extends JDialog {
 		numOfGuestsTxt.addActionListener(listener);
 		okButton.addActionListener(listener);
 		cancelButton.addActionListener(listener);
-		
+
 		setTitle("Reserve an Tent site:");
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		getContentPane();
@@ -68,12 +68,12 @@ public class DialogCheckInTent extends JDialog {
 		setSize(300, 250);
 		setVisible(true);
 	}
-	
+
 	/**
 	 * Create and add items to the dialog box
 	 */
 	private void createPanel() {
-		
+
 		setLayout(new GridLayout(6, 2));
 		add(name);
 		add(nameTxt);
@@ -88,7 +88,7 @@ public class DialogCheckInTent extends JDialog {
 		add(okButton);
 		add(cancelButton);	
 	}
-	
+
 	/**
 	 * Error check the number of days staying
 	 * @param numDays
@@ -100,7 +100,7 @@ public class DialogCheckInTent extends JDialog {
 		else
 			return 1;
 	}
-	
+
 	/**
 	 * Error check the site number
 	 * @param site
@@ -112,7 +112,7 @@ public class DialogCheckInTent extends JDialog {
 		else
 			return 0;
 	}
-	
+
 	/**
 	 * Error check the provided month
 	 * @param month
@@ -124,7 +124,7 @@ public class DialogCheckInTent extends JDialog {
 		else
 			return 0;
 	}
-	
+
 	/**
 	 * Error check the provided year
 	 * @param year
@@ -136,7 +136,7 @@ public class DialogCheckInTent extends JDialog {
 		else
 			return 0;
 	}
-	
+
 	/**
 	 * Error check the provided day
 	 * @param month
@@ -153,7 +153,7 @@ public class DialogCheckInTent extends JDialog {
 		else
 			return 0;
 	}
-	
+
 	/**
 	 * Error check the number of guests
 	 * @param guests
@@ -179,7 +179,7 @@ public class DialogCheckInTent extends JDialog {
 		else
 			return false;
 	}
-	
+
 	private class ButtonListener implements ActionListener
 	{
 		@Override
@@ -191,11 +191,23 @@ public class DialogCheckInTent extends JDialog {
 				int days = 0;
 				int site  = 0;
 				int numberOfGuests = 0;
-				
+
 				try {
-				days = checkDays(Integer.parseInt(stayingTxt.getText()));
-				site = checkSiteNumber(Integer.parseInt(siteNumberTxt.getText()));
-				numberOfGuests = checkGuests(Integer.parseInt(numOfGuestsTxt.getText()));
+					days = checkDays(Integer.parseInt(stayingTxt.getText()));
+				}
+				catch (NumberFormatException p) {
+					JOptionPane.showMessageDialog(null, "Please only type in numbers", null, JOptionPane.WARNING_MESSAGE);
+				}
+
+				try {
+					site = checkSiteNumber(Integer.parseInt(siteNumberTxt.getText()));
+				}
+				catch (NumberFormatException p) {
+					JOptionPane.showMessageDialog(null, "Please only type in numbers", null, JOptionPane.WARNING_MESSAGE);
+				}
+
+				try {
+					numberOfGuests = checkGuests(Integer.parseInt(numOfGuestsTxt.getText()));
 				}
 				catch (NumberFormatException p) {
 					JOptionPane.showMessageDialog(null, "Please only type in numbers", null, JOptionPane.WARNING_MESSAGE);
@@ -203,8 +215,8 @@ public class DialogCheckInTent extends JDialog {
 				int month = checkMonth(Integer.parseInt(date[0])-1);
 				int year = checkYear(Integer.parseInt(date[2]));
 				int day = checkDay(month, Integer.parseInt(date[1]), year);
-				
-				
+
+
 				/**
 				 * Create GregorianCalendar and initialize to provided
 				 * date to sent to tent class

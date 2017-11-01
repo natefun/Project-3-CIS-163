@@ -80,20 +80,20 @@ public abstract class Site implements Serializable{
 	public void setCheckIn(GregorianCalendar checkIn) {
 		this.checkIn = checkIn;
 	}
-	
-//	public String getCheckIn() {
-//		
-//		this.checkIn = check
-//		String dateStr = checkIn;
-//		DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-//		try {
-//			Date checkIn = (Date)formatter.parse(dateStr);
-//		} catch (ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		return dateStr;  
-//	}
+
+	//	public String getCheckIn() {
+	//		
+	//		this.checkIn = check
+	//		String dateStr = checkIn;
+	//		DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+	//		try {
+	//			Date checkIn = (Date)formatter.parse(dateStr);
+	//		} catch (ParseException e) {
+	//			// TODO Auto-generated catch block
+	//			e.printStackTrace();
+	//		}
+	//		return dateStr;  
+	//	}
 
 	/******************************************************************
 	 * Returns the number of days staying
@@ -122,7 +122,7 @@ public abstract class Site implements Serializable{
 	public void setSiteNumber(int siteNumber) {
 		this.siteNumber = siteNumber;
 	}
-	
+
 	/******************************************************************
 	 * Gets the cost to stay at the site
 	 *****************************************************************/
