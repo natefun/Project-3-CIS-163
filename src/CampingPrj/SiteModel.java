@@ -25,7 +25,6 @@ public class SiteModel extends AbstractTableModel{
 	private String[] columnNames = { "Name Reserving", "Checked in", "Days Staying", "Site #", "Tent/RV info"};
 	private Site unit;
 	int undoIndex = 2;
-s
 	private DatesReserved datesReserved;
 	static int timesTxt = 1;
 	static int times = 1;
