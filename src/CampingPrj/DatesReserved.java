@@ -137,7 +137,7 @@ public class DatesReserved {
 			//reserves the site for that day
 			//System.out.println(DateFormat.getDateInstance(DateFormat.SHORT).format(tempDate.getTime()));
 			reserved[i] = isReserved(siteNum, tempDate);
-			System.out.println("reserved[i]"+reserved[i]);
+			//System.out.println("reserved[i]"+reserved[i]);
 		}
 		
 		boolean returnBool = reserved[0];

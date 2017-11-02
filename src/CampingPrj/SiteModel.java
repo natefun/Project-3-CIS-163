@@ -166,6 +166,7 @@ public class SiteModel extends AbstractTableModel{
 			ObjectOutputStream oos= new ObjectOutputStream(fos);
 			//writes out the entire arraylist
 			oos.writeObject(listSites);
+			oos.writeObject(datesReserved.getDateList());
 			oos.close();
 			fos.close();
 		}catch(IOException ioe){
@@ -205,6 +206,16 @@ public class SiteModel extends AbstractTableModel{
 				listSites.add(readCase.get(i));
 				System.out.println(readCase.get(i));
 			}
+			
+			ArrayList<ArrayList> readCase2 = (ArrayList<ArrayList>) objectinputstream.readObject();
+			//creates new arraylist
+			datesReserved.setDateList(new ArrayList<ArrayList>());
+			//reads in arraylist
+			for(int i = 0; i < readCase2.size(); i++) {
+				datesReserved.getDateList().add(readCase2.get(i));
+				System.out.println(readCase2.get(i));
+			}
+			
 			//updates table
 			fireTableRowsInserted(1, readCase.size());
 
