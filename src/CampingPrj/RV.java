@@ -1,5 +1,7 @@
 package CampingPrj;
 
+import java.util.GregorianCalendar;
+
 public class RV extends Site{
 	/** holds the amount of power requested for each RV site */
 	private int power;		//30, 40, 50 amps
@@ -11,6 +13,11 @@ public class RV extends Site{
 	 *****************************************************************/
 	public RV(int p) {
 		power = verifyPower(p);
+	}
+	
+	public RV(int power, String nameReserving, int daysStaying, int siteNum, GregorianCalendar date) {
+		super(nameReserving, daysStaying, siteNum, date);
+		this.power = verifyPower(power);
 	}
 
 	/******************************************************************

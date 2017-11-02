@@ -7,6 +7,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+/*****************************************************************
+Gathers and stores info such as checkin date, name, site number ect.
+
+@author Brandon Thedorff
+@author Denver DeBoer
+@author Nathaniel Johnson
+@version November 2nd 2017
+*****************************************************************/
 public abstract class Site implements Serializable{
 	/** The name of the person who is occupying the Site */
 	protected String nameReserving;
@@ -20,7 +28,7 @@ public abstract class Site implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private static final String String = null;
 
-	/******************************************************************
+	/*****************************************************************
 	 * Default constructor sets everything to 0
 	 *****************************************************************/
 	public Site() {
