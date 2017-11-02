@@ -50,6 +50,13 @@ public class DatesReserved {
 		}
 	}
 	
+//	private GregorianCalendar indexToDate(int index) {
+//		int dayOfYear = index % 365;
+//		
+//		return new GregorianCalendar();
+//		
+//	}
+//	
 	/******************************************************************
 	 * Reserves a site for 1 day
 	 * @param siteNum The site you would like to reserve
@@ -75,5 +82,43 @@ public class DatesReserved {
 	 *****************************************************************/
 	public void isReserved(int siteNum, GregorianCalendar date) {
 		dateList.get(dateToIndex(date)).get(siteNum -1);
+	}
+	
+	
+	/******************************************************************
+	 * Reserves a site for mulitple days
+	 * @param siteNum The site you would like to reserve
+	 * @param date the date you would like to reserve the site on
+	 *****************************************************************/
+	public void reserveMultiple(int siteNum, GregorianCalendar date, int daysStaying) {
+		int[] numDaysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+		GregorianCalendar tempDate = null;
+		
+		int day = date.getInstance().get(date.DAY_OF_MONTH);
+		int month = date.getInstance().get(date.MONTH);
+		int year = date.getInstance().get(date.YEAR);
+		
+		for(int i = 0; i < daysStaying; i++) {
+			if(day+i <= numDaysInMonth[month-1]) {
+				//if there are enough days in the month just add one to the day
+				tempDate = new GregorianCalendar(year, month, day + i);
+			}
+			else if(day+i > numDaysInMonth[month-1]) {
+				//if there are not enough days in the month increment month
+				month++;
+				//fixes the days for the next month
+				day = day - numDaysInMonth[month-1];
+				if(month > 12) {
+					//If the month is greater than 12 it rolls over to the next year
+					month = 1;
+					year++;
+				}
+				//add the new date in there
+				tempDate = new GregorianCalendar(year, month, day + i);
+			}
+
+			//reserves the site for that day
+			reserve(siteNum, tempDate);
+		}
 	}
 }
