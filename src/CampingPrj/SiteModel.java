@@ -36,8 +36,11 @@ public class SiteModel extends AbstractTableModel{
 		
 		//listSites.add(new Tent(3, "Nate Johnson", 5, 2, testDate));
 		datesReserved = new DatesReserved();
+		datesReserved.reserveMultiple(1, new GregorianCalendar(2016,0,1), 2);
 //		datesReserved.reserve(1, new GregorianCalendar(2016,0,1));
-//		System.out.println(datesReserved.isReserved(1, new GregorianCalendar(2016,0,2)));
+//		datesReserved.reserve(1, new GregorianCalendar(2016,0,2));
+		System.out.println(datesReserved.isReserved(1, new GregorianCalendar(2016,0,1)));
+		System.out.println(datesReserved.isReserved(1, new GregorianCalendar(2016,0,2)));
 		
 		datesUndoList = new ArrayList<ArrayList>();
 		datesUndoList.add((ArrayList<ArrayList>)datesReserved.getDateList().clone());
