@@ -86,8 +86,11 @@ public class GUICampingReg extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource().equals(exit))
+		if(e.getSource().equals(exit)) {
+			SiteModel.autosaveTxt();
+			SiteModel.autosaveSerial();
 			System.exit(0);
+		}
 
 		if(e.getSource().equals(openSerial)) {
 			JFileChooser chooser = new JFileChooser();
@@ -127,6 +130,8 @@ public class GUICampingReg extends JFrame implements ActionListener{
 
 		if(e.getSource().equals(undo)) {
 			dList.undo();
+			SiteModel.autosaveTxt();
+			SiteModel.autosaveSerial();
 		}
 
 		if(e.getSource().equals(redo)) {
