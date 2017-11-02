@@ -153,14 +153,16 @@ public class DatesReserved {
 		int[] numDaysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 		GregorianCalendar tempDate = null;
 
-		int day = date.getInstance().get(date.DAY_OF_MONTH);
-		int month = date.getInstance().get(date.MONTH);
-		int year = date.getInstance().get(date.YEAR);
+		String[] dates = DateFormat.getDateInstance(DateFormat.SHORT).format(date.getTime()).split("/");
+		
+		int day = Integer.parseInt(dates[1]);
+		int month = Integer.parseInt(dates[0]);
+		int year = 2000 + Integer.parseInt(dates[2]);
 
 		for(int i = 0; i < daysStaying; i++) {
 			if(day+i <= numDaysInMonth[month-1]) {
 				//if there are enough days in the month just add one to the day
-				tempDate = new GregorianCalendar(year, month, day + i);
+				tempDate = new GregorianCalendar(year, month-1, day + i);
 			}
 			else if(day+i > numDaysInMonth[month-1]) {
 				//if there are not enough days in the month increment month
@@ -173,13 +175,13 @@ public class DatesReserved {
 					year++;
 				}
 				//add the new date in there
-				tempDate = new GregorianCalendar(year, month, day + i);
+				tempDate = new GregorianCalendar(year, month-1, day + i);
 			}
-
+			//deletes the site for that day
+			delete(siteNum, tempDate);
 		}
 		
-		//deletes the site for that day
-		delete(siteNum, tempDate);
+
 	}
 }
 
