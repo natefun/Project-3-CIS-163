@@ -121,7 +121,7 @@ public class GUICampingReg extends JFrame implements ActionListener{
 			int status = chooser.showSaveDialog(null);
 			if (status == JFileChooser.APPROVE_OPTION) {
 				String filename = chooser.getSelectedFile().getAbsolutePath();
-				dList.saveTxt(filename);
+				dList.saveTxt(filename, true);
 			}
 		}
 
