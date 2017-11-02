@@ -28,14 +28,14 @@ public class SiteModel extends AbstractTableModel{
 
 	// constructor method that initializes the arraylist
 	public SiteModel() {
-		GregorianCalendar testDate = new GregorianCalendar(10, 30, 2017);
+		//GregorianCalendar testDate = new GregorianCalendar(10, 30, 2017);
 		listSites = new ArrayList<Site>();
 		undoList = new ArrayList<ArrayList>();
 		undoList.add((ArrayList<ArrayList>)listSites.clone());
 		//listSites.add(new Tent(3, "Nate Johnson", 5, 2, testDate));
 		datesReserved = new DatesReserved();
-		datesReserved.reserve(1, new GregorianCalendar(2016,12,6));
-		System.out.println(datesReserved.isReserved(1, new GregorianCalendar(2016,12,6)));
+		datesReserved.reserve(1, new GregorianCalendar(2016,0,1));
+		System.out.println(datesReserved.isReserved(1, new GregorianCalendar(2016,0,1)));
 	}
 
 	// override these two methods from AbstractTableModel class

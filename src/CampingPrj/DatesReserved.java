@@ -1,6 +1,8 @@
 package CampingPrj;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class DatesReserved {
@@ -32,8 +34,11 @@ public class DatesReserved {
 	 * @param date the date you would like to convert
 	 *****************************************************************/
 	private int dateToIndex(GregorianCalendar date) {
-		int dayOfYear = date.getInstance().get(date.DAY_OF_YEAR) + 1;
-		int year = date.getInstance().get(date.YEAR);
+		int dayOfYear = date.get(Calendar.DAY_OF_YEAR);
+		//int year = date.getInstance().get(date.YEAR);
+		String[] dates = DateFormat.getDateInstance(DateFormat.SHORT).format(date.getTime()).split("/");
+		int year = 2000 + Integer.parseInt(dates[2]);
+		//System.out.println("DayOfTheYear " + dayOfYear);
 
 		switch(year) {
 		case 2015:
@@ -73,7 +78,7 @@ public class DatesReserved {
 	 * @param date the date you would like to check
 	 *****************************************************************/
 	public boolean isReserved(int siteNum, GregorianCalendar date) {
-		System.out.println("tester"+dateList.get(1037).get(0));
+		System.out.println("tester"+dateList.get(1).get(0));
 		System.out.println("tester2"+dateList.get(dateToIndex(date)).get(siteNum -1));
 		System.out.println("date"+ dateToIndex(date));
 //		return (boolean) dateList.get(1036).get(1);
