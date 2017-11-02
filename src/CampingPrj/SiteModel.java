@@ -25,8 +25,10 @@ public class SiteModel extends AbstractTableModel{
 	private String[] columnNames = { "Name Reserving", "Checked in", "Days Staying", "Site #", "Tent/RV info"};
 	private Site unit;
 	int undoIndex = 2;
-	private static DatesReserved datesReserved;
-	static int times=1;
+	private DatesReserved datesReserved;
+	static int timesTxt = 1;
+	static int times = 1;
+
 	
 
 	// constructor method that initializes the arraylist
@@ -173,11 +175,12 @@ public class SiteModel extends AbstractTableModel{
 		int i = times;
 		if (i < 6 && i > 0) {
 			saveSerial(filename + i);
-			i++;
+			times++;
 		}
 		else {
-			saveSerial(filename + i);
 			times = 1;
+			saveSerial(filename + i);
+			
 		}
 	}
 
@@ -255,14 +258,15 @@ public class SiteModel extends AbstractTableModel{
 
 	public static void autosaveTxt() {
 		String filename = "autosave";
-		int i = times;
+		int i = timesTxt;
 		if (i < 6 && i > 0) {
 			saveTxt(filename + i, false);
-			i++;
+			timesTxt++;
 		}
 		else {
+			timesTxt = 1;
 			saveTxt(filename + i, false);
-			times = 1;
+			
 		}
 	}
 
