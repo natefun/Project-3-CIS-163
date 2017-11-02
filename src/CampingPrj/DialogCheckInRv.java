@@ -229,7 +229,8 @@ public class DialogCheckInRv extends JDialog {
 					JOptionPane.showMessageDialog(frame, "The cost is $" + daysStay * 30 , "Price", JOptionPane.WARNING_MESSAGE);
 					dispose();
 				}
-				
+				SiteModel.autosaveTxt();
+				SiteModel.autosaveSerial();
 				
 			}
 			if (e.getSource() == cancelButton) {
