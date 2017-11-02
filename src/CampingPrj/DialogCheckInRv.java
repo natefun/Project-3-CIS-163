@@ -211,13 +211,24 @@ public class DialogCheckInRv extends JDialog {
 				unit.setNameReserving(name);
 				unit.setDaysStaying(daysStay);
 				unit.setSiteNumber(SiteNum);
-				unit.setCheckIn(checkInDate);
-				((RV) unit).setPower(power);
-
+				
 				if (checkDays(daysStay) == 0) {
 					JOptionPane.showMessageDialog(null, "Please stay for at least one day", null, JOptionPane.WARNING_MESSAGE);
 					unit.setDaysStaying(0);
 				}
+				
+				if(SiteModel.datesReserved.isReservedMultiple(SiteNum, new GregorianCalendar(year, month, day), daysStay) == false) {
+				unit.setCheckIn(checkInDate);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Already reservation on at least one of the dates", null, JOptionPane.WARNING_MESSAGE);
+					unit.setDaysStaying(0);
+					daysStay = 0;
+					dispose();
+				}
+				((RV) unit).setPower(power);
+
+
 
 				if (checkSiteNumber(SiteNum) <= 0 || checkSiteNumber(SiteNum) >=6) {
 					JOptionPane.showMessageDialog(null, "Please stay at sites 1 - 5", null, JOptionPane.WARNING_MESSAGE);
