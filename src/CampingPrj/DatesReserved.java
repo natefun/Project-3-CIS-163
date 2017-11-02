@@ -145,7 +145,7 @@ public class DatesReserved {
 		}
 		
 		//reserves the site for that day
-		reserve(siteNum, multipleDayHelper(date, daysStaying));
+		reserve(siteNum, tempDate);
 	}
 }
 
