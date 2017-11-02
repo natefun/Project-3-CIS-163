@@ -84,7 +84,7 @@ public class GUICampingReg extends JFrame implements ActionListener{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
-		autoSaveTime = new Timer(250, new TimeListener());
+		autoSaveTime = new Timer(30000, new TimeListener());
 		autoSaveTime.start();
 
 	}
