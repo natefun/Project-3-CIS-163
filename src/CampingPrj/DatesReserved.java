@@ -96,6 +96,54 @@ public class DatesReserved {
 	}
 
 
+	public boolean isReservedMultiple(int siteNum, GregorianCalendar date, int daysStaying) {
+		int[] numDaysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+		GregorianCalendar tempDate = null;
+
+		String[] dates = DateFormat.getDateInstance(DateFormat.SHORT).format(date.getTime()).split("/");
+		
+		int day = Integer.parseInt(dates[1]);
+		int month = Integer.parseInt(dates[0]);
+		int year = 2000 + Integer.parseInt(dates[2]);
+		
+		boolean[] reserved = new boolean[5];
+//		System.out.println("day"+day);
+//		System.out.println("month"+month);
+//		System.out.println("year"+year);
+
+		for(int i = 0; i < daysStaying; i++) {
+			if(day+i <= numDaysInMonth[month-1]) {
+				//if there are enough days in the month just add one to the day
+				tempDate = new GregorianCalendar(year, month-1, day + i);
+				//System.out.println("I got here");
+			}
+			else if(day+i > numDaysInMonth[month-1]) {
+				//if there are not enough days in the month increment month
+				month++;
+				//fixes the days for the next month
+				day = day - numDaysInMonth[month-1];
+				if(month > 12) {
+					//If the month is greater than 12 it rolls over to the next year
+					month = 1;
+					year++;
+				}
+				//add the new date in there
+				tempDate = new GregorianCalendar(year, month-1, day + i);
+			}
+			//reserves the site for that day
+			//System.out.println(DateFormat.getDateInstance(DateFormat.SHORT).format(tempDate.getTime()));
+			reserved[i] = isReserved(siteNum, tempDate);
+		}
+		
+		boolean returnBool = reserved[0];
+		for(int i = 0; i < daysStaying; i++) {
+			returnBool = returnBool && reserved[i];
+		}
+		
+		return returnBool;
+		
+	}
+	
 	/******************************************************************
 	 * Reserves a site for multiple days
 	 * @param siteNum The site you would like to reserve
