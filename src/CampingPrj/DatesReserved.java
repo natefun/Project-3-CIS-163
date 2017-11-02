@@ -22,7 +22,7 @@ public class DatesReserved {
 		}
 
 		//This creates 20 years worth of boolean arraylists
-		for(int i = 0; i < 14600; i++) {
+		for(int i = 0; i < 15330; i++) {
 			dateList.add((ArrayList<ArrayList>)siteList.clone());
 		}
 	}
@@ -57,6 +57,10 @@ public class DatesReserved {
 			return dayOfYear + 2*365;
 		case 2018:
 			return dayOfYear + 3*365;
+		case 2019:
+			return dayOfYear + 4*365;
+		case 2020:
+			return dayOfYear + 5*365;
 		default:
 			return -1;
 		}
