@@ -221,7 +221,7 @@ public class SiteModel extends AbstractTableModel{
 	 * @param filename the filepath you want to save to
 	 * @return 
 	 *****************************************************************/
-	public static void saveTxt(String filename) {
+	public static void saveTxt(String filename, boolean flag) {
 		try {
 			PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(filename)));
 			for(Site s : listSites) {
@@ -245,7 +245,8 @@ public class SiteModel extends AbstractTableModel{
 				}
 			}
 			out.close();
-			JOptionPane.showMessageDialog(null, "File saved", "Saved", JOptionPane.ERROR_MESSAGE);
+			if(flag)
+				JOptionPane.showMessageDialog(null, "File saved", "Saved", JOptionPane.ERROR_MESSAGE);
 		} catch (IOException ex) {
 			System.out.println ("IO Error!");
 		}
@@ -256,11 +257,11 @@ public class SiteModel extends AbstractTableModel{
 		String filename = "autosave";
 		int i = times;
 		if (i < 6 && i > 0) {
-			saveTxt(filename + i);
+			saveTxt(filename + i, false);
 			i++;
 		}
 		else {
-			saveTxt(filename + i);
+			saveTxt(filename + i, false);
 			times = 1;
 		}
 	}
