@@ -27,6 +27,14 @@ public class DatesReserved {
 		}
 	}
 
+	public ArrayList getDateList() {
+		return dateList;
+	}
+	
+	public void setDateList(ArrayList list) {
+		dateList = list;
+	}
+	
 	/******************************************************************
 	 * Helper method that converts a GregorianCalendar date to an
 	 * index that can be used to find the date you are looking for in

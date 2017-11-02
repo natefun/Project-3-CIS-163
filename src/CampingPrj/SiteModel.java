@@ -19,6 +19,7 @@ import javax.swing.table.AbstractTableModel;
 public class SiteModel extends AbstractTableModel{
 	private ArrayList<Site> listSites;
 	private ArrayList<ArrayList> undoList;
+	private ArrayList<ArrayList> datesUndoList;
 	private ArrayList<ArrayList> DateList;
 	private ArrayList<Boolean> BooList;
 	private String[] columnNames = { "Name Reserving", "Checked in", "Days Staying", "Site #", "Tent/RV info"};
@@ -32,10 +33,14 @@ public class SiteModel extends AbstractTableModel{
 		listSites = new ArrayList<Site>();
 		undoList = new ArrayList<ArrayList>();
 		undoList.add((ArrayList<ArrayList>)listSites.clone());
+		
 		//listSites.add(new Tent(3, "Nate Johnson", 5, 2, testDate));
 		datesReserved = new DatesReserved();
-		datesReserved.reserve(1, new GregorianCalendar(2016,0,1));
-		System.out.println(datesReserved.isReserved(1, new GregorianCalendar(2016,0,2)));
+//		datesReserved.reserve(1, new GregorianCalendar(2016,0,1));
+//		System.out.println(datesReserved.isReserved(1, new GregorianCalendar(2016,0,2)));
+		
+		datesUndoList = new ArrayList<ArrayList>();
+		datesUndoList.add((ArrayList<ArrayList>)datesReserved.getDateList().clone());
 	}
 
 	// override these two methods from AbstractTableModel class
@@ -116,6 +121,7 @@ public class SiteModel extends AbstractTableModel{
 		datesReserved.reserve(site.getSiteNumber(), site.getCheckIn());
 		fireTableRowsInserted(0, listSites.size());
 		undoList.add((ArrayList<ArrayList>)listSites.clone());
+		datesUndoList.add((ArrayList<ArrayList>)datesReserved.getDateList().clone());
 	}
 
 	/******************************************************************
@@ -127,6 +133,7 @@ public class SiteModel extends AbstractTableModel{
 		listSites.remove(rowIndex);
 		fireTableRowsInserted(0, listSites.size());
 		undoList.add((ArrayList<ArrayList>)listSites.clone());
+		datesUndoList.add((ArrayList<ArrayList>)datesReserved.getDateList().clone());
 	}
 
 	/******************************************************************
@@ -265,6 +272,7 @@ public class SiteModel extends AbstractTableModel{
 	public void undo() {
 		if(undoIndex != undoList.size() + 1 || undoIndex < 0) {
 			listSites = undoList.get(undoList.size()-undoIndex);
+			datesReserved.setDateList(datesUndoList.get(datesUndoList.size()-undoIndex));
 			undoIndex++;
 			fireTableRowsInserted(0, listSites.size());
 		}
@@ -275,6 +283,7 @@ public class SiteModel extends AbstractTableModel{
 		if(undoIndex > 2 && undoIndex <= undoList.size()+1) {
 			//listSites = undoList.get(undoList.size()+undoIndex);
 			listSites = undoList.get(undoIndex-2);
+			datesReserved.setDateList(datesUndoList.get(datesUndoList.size()-undoIndex));
 			undoIndex++;
 			fireTableRowsInserted(0, listSites.size());
 		}
