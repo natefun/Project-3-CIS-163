@@ -11,7 +11,18 @@ import java.util.GregorianCalendar;
 
 import javax.swing.*;
 
+/*****************************************************************
+Creates the dialog box for checking in for RV
+
+@author Brandon Thedorff
+@author Denver DeBoer
+@author Nathaniel Johnson
+@version November 2nd 2017
+*****************************************************************/
+
 public class DialogCheckInRv extends JDialog {
+	
+	/** Instantiates Variables */
 	private JTextField nameTxt;
 	private JTextField OccupyedOnTxt;
 	private JTextField stayingTxt;
@@ -24,45 +35,50 @@ public class DialogCheckInRv extends JDialog {
 	private Site unit;  	
 
 
-
+	/*****************************************************************
+	Creates the dialog box components for checking in for RV
+	*****************************************************************/
 	public DialogCheckInRv(JFrame paOccupy, Site d) {	
 		super(paOccupy,true);
 		unit = d; 
 
 
 
-		//Add defaults later for display
+		/** Creates the text fields */
 		nameTxt = new JTextField("Joe Dohn");
 		OccupyedOnTxt = new JTextField("10/07/2018");
 		stayingTxt = new JTextField("5");
 		siteNumberTxt  = new JTextField("3");
 
 
-
+		/** Creates the Jlabels*/
 		NameLab = new JLabel("Name of reserver:");
 		SiteLab =  new JLabel("Requested Site Number:");
 		DateLab = new JLabel("Reseving Date:");
 		DaysLab = new JLabel("Days Staying:");
 		PowerLab = new JLabel("Type of power in amps:");
-
+		
+		/** Creates  the buttonlistener */
 		ButtonListener listener = new ButtonListener();
 
-
+		/** Creates the JButtons */
 		okButton = new JButton("Ok");
 		cancelButton = new JButton("Cancel");
 		closeStatus = false;
 
+		/** Creates JComboBox and its options */
 		String[] options = { "30", "40", "50"};
 		powerTxt = new JComboBox(options);
 
 
 
 
-
+		/** Connects the buttons to the action listener*/
 		okButton.addActionListener(listener);
 		cancelButton.addActionListener(listener);
 		powerTxt.addActionListener(listener);
 
+		/** Sets defaults and adds to the JDialogBox*/
 		setTitle("Reserve an RV site");
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		createPanel();
@@ -70,22 +86,11 @@ public class DialogCheckInRv extends JDialog {
 		setSize(300, 250);
 		setVisible(true);
 
-
-
-		//Date date = Calender.getInstance().GetTime
-
-
-		//		try 
-		//		{  
-		//			DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
-		//			Date startDate = df.parse(OccupyedOnTxt.getText());
-		//		}
-		//		catch (Exception e) {
-		//
-		//		}
-
 	}
 
+	/*****************************************************************
+	class that Adds components to JDialogBox when called
+	*****************************************************************/
 	private void createPanel() {
 
 		setLayout(new GridLayout(6, 2));
@@ -103,13 +108,20 @@ public class DialogCheckInRv extends JDialog {
 		add(cancelButton);
 	}
 
+	/*****************************************************************
+	Checks that the site number is 1 - 5
+	@param SiteNum The site number
+	*****************************************************************/
 	private int checkSiteNumber(int SiteNum) {
 		if(SiteNum >= 1 && SiteNum <= 5)
 			return SiteNum;
 		else
 			return 0;
 	}
-
+	/*****************************************************************
+	Checks that the days staying is positive
+	@param daysStay The days staying
+	*****************************************************************/
 	private int checkDays(int daysStay) {
 		if(daysStay > 0)
 			return daysStay;
@@ -117,11 +129,16 @@ public class DialogCheckInRv extends JDialog {
 			return 0;
 	}
 
+	/*****************************************************************
+	Creates the dialog box components for checking in for RV
+	*****************************************************************/
 	private int checkMonth(int month) {
 		if(month >= 1 && month <= 12)
 			return month;
+		else if (month > 12)
+			return month % 12;
 		else
-			return 1;
+			return month / -1;
 	}
 
 	private int checkYear(int year) {
