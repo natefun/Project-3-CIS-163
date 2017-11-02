@@ -323,18 +323,14 @@ public class SiteModel extends AbstractTableModel{
 
 	}
 
-	public void redo() {
-		if(undoIndex > 2 && undoIndex <= undoList.size()+1) {
-			//listSites = undoList.get(undoList.size()+undoIndex);
-			listSites = undoList.get(undoIndex-2);
-			datesReserved.setDateList(datesUndoList.get(datesUndoList.size()-undoIndex));
-			undoIndex++;
-			fireTableRowsInserted(0, listSites.size());
-		}
-
-		//		if(undoIndex >= undoList.size()+1) {
-		//			undoIndex = 2;
-		//		}
-	}
+//	public void redo() {
+//		if(undoIndex > 2 && undoIndex <= undoList.size()+1) {
+//			//listSites = undoList.get(undoList.size()+undoIndex);
+//			listSites = undoList.get(undoIndex-2);
+//			datesReserved.setDateList(datesUndoList.get(datesUndoList.size()-undoIndex));
+//			undoIndex++;
+//			fireTableRowsInserted(0, listSites.size());
+//		}
+//	}
 
 }
