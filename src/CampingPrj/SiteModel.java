@@ -177,7 +177,7 @@ public class SiteModel extends AbstractTableModel{
 	public static void autosaveSerial() {
 		String filename = "autosaveSerial";
 		int i = times;
-		if (i < 6 && i > 0) {
+		if (i < 5 && i > 0) {
 			saveSerial(filename + i);
 			times++;
 		}
