@@ -121,7 +121,7 @@ public class DialogCheckInRv extends JDialog {
 	}
 	/*****************************************************************
 	Checks that the days staying is positive
-	
+
 	@param daysStay The days staying
 	@return daysStay daysStay is returned if valid if not returns 0
 	 *****************************************************************/
@@ -134,7 +134,7 @@ public class DialogCheckInRv extends JDialog {
 
 	/*****************************************************************
 	checks the month given to see if it is valid
-	
+
 	@param month The month given
 	@return month returns the valid month
 	 *****************************************************************/
@@ -149,7 +149,7 @@ public class DialogCheckInRv extends JDialog {
 
 	/*****************************************************************
 	checks the year given to see if it is valid
-	
+
 	@param year The year given
 	@return year year is returned if valid if not returns 0
 	 *****************************************************************/
@@ -162,7 +162,7 @@ public class DialogCheckInRv extends JDialog {
 
 	/*****************************************************************
 	checks the month given to see if it is valid
-	
+
 	@param day The day given
 	@param month The month given
 	@param year The year given
@@ -179,7 +179,7 @@ public class DialogCheckInRv extends JDialog {
 			return 0;
 	}
 
-	
+
 	private boolean isLeapYear(int year) {
 		if(year % 4 == 0 && year % 100 != 0)
 			return true;

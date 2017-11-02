@@ -15,7 +15,7 @@ public class RV extends Site{
 	public RV(int p) {
 		power = verifyPower(p);
 	}
-	
+
 	/******************************************************************
 	 * Constructor
 	 * Initializes the instance variables from super class

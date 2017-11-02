@@ -14,7 +14,7 @@ Gathers and stores info such as checkin date, name, site number ect.
 @author Denver DeBoer
 @author Nathaniel Johnson
 @version November 2nd 2017
-*****************************************************************/
+ *****************************************************************/
 public abstract class Site implements Serializable{
 	/** The name of the person who is occupying the Site */
 	protected String nameReserving;
