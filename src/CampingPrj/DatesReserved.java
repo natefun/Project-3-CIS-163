@@ -32,7 +32,7 @@ public class DatesReserved {
 	 * @param date the date you would like to convert
 	 *****************************************************************/
 	private int dateToIndex(GregorianCalendar date) {
-		int dayOfYear = date.getInstance().get(date.DAY_OF_YEAR);
+		int dayOfYear = date.getInstance().get(date.DAY_OF_YEAR) + 1;
 		int year = date.getInstance().get(date.YEAR);
 
 		switch(year) {
@@ -72,13 +72,18 @@ public class DatesReserved {
 	 * @param siteNum The site you would like to check
 	 * @param date the date you would like to check
 	 *****************************************************************/
-	public void isReserved(int siteNum, GregorianCalendar date) {
-		dateList.get(dateToIndex(date)).get(siteNum -1);
+	public boolean isReserved(int siteNum, GregorianCalendar date) {
+		System.out.println("tester"+dateList.get(1037).get(0));
+		System.out.println("tester2"+dateList.get(dateToIndex(date)).get(siteNum -1));
+		System.out.println("date"+ dateToIndex(date));
+//		return (boolean) dateList.get(1036).get(1);
+		return (boolean) dateList.get(dateToIndex(date)).get(siteNum -1);
+		
 	}
 
 
 	/******************************************************************
-	 * Reserves a site for mulitple days
+	 * Reserves a site for multiple days
 	 * @param siteNum The site you would like to reserve
 	 * @param date the date you would like to reserve the site on
 	 *****************************************************************/
@@ -117,7 +122,7 @@ public class DatesReserved {
 	
 	
 	/******************************************************************
-	 * Reserves a site for mulitple days
+	 * Reserves a site for multiple days
 	 * @param siteNum The site you would like to reserve
 	 * @param date the date you would like to reserve the site on
 	 *****************************************************************/

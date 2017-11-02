@@ -24,6 +24,7 @@ public class SiteModel extends AbstractTableModel{
 	private String[] columnNames = { "Name Reserving", "Checked in", "Days Staying", "Site #", "Tent/RV info"};
 	private Site unit;
 	int undoIndex = 2;
+	private DatesReserved datesReserved;
 
 	// constructor method that initializes the arraylist
 	public SiteModel() {
@@ -32,6 +33,9 @@ public class SiteModel extends AbstractTableModel{
 		undoList = new ArrayList<ArrayList>();
 		undoList.add((ArrayList<ArrayList>)listSites.clone());
 		//listSites.add(new Tent(3, "Nate Johnson", 5, 2, testDate));
+		datesReserved = new DatesReserved();
+		datesReserved.reserve(1, new GregorianCalendar(2016,12,6));
+		System.out.println(datesReserved.isReserved(1, new GregorianCalendar(2016,12,6)));
 	}
 
 	// override these two methods from AbstractTableModel class
