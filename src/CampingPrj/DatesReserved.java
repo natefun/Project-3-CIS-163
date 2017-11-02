@@ -78,10 +78,9 @@ public class DatesReserved {
 	 * @param date the date you would like to check
 	 *****************************************************************/
 	public boolean isReserved(int siteNum, GregorianCalendar date) {
-		System.out.println("tester"+dateList.get(367).get(0));
-		System.out.println("tester2"+dateList.get(dateToIndex(date)).get(siteNum -1));
-		System.out.println("date"+ dateToIndex(date));
-//		return (boolean) dateList.get(1036).get(1);
+	//	System.out.println("tester"+dateList.get(367).get(0));
+	//	System.out.println("tester2"+dateList.get(dateToIndex(date)).get(siteNum -1));
+	//	System.out.println("date"+ dateToIndex(date));
 		return (boolean) dateList.get(dateToIndex(date)).get(siteNum -1);
 		
 	}
