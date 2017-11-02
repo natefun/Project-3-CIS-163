@@ -123,7 +123,7 @@ public class SiteModel extends AbstractTableModel{
 	public void add(Site site) {
 		//this method may need to change at some point
 		listSites.add(site);
-		datesReserved.reserve(site.getSiteNumber(), site.getCheckIn());
+		datesReserved.reserveMultiple(site.getSiteNumber(), site.getCheckIn(), site.getDaysStaying());
 		fireTableRowsInserted(0, listSites.size());
 		undoList.add((ArrayList<ArrayList>)listSites.clone());
 		datesUndoList.add((ArrayList<ArrayList>)datesReserved.getDateList().clone());
@@ -134,7 +134,7 @@ public class SiteModel extends AbstractTableModel{
 	 * @param rowIndex the index of the row you want to delete
 	 *****************************************************************/
 	public void delete(int rowIndex) {
-		datesReserved.delete(listSites.get(rowIndex).getSiteNumber(), listSites.get(rowIndex).getCheckIn());
+		datesReserved.deleteMultiple(listSites.get(rowIndex).getSiteNumber(), listSites.get(rowIndex).getCheckIn(), listSites.get(rowIndex).getDaysStaying());
 		listSites.remove(rowIndex);
 		fireTableRowsInserted(0, listSites.size());
 		undoList.add((ArrayList<ArrayList>)listSites.clone());
