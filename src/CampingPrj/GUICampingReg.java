@@ -17,6 +17,15 @@ public class GUICampingReg extends JFrame implements ActionListener{
 	private SiteModel dList;
 
 	public GUICampingReg() {
+		//Timer stuff
+		Long time = System.currentTimeMillis();
+		while(System.currentTimeMillis() - time == 2000) {
+			System.out.println("Saved");
+			SiteModel.autosaveTxt();
+			SiteModel.autosaveSerial();
+			time = System.currentTimeMillis();
+		}
+		
 		menuBar = new JMenuBar();
 
 		file = new JMenu("File");
