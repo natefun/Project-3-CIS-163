@@ -35,7 +35,7 @@ public class SiteModel extends AbstractTableModel{
 		//listSites.add(new Tent(3, "Nate Johnson", 5, 2, testDate));
 		datesReserved = new DatesReserved();
 		datesReserved.reserve(1, new GregorianCalendar(2016,0,1));
-		System.out.println(datesReserved.isReserved(1, new GregorianCalendar(2016,0,1)));
+		System.out.println(datesReserved.isReserved(1, new GregorianCalendar(2016,0,2)));
 	}
 
 	// override these two methods from AbstractTableModel class
