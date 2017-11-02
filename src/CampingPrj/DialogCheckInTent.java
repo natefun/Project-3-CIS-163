@@ -248,8 +248,7 @@ public class DialogCheckInTent extends JDialog {
 					dispose();
 				}
 
-				SiteModel.autosaveTxt();
-				SiteModel.autosaveSerial();
+			
 
 			}
 			else if(e.getSource() == cancelButton) {

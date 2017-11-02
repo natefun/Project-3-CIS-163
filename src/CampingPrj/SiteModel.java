@@ -129,6 +129,8 @@ public class SiteModel extends AbstractTableModel{
 		fireTableRowsInserted(0, listSites.size());
 		undoList.add((ArrayList<ArrayList>)listSites.clone());
 		datesUndoList.add((ArrayList<ArrayList>)datesReserved.getDateList().clone());
+		SiteModel.autosaveTxt();
+		SiteModel.autosaveSerial();
 	}
 
 	/******************************************************************
@@ -141,6 +143,7 @@ public class SiteModel extends AbstractTableModel{
 		fireTableRowsInserted(0, listSites.size());
 		undoList.add((ArrayList<ArrayList>)listSites.clone());
 		datesUndoList.add((ArrayList<ArrayList>)datesReserved.getDateList().clone());
+		
 	}
 
 	/******************************************************************
@@ -313,6 +316,8 @@ public class SiteModel extends AbstractTableModel{
 			datesReserved.setDateList(datesUndoList.get(datesUndoList.size()-undoIndex));
 			undoIndex++;
 			fireTableRowsInserted(0, listSites.size());
+			SiteModel.autosaveTxt();
+			SiteModel.autosaveSerial();
 		}
 
 	}
