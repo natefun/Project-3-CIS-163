@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 public class SiteModel extends AbstractTableModel{
-	private ArrayList<Site> listSites;
+	private static ArrayList<Site> listSites;
 	private ArrayList<ArrayList> undoList;
 	private ArrayList<ArrayList> DateList;
 	private ArrayList<Boolean> BooList;
@@ -140,8 +140,9 @@ public class SiteModel extends AbstractTableModel{
 	/******************************************************************
 	 * Saves database as serialized type
 	 * @param filename the filepath you want to save to
+	 * @return 
 	 *****************************************************************/
-	public void saveSerial(String filename) {
+	public static void saveSerial(String filename) {
 		try{
 			FileOutputStream fos= new FileOutputStream(filename);
 			ObjectOutputStream oos= new ObjectOutputStream(fos);
@@ -193,8 +194,9 @@ public class SiteModel extends AbstractTableModel{
 	/******************************************************************
 	 * Saves database as txt type
 	 * @param filename the filepath you want to save to
+	 * @return 
 	 *****************************************************************/
-	public void saveTxt(String filename) {
+	public static void saveTxt(String filename) {
 		try {
 			PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(filename)));
 			for(Site s : listSites) {
