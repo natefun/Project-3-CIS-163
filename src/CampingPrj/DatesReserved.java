@@ -77,8 +77,8 @@ public class DatesReserved {
 				tempDate = new GregorianCalendar(year, month, day + i);
 			}
 
-			return tempDate;
 		}
+		return tempDate;
 	}
 
 	//	private GregorianCalendar indexToDate(int index) {
