@@ -110,7 +110,7 @@ public class DatesReserved {
 		int month = Integer.parseInt(dates[0]);
 		int year = 2000 + Integer.parseInt(dates[2]);
 		
-		boolean[] reserved = new boolean[5];
+		boolean[] reserved = new boolean[daysStaying];
 //		System.out.println("day"+day);
 //		System.out.println("month"+month);
 //		System.out.println("year"+year);

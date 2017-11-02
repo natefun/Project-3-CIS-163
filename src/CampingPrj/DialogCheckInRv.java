@@ -18,10 +18,10 @@ Creates the dialog box for checking in for RV
 @author Denver DeBoer
 @author Nathaniel Johnson
 @version November 2nd 2017
-*****************************************************************/
+ *****************************************************************/
 
 public class DialogCheckInRv extends JDialog {
-	
+
 	/** Instantiates Variables */
 	private JTextField nameTxt;
 	private JTextField OccupyedOnTxt;
@@ -37,7 +37,7 @@ public class DialogCheckInRv extends JDialog {
 
 	/*****************************************************************
 	Creates the dialog box components for checking in for RV
-	*****************************************************************/
+	 *****************************************************************/
 	public DialogCheckInRv(JFrame paOccupy, Site d) {	
 		super(paOccupy,true);
 		unit = d; 
@@ -57,7 +57,7 @@ public class DialogCheckInRv extends JDialog {
 		DateLab = new JLabel("Reseving Date:");
 		DaysLab = new JLabel("Days Staying:");
 		PowerLab = new JLabel("Type of power in amps:");
-		
+
 		/** Creates  the buttonlistener */
 		ButtonListener listener = new ButtonListener();
 
@@ -90,7 +90,7 @@ public class DialogCheckInRv extends JDialog {
 
 	/*****************************************************************
 	class that Adds components to JDialogBox when called
-	*****************************************************************/
+	 *****************************************************************/
 	private void createPanel() {
 
 		setLayout(new GridLayout(6, 2));
@@ -111,7 +111,7 @@ public class DialogCheckInRv extends JDialog {
 	/*****************************************************************
 	Checks that the site number is 1 - 5
 	@param SiteNum The site number
-	*****************************************************************/
+	 *****************************************************************/
 	private int checkSiteNumber(int SiteNum) {
 		if(SiteNum >= 1 && SiteNum <= 5)
 			return SiteNum;
@@ -121,7 +121,7 @@ public class DialogCheckInRv extends JDialog {
 	/*****************************************************************
 	Checks that the days staying is positive
 	@param daysStay The days staying
-	*****************************************************************/
+	 *****************************************************************/
 	private int checkDays(int daysStay) {
 		if(daysStay > 0)
 			return daysStay;
@@ -131,7 +131,7 @@ public class DialogCheckInRv extends JDialog {
 
 	/*****************************************************************
 	Creates the dialog box components for checking in for RV
-	*****************************************************************/
+	 *****************************************************************/
 	private int checkMonth(int month) {
 		if(month >= 1 && month <= 12)
 			return month;
@@ -211,14 +211,14 @@ public class DialogCheckInRv extends JDialog {
 				unit.setNameReserving(name);
 				unit.setDaysStaying(daysStay);
 				unit.setSiteNumber(SiteNum);
-				
+
 				if (checkDays(daysStay) == 0) {
 					JOptionPane.showMessageDialog(null, "Please stay for at least one day", null, JOptionPane.WARNING_MESSAGE);
 					unit.setDaysStaying(0);
 				}
-				
+
 				if(SiteModel.datesReserved.isReservedMultiple(SiteNum, new GregorianCalendar(year, month, day), daysStay) == false) {
-				unit.setCheckIn(checkInDate);
+					unit.setCheckIn(checkInDate);
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "Already reservation on at least one of the dates", null, JOptionPane.WARNING_MESSAGE);
@@ -240,8 +240,8 @@ public class DialogCheckInRv extends JDialog {
 					JOptionPane.showMessageDialog(frame, "The cost is $" + daysStay * 30 , "Price", JOptionPane.WARNING_MESSAGE);
 					dispose();
 				}
-				
-				
+
+
 			}
 			if (e.getSource() == cancelButton) {
 				dispose();
