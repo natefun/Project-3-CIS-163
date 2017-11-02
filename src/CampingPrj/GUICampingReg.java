@@ -49,7 +49,7 @@ public class GUICampingReg extends JFrame implements ActionListener{
 		file.add(exit);
 
 		edit.add(undo);
-		edit.add(redo);
+		//edit.add(redo);
 		edit.add(delete);
 
 		checkingIn.add(tentIn);
