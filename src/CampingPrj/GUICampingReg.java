@@ -15,17 +15,9 @@ public class GUICampingReg extends JFrame implements ActionListener{
 
 	private JTable jListTable;
 	private SiteModel dList;
+	private Timer autoSaveTime;
 
-	public GUICampingReg() {
-		//Timer stuff
-		Long time = System.currentTimeMillis();
-		while(System.currentTimeMillis() - time == 2000) {
-			System.out.println("Saved");
-			SiteModel.autosaveTxt();
-			SiteModel.autosaveSerial();
-			time = System.currentTimeMillis();
-		}
-		
+	public GUICampingReg() {		
 		menuBar = new JMenuBar();
 
 		file = new JMenu("File");
@@ -87,6 +79,9 @@ public class GUICampingReg extends JFrame implements ActionListener{
 
 		setVisible(true);
 		setSize(800, 600);
+		
+		autoSaveTime = new Timer(250, new TimeListener());
+		autoSaveTime.start();
 	}
 
 	public static void main(String[] args) {
@@ -176,6 +171,17 @@ public class GUICampingReg extends JFrame implements ActionListener{
 		//			RV t = new RV(0);
 		//			DialogCheckInRv x = new DialogCheckInRv(this, t);
 		//		}
+	}
+	
+	private class TimeListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{
+			SiteModel.autosaveSerial();
+			SiteModel.autosaveTxt();
+			autoSaveTime.restart();
+		}
 	}
 
 }
