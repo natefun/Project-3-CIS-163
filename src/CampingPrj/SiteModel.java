@@ -26,6 +26,8 @@ public class SiteModel extends AbstractTableModel{
 	private Site unit;
 	int undoIndex = 2;
 	private DatesReserved datesReserved;
+	static int times=1;
+	
 
 	// constructor method that initializes the arraylist
 	public SiteModel() {
@@ -162,6 +164,19 @@ public class SiteModel extends AbstractTableModel{
 			System.out.println("Problems happened");
 		}
 	}
+	
+	public static void autosaveSerial() {
+		String filename = "autosaveSerial";
+		int i = times;
+		if (i < 6 && i > 0) {
+			saveSerial(filename + i);
+			i++;
+		}
+		else {
+			saveSerial(filename + i);
+			times = 1;
+		}
+	}
 
 	/******************************************************************
 	 * Loads database as serialized type
@@ -232,6 +247,19 @@ public class SiteModel extends AbstractTableModel{
 			System.out.println ("IO Error!");
 		}
 
+	}
+
+	public static void autosaveTxt() {
+		String filename = "autosave";
+		int i = times;
+		if (i < 6 && i > 0) {
+			saveTxt(filename + i);
+			i++;
+		}
+		else {
+			saveTxt(filename + i);
+			times = 1;
+		}
 	}
 
 	/******************************************************************
