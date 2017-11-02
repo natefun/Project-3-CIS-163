@@ -45,6 +45,7 @@ public class SiteModel extends AbstractTableModel{
 //		datesReserved.reserve(1, new GregorianCalendar(2016,0,2));
 //		System.out.println(datesReserved.isReserved(1, new GregorianCalendar(2016,0,1)));
 //		System.out.println(datesReserved.isReserved(1, new GregorianCalendar(2016,0,2)));
+//		System.out.println(datesReserved.isReservedMultiple(1, new GregorianCalendar(2016,0,2), 2));
 		
 		datesUndoList = new ArrayList<ArrayList>();
 		datesUndoList.add((ArrayList<ArrayList>)datesReserved.getDateList().clone());
