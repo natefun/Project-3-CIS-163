@@ -263,7 +263,7 @@ public class SiteModel extends AbstractTableModel{
 	public static void autosaveTxt() {
 		String filename = "autosave";
 		int i = timesTxt;
-		if (i < 6 && i > 0) {
+		if (i < 5 && i > 0) {
 			saveTxt(filename + i, false);
 			timesTxt++;
 		}
