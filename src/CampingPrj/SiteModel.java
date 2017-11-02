@@ -243,16 +243,12 @@ public class SiteModel extends AbstractTableModel{
 				if(flag == 0)
 					unit = new Tent(other, name, daysStaying, siteNumber, calendar);
 				else if(flag == 1) {
-					unit.setNameReserving(name);
-					unit.setDaysStaying(daysStaying);
-					unit.setSiteNumber(siteNumber);
-					unit.setCheckIn(calendar);
-					((RV) unit).setPower(other);
+					unit = new RV(other, name, daysStaying, siteNumber, calendar);
 				}
 				add(unit);
 				update();
 			}
-			JOptionPane.showMessageDialog(null, "File loaded", "Loaded", JOptionPane.ERROR_MESSAGE);	
+			reader.close();
 		}
 		catch(Exception error) {
 			System.out.println("IO Error");
