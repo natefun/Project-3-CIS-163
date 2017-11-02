@@ -148,7 +148,7 @@ public class DialogCheckInTent extends JDialog {
 		int[] numDaysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 		if(isLeapYear(year))
 			numDaysInMonth[1] += 1;
-		if(day > 0 && day <= numDaysInMonth[month])
+		if(day > 0 && day <= numDaysInMonth[month - 1])
 			return day;
 		else
 			return 0;
