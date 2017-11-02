@@ -229,7 +229,22 @@ public class DialogCheckInTent extends JDialog {
 				unit.setNameReserving(name);
 				unit.setDaysStaying(days);
 				unit.setSiteNumber(site);
-				unit.setCheckIn(checkInDate);
+
+				if (checkSiteNumber(site) <= 0 || checkSiteNumber(site) >=6) {
+					JOptionPane.showMessageDialog(null, "Please stay at sites 1 - 5", null, JOptionPane.WARNING_MESSAGE);
+					unit.setDaysStaying(0);
+				}
+
+
+				if(SiteModel.datesReserved.isReservedMultiple(site, new GregorianCalendar(year, month, day), days) == false) {
+					unit.setCheckIn(checkInDate);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Already reservation on at least one of the dates", null, JOptionPane.WARNING_MESSAGE);
+					unit.setDaysStaying(0);
+					days = 0;
+					dispose();
+				}
 				unit.setNumOfTenters(numberOfGuests);
 
 				/** Dispose of the dialog box */
@@ -238,17 +253,17 @@ public class DialogCheckInTent extends JDialog {
 					unit.setDaysStaying(0);
 				}
 
-				if (checkSiteNumber(site) <= 0 || checkSiteNumber(site) >=6) {
-					JOptionPane.showMessageDialog(null, "Please stay at sites 1 - 5", null, JOptionPane.WARNING_MESSAGE);
-					unit.setDaysStaying(0);
-				}
+
 
 				if (checkDays(days) != 0 && checkSiteNumber(site) > 0 && checkSiteNumber(site) <=6) {
-					JOptionPane.showMessageDialog(null, "The cost is $" + unit.getCost(), "Price", JOptionPane.WARNING_MESSAGE);				
+					Component frame = null;
+					if(days != 0) {
+						JOptionPane.showMessageDialog(null, "The cost is $" + unit.getCost(), "Price", JOptionPane.WARNING_MESSAGE);
+					}
 					dispose();
 				}
 
-			
+
 
 			}
 			else if(e.getSource() == cancelButton) {
