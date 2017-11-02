@@ -8,6 +8,9 @@ public class DatesReserved {
 	private ArrayList<ArrayList> dateList;
 	private ArrayList<Boolean> siteList;
 	
+	/******************************************************************
+	 * Constructor, Creates ArrayLists that are needed
+	 *****************************************************************/
 	public DatesReserved() {
 		dateList = new ArrayList<ArrayList>();
 		
@@ -23,6 +26,12 @@ public class DatesReserved {
 		}
 	}
 	
+	/******************************************************************
+	 * Helper method that converts a GregorianCalendar date to an
+	 * index that can be used to find the date you are looking for in
+	 * the array
+	 * @param date the date you would like to convert
+	 *****************************************************************/
 	private int dateToIndex(GregorianCalendar date) {
 		int dayOfYear = date.getInstance().get(date.DAY_OF_YEAR);
 		int year = date.getInstance().get(date.YEAR);
@@ -41,12 +50,30 @@ public class DatesReserved {
 		}
 	}
 	
-	
+	/******************************************************************
+	 * Reserves a site for 1 day
+	 * @param siteNum The site you would like to reserve
+	 * @param date the date you would like to reserve the site on
+	 *****************************************************************/
 	public void reserve(int siteNum, GregorianCalendar date) {
 		dateList.get(dateToIndex(date)).set(siteNum -1, true);
 	}
 	
+	/******************************************************************
+	 * Deletes one reservation
+	 * @param siteNum The site you would like to delete
+	 * @param date the date you would like to delete the site for
+	 *****************************************************************/
 	public void delete(int siteNum, GregorianCalendar date) {
 		dateList.get(dateToIndex(date)).set(siteNum -1, false);
+	}
+	
+	/******************************************************************
+	 * Checks if a site is reserved
+	 * @param siteNum The site you would like to check
+	 * @param date the date you would like to check
+	 *****************************************************************/
+	public void isReserved(int siteNum, GregorianCalendar date) {
+		dateList.get(dateToIndex(date)).get(siteNum -1);
 	}
 }
