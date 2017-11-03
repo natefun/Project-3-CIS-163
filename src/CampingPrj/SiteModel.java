@@ -43,7 +43,9 @@ public class SiteModel extends AbstractTableModel{
 
 
 
-	// constructor method that initializes the arraylist
+	/******************************************************************
+	 * Constructor that initializes instance variables
+	 *****************************************************************/
 	public SiteModel() {
 		//GregorianCalendar testDate = new GregorianCalendar(10, 30, 2017);
 		listSites = new ArrayList<Site>();
@@ -354,6 +356,9 @@ public class SiteModel extends AbstractTableModel{
 	}
 	// add other methods as needed
 
+	/******************************************************************
+	 * Undos the last action performed
+	 *****************************************************************/
 	public void undo() {
 		if(undoIndex != undoList.size() + 1 || undoIndex < 0) {
 			listSites = undoList.get(undoList.size()-undoIndex);
@@ -366,6 +371,11 @@ public class SiteModel extends AbstractTableModel{
 
 	}
 	
+	/******************************************************************
+	 * Validates the month that the user entered
+	 * @param m the month that the user entered
+	 * @return a validated month
+	 *****************************************************************/
 	private int checkMonth(int m) {
 		if(m >= 1 && m <= 12)
 			return m;
@@ -375,6 +385,11 @@ public class SiteModel extends AbstractTableModel{
 		}
 	}
 	
+	/******************************************************************
+	 * Validates the year that the user entered
+	 * @param y the year that the user entered
+	 * @return a validated year
+	 *****************************************************************/
 	private int checkYear(int y) {
 		if(y >= 2015 && y <= 2020)
 			return y;
@@ -384,6 +399,13 @@ public class SiteModel extends AbstractTableModel{
 		}
 	}
 	
+	/******************************************************************
+	 * Validates the day that the user entered
+	 * @param month user input for the month
+	 * @param day user input for the day
+	 * @param year user input for the year
+	 * @return a validated day
+	 *****************************************************************/
 	private int checkDay(int month, int day, int year) {
 		int numDaysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 		if(isLeapYear(year))
