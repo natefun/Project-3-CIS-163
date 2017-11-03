@@ -105,7 +105,7 @@ public class DatesReserved {
 	public boolean isReserved(int siteNum, GregorianCalendar date) {
 		//	System.out.println("tester"+dateList.get(367).get(0));
 		//	System.out.println("tester2"+dateList.get(dateToIndex(date)).get(siteNum -1));
-			System.out.println("date"+ dateToIndex(date));
+//			System.out.println("date"+ dateToIndex(date));
 		return (boolean) dateList.get(dateToIndex(date)).get(siteNum -1);
 
 	}
