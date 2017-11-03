@@ -378,7 +378,7 @@ public class SiteModel extends AbstractTableModel{
 	 *****************************************************************/
 	private int checkMonth(int m) {
 		if(m >= 1 && m <= 12)
-			return m;
+			return m -1;
 		else {
 			JOptionPane.showMessageDialog(null, "Corrupted file. Value switched to 1.", "IO ERROR", JOptionPane.ERROR_MESSAGE);
 			return 1;
