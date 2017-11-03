@@ -29,7 +29,7 @@ public class SiteModel extends AbstractTableModel{
 	static int timesTxt = 1;
 	static int times = 1;
 
-	
+
 
 	// constructor method that initializes the arraylist
 	public SiteModel() {
@@ -37,16 +37,16 @@ public class SiteModel extends AbstractTableModel{
 		listSites = new ArrayList<Site>();
 		undoList = new ArrayList<ArrayList>();
 		undoList.add((ArrayList<ArrayList>)listSites.clone());
-		
+
 		//listSites.add(new Tent(3, "Nate Johnson", 5, 2, testDate));
 		datesReserved = new DatesReserved();
-//		datesReserved.reserveMultiple(1, new GregorianCalendar(2016,0,1), 2);
-//		datesReserved.reserve(1, new GregorianCalendar(2016,0,1));
-//		datesReserved.reserve(1, new GregorianCalendar(2016,0,2));
-//		System.out.println(datesReserved.isReserved(1, new GregorianCalendar(2016,0,1)));
-//		System.out.println(datesReserved.isReserved(1, new GregorianCalendar(2016,0,2)));
-//		System.out.println(datesReserved.isReservedMultiple(1, new GregorianCalendar(2016,0,2), 2));
-		
+		//		datesReserved.reserveMultiple(1, new GregorianCalendar(2016,0,1), 2);
+		//		datesReserved.reserve(1, new GregorianCalendar(2016,0,1));
+		//		datesReserved.reserve(1, new GregorianCalendar(2016,0,2));
+		//		System.out.println(datesReserved.isReserved(1, new GregorianCalendar(2016,0,1)));
+		//		System.out.println(datesReserved.isReserved(1, new GregorianCalendar(2016,0,2)));
+		//		System.out.println(datesReserved.isReservedMultiple(1, new GregorianCalendar(2016,0,2), 2));
+
 		datesUndoList = new ArrayList<ArrayList>();
 		datesUndoList.add((ArrayList<ArrayList>)datesReserved.getDateList().clone());
 	}
@@ -144,7 +144,7 @@ public class SiteModel extends AbstractTableModel{
 		fireTableRowsInserted(0, listSites.size());
 		undoList.add((ArrayList<ArrayList>)listSites.clone());
 		datesUndoList.add((ArrayList<ArrayList>)datesReserved.getDateList().clone());
-		
+
 	}
 
 	/******************************************************************
@@ -173,7 +173,7 @@ public class SiteModel extends AbstractTableModel{
 			System.out.println("Problems happened");
 		}
 	}
-	
+
 	public static void autosaveSerial() {
 		String filename = "autosaveSerial";
 		int i = times;
@@ -184,7 +184,7 @@ public class SiteModel extends AbstractTableModel{
 		else {
 			times = 1;
 			saveSerial(filename + i);
-			
+
 		}
 	}
 
@@ -270,7 +270,7 @@ public class SiteModel extends AbstractTableModel{
 		else {
 			timesTxt = 1;
 			saveTxt(filename + i, false);
-			
+
 		}
 	}
 
@@ -284,21 +284,27 @@ public class SiteModel extends AbstractTableModel{
 			//Last line of loop: add(unit)
 			Scanner reader = new Scanner(new File(filename));
 			while(reader.hasNextLine()) {
-				String[] fileLine = reader.nextLine().split("\t");
-				String name = fileLine[0];
-				String[] date = fileLine[1].split("/");
-				int month = Integer.parseInt(date[0]);
-				int day = Integer.parseInt(date[1]);
-				int year = Integer.parseInt(date[2]);
-				GregorianCalendar calendar = new GregorianCalendar(year, month, day);
-				int daysStaying = Integer.parseInt(fileLine[2]);
-				int siteNumber = Integer.parseInt(fileLine[3]);
-				int other = Integer.parseInt(fileLine[4]);
-				int flag = Integer.parseInt(fileLine[5]);
-				if(flag == 0)
-					unit = new Tent(other, name, daysStaying, siteNumber, calendar);
-				else if(flag == 1) {
-					unit = new RV(other, name, daysStaying, siteNumber, calendar);
+				try {
+					String[] fileLine = reader.nextLine().split("\t");
+					String name = checkName(fileLine[0]);
+					String[] date = fileLine[1].split("/");
+					int month = checkMonth(Integer.parseInt(date[0]));
+					int year = checkYear(Integer.parseInt(date[2]));
+					int day = checkDay(month, Integer.parseInt(date[1]), year);
+					GregorianCalendar calendar = new GregorianCalendar(year, month, day);
+					int daysStaying = checkDaysStaying(Integer.parseInt(fileLine[2]));
+					int siteNumber = checkSiteNumber(Integer.parseInt(fileLine[3]));
+					int flag = checkFlag(Integer.parseInt(fileLine[5]));
+					int other = checkOther(Integer.parseInt(fileLine[4]), flag);
+					if(flag == 0)
+						unit = new Tent(other, name, daysStaying, siteNumber, calendar);
+					else if(flag == 1) {
+						unit = new RV(other, name, daysStaying, siteNumber, calendar);
+					}
+				}
+				catch(NumberFormatException e) {
+					JOptionPane.showMessageDialog(null, "Invalid Input", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+
 				}
 				add(unit);
 				update();
@@ -322,15 +328,113 @@ public class SiteModel extends AbstractTableModel{
 		}
 
 	}
+	
+	private int checkMonth(int m) {
+		if(m >= 1 && m <= 12)
+			return m;
+		else {
+			JOptionPane.showMessageDialog(null, "Corrupted file. Value switched to 1.", "IO ERROR", JOptionPane.ERROR_MESSAGE);
+			return 1;
+		}
+	}
+	
+	private int checkYear(int y) {
+		if(y >= 2015 && y <= 2020)
+			return y;
+		else {
+			JOptionPane.showMessageDialog(null, "Corrupted file. Value switched to 2015.", "IO ERROR", JOptionPane.ERROR_MESSAGE);
+			return 2015;
+		}
+	}
+	
+	private int checkDay(int month, int day, int year) {
+		int numDaysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+		if(isLeapYear(year))
+			numDaysInMonth[1] += 1;
+		if(day > 0 && day < numDaysInMonth[month - 1])
+			return day;
+		else {
+			JOptionPane.showMessageDialog(null, "Corrupted file. Value switched to 1.", "IO ERROR", JOptionPane.ERROR_MESSAGE);
+			return 1;
+		}
+	}
+	
+	private boolean isLeapYear(int y) {
+		if(y % 4 == 0 && y % 100 != 0)
+			return true;
+		else if(y % 100 == 0)
+			return false;
+		else if(y % 400 == 0)
+			return true;
+		else
+			return false;
+	}
+	
+	private String checkName(String n) {
+		if(n != null)
+			return n;
+		else {
+			JOptionPane.showMessageDialog(null, "Corrupted file. Switched value to A.", "IO ERROR", JOptionPane.ERROR_MESSAGE);
+			return "A";
+		}
+	}
+	
+	private int checkDaysStaying(int d) {
+		if(d > 0)
+			return d;
+		else {
+			JOptionPane.showMessageDialog(null, "Corrupted file. Value switched to 1.", "IO ERROR", JOptionPane.ERROR_MESSAGE);
+			return 1;
+		}
+	}
+	
+	private int checkSiteNumber(int site)
+	{
+		if(site > 0 && site < 6)
+			return site;
+		else {
+			JOptionPane.showMessageDialog(null, "Corrupted file. Value switched to 1.", "IO ERROR", JOptionPane.ERROR_MESSAGE);
+			return 1;
+		}
+	}
+	
+	private int checkFlag(int f) {
+		if(f == 0 || f == 1)
+			return f;
+		else {
+			JOptionPane.showMessageDialog(null, "Corrupted file. Value switched to 0.", "IO ERROR", JOptionPane.ERROR_MESSAGE);
+			return 0;
+		}
+	}
+	
+	private int checkOther(int num, int flag)
+	{
+		if(flag == 0) {
+			if(num > 0)
+				return num;
+			else {
+				JOptionPane.showMessageDialog(null, "Corrupted file. Value switched to 1.", "IO ERROR", JOptionPane.ERROR_MESSAGE);
+				return 1;
+			}
+		}
+		else {
+			if(num == 30 || num == 40 || num == 50)
+				return num;
+			else {
+				JOptionPane.showMessageDialog(null, "Corrupted file. Value switched to 30.", "IO Error", JOptionPane.ERROR_MESSAGE);
+				return 30;
+			}
+		}
+	}
 
-//	public void redo() {
-//		if(undoIndex > 2 && undoIndex <= undoList.size()+1) {
-//			//listSites = undoList.get(undoList.size()+undoIndex);
-//			listSites = undoList.get(undoIndex-2);
-//			datesReserved.setDateList(datesUndoList.get(datesUndoList.size()-undoIndex));
-//			undoIndex++;
-//			fireTableRowsInserted(0, listSites.size());
-//		}
-//	}
+	//	public void redo() {
+	//		if(undoIndex > 2 && undoIndex <= undoList.size()+1) {
+	//			//listSites = undoList.get(undoList.size()+undoIndex);
+	//			listSites = undoList.get(undoIndex-2);
+	//			datesReserved.setDateList(datesUndoList.get(datesUndoList.size()-undoIndex));
+	//			undoIndex++;
+	//			fireTableRowsInserted(0, listSites.size());
+	//		}
+	//	}
 
 }
