@@ -119,7 +119,7 @@ public abstract class Site implements Serializable{
 
 	/******************************************************************
 	 * Sets the site number
-	 * @param siteNumber sets thre site number staying
+	 * @param siteNumber sets the site number staying
 	 *****************************************************************/
 	public void setSiteNumber(int siteNumber) {
 		this.siteNumber = siteNumber;

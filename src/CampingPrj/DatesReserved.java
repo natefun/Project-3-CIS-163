@@ -6,7 +6,10 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class DatesReserved {
+	/** Array list of dates  */
 	private ArrayList<ArrayList> dateList;
+	
+	/** Array list booleans that have whether it it taken or not */
 	private ArrayList<Boolean> siteList;
 
 	/******************************************************************

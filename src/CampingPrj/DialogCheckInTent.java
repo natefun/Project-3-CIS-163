@@ -182,6 +182,7 @@ public class DialogCheckInTent extends JDialog {
 			return false;
 	}
 
+	/** button listeners **/
 	private class ButtonListener implements ActionListener
 	{
 		@Override

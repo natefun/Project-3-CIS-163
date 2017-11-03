@@ -51,14 +51,14 @@ public class Tent extends Site {
 		this.numOfTenters = numOfTenters;
 	}
 
-	/**
-	 * IDK
-	 * @return nothing
-	 */
-	public char[] getPlayer() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	/**
+//	 * IDK
+//	 * @return nothing
+//	 */
+//	public char[] getPlayer() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	/******************************************************************
 	 * Calculates the cost
