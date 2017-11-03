@@ -21,8 +21,8 @@ public class DatesReserved {
 			siteList.add(false);
 		}
 
-		//This creates 20 years worth of boolean arraylists
-		for(int i = 0; i < 15330; i++) {
+		//This creates 5 years worth of boolean arraylists
+		for(int i = 0; i < 1900; i++) {
 			dateList.add((ArrayList<ArrayList>)siteList.clone());
 		}
 	}
