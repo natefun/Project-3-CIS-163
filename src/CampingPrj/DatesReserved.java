@@ -25,7 +25,7 @@ public class DatesReserved {
 		}
 
 		//This creates 5 years worth of boolean arraylists
-		for(int i = 0; i < 1900; i++) {
+		for(int i = 0; i < 2000; i++) {
 			dateList.add((ArrayList<ArrayList>)siteList.clone());
 		}
 	}
