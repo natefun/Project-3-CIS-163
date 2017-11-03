@@ -79,11 +79,11 @@ public class GUICampingReg extends JFrame implements ActionListener{
 
 		setVisible(true);
 		setSize(800, 600);
-		
+
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
+
+
 		autoSaveTime = new Timer(30000, new TimeListener());
 		autoSaveTime.start();
 
@@ -143,9 +143,9 @@ public class GUICampingReg extends JFrame implements ActionListener{
 			SiteModel.autosaveSerial();
 		}
 
-//		if(e.getSource().equals(redo)) {
-//			dList.redo();
-//		}
+		//		if(e.getSource().equals(redo)) {
+		//			dList.redo();
+		//		}
 
 		if(e.getSource().equals(delete)) {
 			if(jListTable.getSelectedRow() != -1)
@@ -177,7 +177,7 @@ public class GUICampingReg extends JFrame implements ActionListener{
 		//			DialogCheckInRv x = new DialogCheckInRv(this, t);
 		//		}
 	}
-	
+
 	private class TimeListener implements ActionListener
 	{
 		@Override

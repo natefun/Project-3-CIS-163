@@ -111,6 +111,7 @@ public class DialogCheckInRv extends JDialog {
 	/*****************************************************************
 	Checks that the site number is 1 - 5
 	@param SiteNum The site number
+	@return SiteNum SiteNum is returned if valid if not returns 0
 	 *****************************************************************/
 	private int checkSiteNumber(int SiteNum) {
 		if(SiteNum >= 1 && SiteNum <= 5)
@@ -120,7 +121,9 @@ public class DialogCheckInRv extends JDialog {
 	}
 	/*****************************************************************
 	Checks that the days staying is positive
+
 	@param daysStay The days staying
+	@return daysStay daysStay is returned if valid if not returns 0
 	 *****************************************************************/
 	private int checkDays(int daysStay) {
 		if(daysStay > 0)
@@ -130,7 +133,10 @@ public class DialogCheckInRv extends JDialog {
 	}
 
 	/*****************************************************************
-	Creates the dialog box components for checking in for RV
+	checks the month given to see if it is valid
+
+	@param month The month given
+	@return month returns the valid month
 	 *****************************************************************/
 	private int checkMonth(int month) {
 		if(month >= 1 && month <= 12)
@@ -141,6 +147,12 @@ public class DialogCheckInRv extends JDialog {
 			return month / -1;
 	}
 
+	/*****************************************************************
+	checks the year given to see if it is valid
+
+	@param year The year given
+	@return year year is returned if valid if not returns 0
+	 *****************************************************************/
 	private int checkYear(int year) {
 		if(year > 0 && year < Integer.MAX_VALUE)
 			return year;
@@ -148,6 +160,15 @@ public class DialogCheckInRv extends JDialog {
 			return 0;
 	}
 
+	/*****************************************************************
+	checks the month given to see if it is valid
+
+	@param day The day given
+	@param month The month given
+	@param year The year given
+	@return day Returns days that are valid for a given month, if 
+	invalid returns 0
+	 *****************************************************************/
 	private int checkDay(int month, int day, int year) {
 		int[] numDaysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 		if(isLeapYear(year))
@@ -157,6 +178,7 @@ public class DialogCheckInRv extends JDialog {
 		else
 			return 0;
 	}
+
 
 	private boolean isLeapYear(int year) {
 		if(year % 4 == 0 && year % 100 != 0)

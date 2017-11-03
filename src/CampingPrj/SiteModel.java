@@ -18,8 +18,8 @@ import javax.swing.table.AbstractTableModel;
 
 public class SiteModel extends AbstractTableModel{
 	private static ArrayList<Site> listSites;
-	private ArrayList<ArrayList> undoList;
-	private ArrayList<ArrayList> datesUndoList;
+	private static ArrayList<ArrayList> undoList;
+	private static ArrayList<ArrayList> datesUndoList;
 	private ArrayList<ArrayList> DateList;
 	private ArrayList<Boolean> BooList;
 	private String[] columnNames = { "Name Reserving", "Checked in", "Days Staying", "Site #", "Tent/RV info"};
@@ -166,6 +166,8 @@ public class SiteModel extends AbstractTableModel{
 			ObjectOutputStream oos= new ObjectOutputStream(fos);
 			//writes out the entire arraylist
 			oos.writeObject(listSites);
+			oos.writeObject(undoList);
+			oos.writeObject(datesUndoList);
 			oos.close();
 			fos.close();
 		}catch(IOException ioe){
@@ -203,8 +205,31 @@ public class SiteModel extends AbstractTableModel{
 			//reads in arraylist
 			for(int i = 0; i < readCase.size(); i++) {
 				listSites.add(readCase.get(i));
-				System.out.println(readCase.get(i));
+				//System.out.println(readCase.get(i));
 			}
+			
+			for(int i = 0; i < listSites.size(); i++) {
+				datesReserved.reserveMultiple(listSites.get(i).getSiteNumber(), listSites.get(i).getCheckIn(), listSites.get(i).getDaysStaying());
+			}
+			
+			ArrayList<ArrayList> readCase3 = (ArrayList<ArrayList>) objectinputstream.readObject();
+			//creates new arraylist
+			undoList = new ArrayList<ArrayList>();
+			//reads in arraylist
+			for(int i = 0; i < readCase3.size(); i++) {
+				undoList.add(readCase3.get(i));
+				//System.out.println(readCase3.get(i));
+			}
+			
+			ArrayList<ArrayList> readCase4 = (ArrayList<ArrayList>) objectinputstream.readObject();
+			//creates new arraylist
+			datesUndoList = new ArrayList<ArrayList>();
+			//reads in arraylist
+			for(int i = 0; i < readCase4.size(); i++) {
+				datesUndoList.add(readCase4.get(i));
+				//System.out.println(readCase4.get(i));
+			}
+			
 			//updates table
 			fireTableRowsInserted(1, readCase.size());
 

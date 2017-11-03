@@ -9,12 +9,23 @@ public class RV extends Site{
 	/******************************************************************
 	 * Constructor
 	 * Initializes the instance variable
+	 *
 	 * @param p holds the amount of power to the RV site
 	 *****************************************************************/
 	public RV(int p) {
 		power = verifyPower(p);
 	}
-	
+
+	/******************************************************************
+	 * Constructor
+	 * Initializes the instance variables from super class
+	 * 
+	 * @param power the amount of power
+	 * @param nameReserving name of the person reserving
+	 * @param daysStaying number of  days staying
+	 * @param siteNum site number of reservation
+	 * @param date the date of reservation
+	 *****************************************************************/
 	public RV(int power, String nameReserving, int daysStaying, int siteNum, GregorianCalendar date) {
 		super(nameReserving, daysStaying, siteNum, date);
 		this.power = verifyPower(power);
@@ -50,10 +61,10 @@ public class RV extends Site{
 			return 0;
 	}
 
-	//	public RV (int p, int SiteNumber) {
-	//		super(SiteNum);
-	//	}
-
+	/******************************************************************
+	 * generates the cost of staying on site
+	 * @return cost of staying on site
+	 *****************************************************************/
 	@Override
 	public int getCost() {
 		// TODO Auto-generated method stub

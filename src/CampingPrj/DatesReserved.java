@@ -6,7 +6,10 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class DatesReserved {
+	/** Array list of dates  */
 	private ArrayList<ArrayList> dateList;
+	
+	/** Array list booleans that have whether it it taken or not */
 	private ArrayList<Boolean> siteList;
 
 	/******************************************************************
@@ -21,20 +24,27 @@ public class DatesReserved {
 			siteList.add(false);
 		}
 
-		//This creates 20 years worth of boolean arraylists
-		for(int i = 0; i < 15330; i++) {
+		//This creates 5 years worth of boolean arraylists
+		for(int i = 0; i < 2000; i++) {
 			dateList.add((ArrayList<ArrayList>)siteList.clone());
 		}
 	}
 
+	/******************************************************************
+	 * Returns the list
+	 *****************************************************************/
 	public ArrayList getDateList() {
 		return dateList;
 	}
-	
+
+	/******************************************************************
+	 * Pulls in a new list (useful for loading and saving)
+	 * @param list the list you want to set
+	 *****************************************************************/
 	public void setDateList(ArrayList list) {
 		dateList = list;
 	}
-	
+
 	/******************************************************************
 	 * Helper method that converts a GregorianCalendar date to an
 	 * index that can be used to find the date you are looking for in
@@ -92,28 +102,32 @@ public class DatesReserved {
 	 * @param date the date you would like to check
 	 *****************************************************************/
 	public boolean isReserved(int siteNum, GregorianCalendar date) {
-	//	System.out.println("tester"+dateList.get(367).get(0));
-	//	System.out.println("tester2"+dateList.get(dateToIndex(date)).get(siteNum -1));
-	//	System.out.println("date"+ dateToIndex(date));
+		//	System.out.println("tester"+dateList.get(367).get(0));
+		//	System.out.println("tester2"+dateList.get(dateToIndex(date)).get(siteNum -1));
+		//	System.out.println("date"+ dateToIndex(date));
 		return (boolean) dateList.get(dateToIndex(date)).get(siteNum -1);
-		
+
 	}
 
-
+	/******************************************************************
+	 * Checks if a site is reserved for multiple days
+	 * @param siteNum The site you would like to check
+	 * @param date the date you would like to check the site on
+	 *****************************************************************/
 	public boolean isReservedMultiple(int siteNum, GregorianCalendar date, int daysStaying) {
 		int[] numDaysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 		GregorianCalendar tempDate = null;
 
 		String[] dates = DateFormat.getDateInstance(DateFormat.SHORT).format(date.getTime()).split("/");
-		
+
 		int day = Integer.parseInt(dates[1]);
 		int month = Integer.parseInt(dates[0]);
 		int year = 2000 + Integer.parseInt(dates[2]);
-		
+
 		boolean[] reserved = new boolean[daysStaying];
-//		System.out.println("day"+day);
-//		System.out.println("month"+month);
-//		System.out.println("year"+year);
+		//		System.out.println("day"+day);
+		//		System.out.println("month"+month);
+		//		System.out.println("year"+year);
 
 		for(int i = 0; i < daysStaying; i++) {
 			if(day+i <= numDaysInMonth[month-1]) {
@@ -137,18 +151,18 @@ public class DatesReserved {
 			//reserves the site for that day
 			//System.out.println(DateFormat.getDateInstance(DateFormat.SHORT).format(tempDate.getTime()));
 			reserved[i] = isReserved(siteNum, tempDate);
-			System.out.println("reserved[i]"+reserved[i]);
+			//System.out.println("reserved[i]"+reserved[i]);
 		}
-		
+
 		boolean returnBool = reserved[0];
 		for(int i = 0; i < daysStaying; i++) {
 			returnBool = returnBool || reserved[i];
 		}
-		
+
 		return returnBool;
-		
+
 	}
-	
+
 	/******************************************************************
 	 * Reserves a site for multiple days
 	 * @param siteNum The site you would like to reserve
@@ -159,14 +173,14 @@ public class DatesReserved {
 		GregorianCalendar tempDate = null;
 
 		String[] dates = DateFormat.getDateInstance(DateFormat.SHORT).format(date.getTime()).split("/");
-		
+
 		int day = Integer.parseInt(dates[1]);
 		int month = Integer.parseInt(dates[0]);
 		int year = 2000 + Integer.parseInt(dates[2]);
-		
-//		System.out.println("day"+day);
-//		System.out.println("month"+month);
-//		System.out.println("year"+year);
+
+		//		System.out.println("day"+day);
+		//		System.out.println("month"+month);
+		//		System.out.println("year"+year);
 
 		for(int i = 0; i < daysStaying; i++) {
 			if(day+i <= numDaysInMonth[month-1]) {
@@ -191,12 +205,12 @@ public class DatesReserved {
 			//System.out.println(DateFormat.getDateInstance(DateFormat.SHORT).format(tempDate.getTime()));
 			reserve(siteNum, tempDate);
 		}
-		
-		
+
+
 
 	}
-	
-	
+
+
 	/******************************************************************
 	 * Reserves a site for multiple days
 	 * @param siteNum The site you would like to reserve
@@ -207,7 +221,7 @@ public class DatesReserved {
 		GregorianCalendar tempDate = null;
 
 		String[] dates = DateFormat.getDateInstance(DateFormat.SHORT).format(date.getTime()).split("/");
-		
+
 		int day = Integer.parseInt(dates[1]);
 		int month = Integer.parseInt(dates[0]);
 		int year = 2000 + Integer.parseInt(dates[2]);
@@ -233,7 +247,7 @@ public class DatesReserved {
 			//deletes the site for that day
 			delete(siteNum, tempDate);
 		}
-		
+
 
 	}
 }
