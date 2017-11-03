@@ -391,7 +391,7 @@ public class SiteModel extends AbstractTableModel{
 	 * @return a validated year
 	 *****************************************************************/
 	private int checkYear(int y) {
-		if(y >= 2015 && y <= 2020)
+		if(y > 0 && y < 2037)
 			return y;
 		else {
 			JOptionPane.showMessageDialog(null, "Corrupted file. Value switched to 2015.", "IO ERROR", JOptionPane.ERROR_MESSAGE);
