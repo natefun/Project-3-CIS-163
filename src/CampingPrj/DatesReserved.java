@@ -32,6 +32,7 @@ public class DatesReserved {
 
 	/******************************************************************
 	 * Returns the list
+	 * @return dateList The list of dates
 	 *****************************************************************/
 	public ArrayList getDateList() {
 		return dateList;
