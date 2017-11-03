@@ -27,10 +27,17 @@ public class DatesReserved {
 		}
 	}
 
+	/******************************************************************
+	 * Returns the list
+	 *****************************************************************/
 	public ArrayList getDateList() {
 		return dateList;
 	}
 
+	/******************************************************************
+	 * Pulls in a new list (useful for loading and saving)
+	 * @param list the list you want to set
+	 *****************************************************************/
 	public void setDateList(ArrayList list) {
 		dateList = list;
 	}
@@ -99,7 +106,11 @@ public class DatesReserved {
 
 	}
 
-
+	/******************************************************************
+	 * Checks if a site is reserved for multiple days
+	 * @param siteNum The site you would like to check
+	 * @param date the date you would like to check the site on
+	 *****************************************************************/
 	public boolean isReservedMultiple(int siteNum, GregorianCalendar date, int daysStaying) {
 		int[] numDaysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 		GregorianCalendar tempDate = null;
