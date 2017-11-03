@@ -443,6 +443,10 @@ public class SiteModel extends AbstractTableModel{
 		}
 	}
 	
+	/******************************************************************
+	 * Checks whether or not the data is for a tent or RV
+	 * @return 0 or 1
+	 *****************************************************************/
 	private int checkFlag(int f) {
 		if(f == 0 || f == 1)
 			return f;
@@ -452,6 +456,13 @@ public class SiteModel extends AbstractTableModel{
 		}
 	}
 	
+	/******************************************************************
+	 * Checks whether or not the number of tenters or amount of power
+	 * is valid
+	 * @param num number of players or amount of power
+	 * @param flag 0 if tent or 1 if RV
+	 * @return number of tenters or amount of power
+	 *****************************************************************/
 	private int checkOther(int num, int flag)
 	{
 		if(flag == 0) {
@@ -471,15 +482,4 @@ public class SiteModel extends AbstractTableModel{
 			}
 		}
 	}
-
-	//	public void redo() {
-	//		if(undoIndex > 2 && undoIndex <= undoList.size()+1) {
-	//			//listSites = undoList.get(undoList.size()+undoIndex);
-	//			listSites = undoList.get(undoIndex-2);
-	//			datesReserved.setDateList(datesUndoList.get(datesUndoList.size()-undoIndex));
-	//			undoIndex++;
-	//			fireTableRowsInserted(0, listSites.size());
-	//		}
-	//	}
-
 }
