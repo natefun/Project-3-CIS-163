@@ -169,7 +169,7 @@ public class DialogCheckInTent extends JDialog {
 	/**
 	 * Determine if the provided year is a leap year
 	 * @param year
-	 * @return
+	 * @return 
 	 */
 	private boolean isLeapYear(int year) {
 		if(year % 4 == 0 && year % 100 != 0)

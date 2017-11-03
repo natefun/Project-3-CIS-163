@@ -384,6 +384,11 @@ public class SiteModel extends AbstractTableModel{
 		}
 	}
 	
+	/******************************************************
+	 * Determine if the provided year is a leap year
+	 * @param y The year that is given
+	 * @return true if its a leap year, flase if not
+	 ******************************************************/
 	private boolean isLeapYear(int y) {
 		if(y % 4 == 0 && y % 100 != 0)
 			return true;
@@ -395,6 +400,11 @@ public class SiteModel extends AbstractTableModel{
 			return false;
 	}
 	
+	/******************************************************
+	 * Determine if the provided year is a leap year
+	 * @param n  The name of the checkIn reserver
+	 * @return n if the name is returned correct
+	 ******************************************************/
 	private String checkName(String n) {
 		if(n != null)
 			return n;
@@ -404,6 +414,11 @@ public class SiteModel extends AbstractTableModel{
 		}
 	}
 	
+	/******************************************************
+	 * Determine if the provided year is a leap year
+	 * @param d The number of days staying
+	 * @return d if the number is valid 
+	 ******************************************************/
 	private int checkDaysStaying(int d) {
 		if(d > 0)
 			return d;
@@ -413,6 +428,11 @@ public class SiteModel extends AbstractTableModel{
 		}
 	}
 	
+	/******************************************************
+	 * Determine if the provided year is a leap year
+	 * @param site the site number being reserved
+	 * @return site A valid site number
+	 ******************************************************/
 	private int checkSiteNumber(int site)
 	{
 		if(site > 0 && site < 6)
