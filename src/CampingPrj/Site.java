@@ -63,6 +63,7 @@ public abstract class Site implements Serializable{
 
 	/******************************************************************
 	 * Returns the name of the person reserving
+	 * @return nameReserving The name of the reserver
 	 *****************************************************************/
 	public String getNameReserving() {
 		return nameReserving;
@@ -70,6 +71,7 @@ public abstract class Site implements Serializable{
 
 	/******************************************************************
 	 * Sets the name of the person reserving
+	 * @param nameReserving Name of the reserver
 	 *****************************************************************/
 	public void setNameReserving(String nameReserving) {
 		this.nameReserving = nameReserving;
@@ -77,6 +79,7 @@ public abstract class Site implements Serializable{
 
 	/******************************************************************
 	 * Returns the check in date in the form of a GregorianCalendar
+	 * @return checkIn The checkin date
 	 *****************************************************************/
 	public GregorianCalendar getCheckIn() {
 		return checkIn;
@@ -84,27 +87,15 @@ public abstract class Site implements Serializable{
 
 	/******************************************************************
 	 * Sets the check in date in the form of a GregorianCalendar
+	 * @param checkIn the check in date
 	 *****************************************************************/
 	public void setCheckIn(GregorianCalendar checkIn) {
 		this.checkIn = checkIn;
 	}
 
-	//	public String getCheckIn() {
-	//		
-	//		this.checkIn = check
-	//		String dateStr = checkIn;
-	//		DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-	//		try {
-	//			Date checkIn = (Date)formatter.parse(dateStr);
-	//		} catch (ParseException e) {
-	//			// TODO Auto-generated catch block
-	//			e.printStackTrace();
-	//		}
-	//		return dateStr;  
-	//	}
-
 	/******************************************************************
 	 * Returns the number of days staying
+	 * @return daysStaying Returns days staying
 	 *****************************************************************/
 	public int getDaysStaying() {
 		return daysStaying;
@@ -112,6 +103,7 @@ public abstract class Site implements Serializable{
 
 	/******************************************************************
 	 * Sets the number of days staying
+	 * @param daysStaying sets the days staying
 	 *****************************************************************/
 	public void setDaysStaying(int daysStaying) {
 		this.daysStaying = daysStaying;
@@ -119,6 +111,7 @@ public abstract class Site implements Serializable{
 
 	/******************************************************************
 	 * Returns the site number
+	 * @return siteNumber The number of the site
 	 *****************************************************************/
 	public int getSiteNumber() {
 		return siteNumber;
@@ -126,6 +119,7 @@ public abstract class Site implements Serializable{
 
 	/******************************************************************
 	 * Sets the site number
+	 * @param siteNumber sets thre site number staying
 	 *****************************************************************/
 	public void setSiteNumber(int siteNumber) {
 		this.siteNumber = siteNumber;
@@ -136,27 +130,24 @@ public abstract class Site implements Serializable{
 	 *****************************************************************/
 	public abstract int getCost();
 
-	/******************************************************************
-	 * No idea
-	 *****************************************************************/
-	public Object getOccupyedOn() {
-		// TODO Auto-generated method stub
-		//These were generated since saveTXT uses them
-		return null;
-	}
+//	/******************************************************************
+//	 * No idea
+//	 *****************************************************************/
+//	public Object getOccupyedOn() {
+//		// TODO Auto-generated method stub
+//		//These were generated since saveTXT uses them
+//		return null;
+//	}
+//
+//	/******************************************************************
+//	 * No idea
+//	 *****************************************************************/
+//	public char[] getTitle() {
+//		// TODO Auto-generated method stub
+//		//These were generated since saveTXT uses them
+//		return null;
+//	}
 
-	/******************************************************************
-	 * No idea
-	 *****************************************************************/
-	public char[] getTitle() {
-		// TODO Auto-generated method stub
-		//These were generated since saveTXT uses them
-		return null;
-	}
 
-
-
-	// add constructors
-	// add getter, setter methods
 
 }
