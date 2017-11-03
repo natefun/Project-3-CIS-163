@@ -2,6 +2,14 @@ package CampingPrj;
 
 import java.util.GregorianCalendar;
 
+/**********************************************************************
+ * Holds data concerning the RV site
+ * @author Denver DeBoer
+ * @author Brandon Thedorff
+ * @author Nathaniel Johnson
+ * @version 1.0
+ *********************************************************************/
+
 public class RV extends Site{
 	/** holds the amount of power requested for each RV site */
 	private int power;		//30, 40, 50 amps

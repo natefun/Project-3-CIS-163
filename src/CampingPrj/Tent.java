@@ -5,6 +5,8 @@ import java.util.GregorianCalendar;
 /**********************************************************************
  * Holds data concerning a tent site
  * @author Denver DeBoer
+ * @author Brandon Thedorff
+ * @author Nathaniel Johnson
  * @version 1.0
  *********************************************************************/
 
