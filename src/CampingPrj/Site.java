@@ -129,25 +129,4 @@ public abstract class Site implements Serializable{
 	 * Gets the cost to stay at the site
 	 *****************************************************************/
 	public abstract int getCost();
-
-//	/******************************************************************
-//	 * No idea
-//	 *****************************************************************/
-//	public Object getOccupyedOn() {
-//		// TODO Auto-generated method stub
-//		//These were generated since saveTXT uses them
-//		return null;
-//	}
-//
-//	/******************************************************************
-//	 * No idea
-//	 *****************************************************************/
-//	public char[] getTitle() {
-//		// TODO Auto-generated method stub
-//		//These were generated since saveTXT uses them
-//		return null;
-//	}
-
-
-
 }
