@@ -131,7 +131,8 @@ public class DialogCheckInTent extends JDialog {
 	 * @return
 	 */
 	private int checkYear(int year) {
-		if(year > 2015 && year < 2020)
+	//	if(year > 2015 && year < 2020)
+		if(year > 0 && year < 2037)
 			return year;
 		else
 			return 0;
