@@ -15,16 +15,28 @@ import java.util.GregorianCalendar;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
+/*****************************************************************
+Database and the main class for everything that isnt gui
 
+@author Brandon Thedorff
+@author Denver DeBoer
+@author Nathaniel Johnson
+@version November 2nd 2017
+ *****************************************************************/
 public class SiteModel extends AbstractTableModel{
+	/** Array list of sites  */
 	private static ArrayList<Site> listSites;
+	/** Array list of undos  */
 	private static ArrayList<ArrayList> undoList;
+	/** Array list of undos  */
 	private static ArrayList<ArrayList> datesUndoList;
-	private ArrayList<ArrayList> DateList;
-	private ArrayList<Boolean> BooList;
+	/** Names of columns  */
 	private String[] columnNames = { "Name Reserving", "Checked in", "Days Staying", "Site #", "Tent/RV info"};
+	/** A site */
 	private Site unit;
+	/** Index for undos  */
 	int undoIndex = 2;
+	/** dates reserved to prevent double booking  */
 	public static DatesReserved datesReserved;
 	static int timesTxt = 1;
 	static int times = 1;
